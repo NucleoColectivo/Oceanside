@@ -99,7 +99,7 @@
 
     /* ===== GALLERY ===== */
     .gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s}
+    .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s; width: 100%;}
     .gallery img:hover{transform:scale(1.05)}
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
               transition:.3s;z-index:1100}
@@ -863,4 +863,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</ht
+</html>
