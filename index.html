@@ -83,8 +83,7 @@
     }
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
     .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center}
-    .hero-bullets{display:flex;flex-direction:column;gap:.4rem;font-weight:500;margin:1.2rem 0}
-
+    
     /* ===== GRID CARDS ===== */
     .cards{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
     .card{background:#fff;padding:2.2rem 1.6rem;border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.06);
@@ -231,17 +230,17 @@
       allowfullscreen>
     </iframe>
   </div>
-  <div class="hero-content">
-    <img src="images/logo-transparent.png" class="w-72 sm:w-96 mb-8 drop-shadow-lg" alt="Oceanside Stucco logo">
+  <div class="hero-content pt-24 pb-12">
+    <img src="images/logo-transparent.png" class="w-64 sm:w-80 mb-6 drop-shadow-lg" alt="Oceanside Stucco logo">
     <h1 class="text-4xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.5rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
-    <p class="mb-6 text-lg sm:text-xl" data-i18n="heroP" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"></p>
+    <p class="mb-8 text-lg sm:text-xl" data-i18n="heroP" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"></p>
 
-    <div class="hero-bullets text-lg">
+    <div class="flex flex-col gap-2 font-medium my-6 text-lg">
       <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="23"></i> <strong>929-504-0773</strong></span>
       <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 flex-wrap">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 flex-wrap">
       <a href="#contact" class="btn" data-i18n="ctaHero"></a>
       <a href="https://wa.me/19295040773" target="_blank" class="btn" style="background-color: #25D366;" data-i18n="ctaWa"></a>
       <a href="#video" class="btn-primary" data-i18n="ctaVideo"></a>
