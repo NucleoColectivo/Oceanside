@@ -66,7 +66,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 100%; 
         height: 100%;
         z-index: -2;
         pointer-events: none;
@@ -201,12 +201,15 @@
 <body>
 <!-- ========== NAV ========= -->
 <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur shadow">
-  <nav class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6 px-4 py-3 font-[Montserrat]">
-    <div class="flex items-start gap-6">
-      <a href="#home" class="font-bold text-lg whitespace-nowrap" data-i18n="brand">
-        Oceanside Stucco Supply
-      </a>
-      <ul class="hidden lg:flex gap-6 font-medium">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 py-3 font-[Montserrat]">
+    <!-- Brand -->
+    <a href="#home" class="font-bold text-lg whitespace-nowrap" data-i18n="brand">
+      Oceanside Stucco Supply
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex items-center gap-6">
+      <ul class="flex gap-6 font-medium">
         <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)]"></a></li>
@@ -214,9 +217,27 @@
         <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)]"></a></li>
       </ul>
+      <a href="#contact" class="btn" data-i18n="ctaQuote"></a>
     </div>
-    <a href="#contact" class="btn" data-i18n="ctaQuote"></a>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-button" class="lg:hidden text-gray-700">
+      <i data-lucide="menu" class="h-6 w-6"></i>
+    </button>
   </nav>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-sm">
+    <ul class="flex flex-col items-center gap-6 py-8">
+      <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#contact" class="btn mt-4 mobile-link" data-i18n="ctaQuote"></a></li>
+    </ul>
+  </div>
 </header>
 
 <!-- ========== HERO ========== -->
@@ -292,22 +313,22 @@
 
   <div class="cards">
     <div class="card bg-white">
-      <img src="images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Camión de entrega en icono vectorial.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv1"></h3>
       <p class="text-sm mt-2" data-i18n="srv1d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Soporte técnico en ícono digital.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv2"></h3>
       <p class="text-sm mt-2" data-i18n="srv2d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Abierto para Todos.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv3"></h3>
       <p class="text-sm mt-2" data-i18n="srv3d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Icono minimalista de montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv4"></h3>
       <p class="text-sm mt-2" data-i18n="srv4d"></p>
     </div>
@@ -818,6 +839,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (radioAudio) radioAudio.onvolumechange = updateMuteBtn;
     
     /* ===== INITIALIZE ===== */
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
     translate();
     cargarTablaCotizador();
     if (volSlider) radioAudio.volume = volSlider.value;
@@ -826,4 +863,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</html>
+</ht
