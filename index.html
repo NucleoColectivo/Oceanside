@@ -110,7 +110,6 @@
                       cursor:pointer;z-index:80; display:flex; align-items:center; justify-content:center;}
     .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
     .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
-    .radio-btn-container { bottom: 22px; left: 22px; background: #D81B60; width:52px; height: 52px; }
     .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
              display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none;}
 
@@ -128,6 +127,25 @@
     .cotizador-content.en #stucco-items .en { display: inline; }
 
     /* ===== RADIO PLAYER ===== */
+    .radio-btn-container {
+        bottom: 22px;
+        left: 22px;
+        background: transparent;
+        width: auto;
+        height: auto;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+    .radio-btn-container img {
+        width: 64px;
+        height: 64px;
+        border-radius: 0;
+        transition: transform 0.2s;
+    }
+    .radio-btn-container:hover img {
+        transform: scale(1.1);
+    }
     .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
     .radio-modal.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto;}
     .radio-header { background: var(--primary); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
@@ -147,13 +165,13 @@
     
     @keyframes glow {
       from {
-        box-shadow: 0 0 5px #1E88E5, 0 0 10px #1E88E5, 0 0 15px #90CAF9;
+        filter: drop-shadow(0 0 6px rgba(30, 136, 229, 0.7)) drop-shadow(0 0 12px rgba(144, 202, 249, 0.7));
       }
       to {
-        box-shadow: 0 0 15px #1E88E5, 0 0 25px #90CAF9, 0 0 35px #90CAF9;
+        filter: drop-shadow(0 0 12px rgba(30, 136, 229, 1)) drop-shadow(0 0 24px rgba(144, 202, 249, 1));
       }
     }
-    .radio-btn-container.glowing {
+    .radio-btn-container.glowing img {
       animation: glow 1.5s infinite alternate;
     }
 
@@ -478,7 +496,7 @@
     <img src="images/whatsapp.png" alt="WhatsApp" width="28" height="28">
 </a>
 <button class="radio-btn-container floating-btn" id="radioBtnContainer" title="Open Radio Player">
-    <img src="images/radio.png" alt="Radio" width="32" height="32">
+    <img src="images/radio.png" alt="Radio">
 </button>
 <button class="lang-btn floating-btn" id="langBtn" title="Change language">EN</button>
 
@@ -837,4 +855,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</html>
+</ht
