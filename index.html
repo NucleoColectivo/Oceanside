@@ -156,18 +156,21 @@
     .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
              display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none;}
 
-    /* ===== MODAL COTIZADOR ===== */
-    .modal-cotizador { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; }
-    .modal-cotizador.active { display: flex; }
-    .cotizador-content { background: white; max-width: 600px; width: 100%; border-radius: 1rem; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
-    .cotizador-header-footer { padding: 1rem 1.5rem; flex-shrink: 0; }
-    .cotizador-body { overflow-y: auto; padding: 0 1.5rem; }
-    .cotizador-content .es, .cotizador-content .en { display: none; }
-    .cotizador-content.es .es, .cotizador-content.en .en { display: inline; }
-    .cotizador-content.en .es, .cotizador-content.es .en { display: none; }
+    /* ===== MODAL COTIZADOR & LEGAL ===== */
+    .modal-cotizador, .legal-modal { position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-cotizador.active, .legal-modal.active { display: flex; }
+    .cotizador-content, .legal-content { background: white; max-width: 800px; width: 100%; border-radius: 1rem; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
+    .cotizador-header-footer, .legal-header, .legal-footer { padding: 1rem 1.5rem; flex-shrink: 0; }
+    .cotizador-body, .legal-body { overflow-y: auto; padding: 0 1.5rem; }
+    .cotizador-content .es, .cotizador-content .en, .legal-modal .es, .legal-modal .en { display: none; }
+    .cotizador-content.es .es, .cotizador-content.en .en, .legal-modal.es .es, .legal-modal.en .en { display: block; }
     #stucco-items .es, #stucco-items .en { display: none; }
     .cotizador-content.es #stucco-items .es { display: inline; }
     .cotizador-content.en #stucco-items .en { display: inline; }
+    .legal-body h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .legal-body p { margin-bottom: 1rem; color: #475569; line-height: 1.6; }
+    .legal-body ul { list-style-position: inside; list-style-type: disc; margin-bottom: 1rem; color: #475569; }
+
 
     /* ===== RADIO PLAYER ===== */
     .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
@@ -313,22 +316,22 @@
 
   <div class="cards">
     <div class="card bg-white">
-      <img src="images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Camión de entrega en icono vectorial.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv1"></h3>
       <p class="text-sm mt-2" data-i18n="srv1d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Soporte técnico en ícono digital.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv2"></h3>
       <p class="text-sm mt-2" data-i18n="srv2d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Abierto para Todos.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv3"></h3>
       <p class="text-sm mt-2" data-i18n="srv3d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Icono minimalista de montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv4"></h3>
       <p class="text-sm mt-2" data-i18n="srv4d"></p>
     </div>
@@ -460,8 +463,8 @@
     
     <div>
       <h5 class="font-semibold text-white mb-2" data-i18n="footerLegal"></h5>
-      <a href="#" class="block text-slate-400 mb-1" data-i18n="privacy"></a>
-      <a href="#" class="block text-slate-400" data-i18n="terms"></a>
+      <a href="javascript:void(0)" id="openPrivacy" class="block text-slate-400 mb-1 hover:text-white" data-i18n="privacy"></a>
+      <a href="javascript:void(0)" id="openTerms" class="block text-slate-400 hover:text-white" data-i18n="terms"></a>
     </div>
   </div>
   <hr class="border-slate-700 my-6">
@@ -471,9 +474,31 @@
 <!-- ========== LIGHTBOX ========== -->
 <div class="lightbox" id="lightbox"><img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Project image"></div>
 
+<!-- ========== LEGAL MODALS ========== -->
+<div id="privacyModal" class="legal-modal">
+  <div class="legal-content">
+    <div class="legal-header flex justify-between items-center border-b">
+      <h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="privacyTitle"></h2>
+      <button class="close-legal-modal text-gray-500 hover:text-red-500"><i data-lucide="x"></i></button>
+    </div>
+    <div class="legal-body py-4" data-i18n-content="privacyContent"></div>
+  </div>
+</div>
+
+<div id="termsModal" class="legal-modal">
+  <div class="legal-content">
+    <div class="legal-header flex justify-between items-center border-b">
+      <h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="termsTitle"></h2>
+      <button class="close-legal-modal text-gray-500 hover:text-red-500"><i data-lucide="x"></i></button>
+    </div>
+    <div class="legal-body py-4" data-i18n-content="termsContent"></div>
+  </div>
+</div>
+
+
 <!-- ========== MODAL COTIZADOR ========== -->
 <div id="cotizadorModal" class="modal-cotizador">
-  <div id="cotizadorContent" class="cotizador-content p-4 sm:p-6">
+  <div id="cotizadorContent" class="cotizador-content">
     <div class="cotizador-header-footer">
         <button id="closeCotizadorBtn" class="absolute top-4 right-4 text-gray-500 hover:text-red-500" aria-label="Cerrar">
           <i data-lucide="x"></i>
@@ -583,6 +608,10 @@ document.addEventListener('DOMContentLoaded', () => {
             footerTag: 'Suministros de estuco y sistemas EIFS de calidad para el área Tri-State.',
             footerContact: 'Contacto', footerLegal: 'Legal',
             privacy: 'Política de Privacidad', terms: 'Términos y Condiciones',
+            privacyTitle: 'Política de Privacidad',
+            termsTitle: 'Términos y Condiciones',
+            privacyContent: `<span class="es"><h3>Recopilación de Información</h3><p>Recopilamos información personal como nombre, correo electrónico y número de teléfono cuando la proporciona voluntariamente a través de nuestros formularios de contacto o cotización. También podemos recopilar datos no personales como el tipo de navegador y el sistema operativo para mejorar nuestro sitio web.</p><h3>Uso de la Información</h3><p>La información que recopilamos se utiliza para responder a sus consultas, procesar sus pedidos y mejorar nuestros servicios. No compartiremos su información personal con terceros, excepto cuando sea necesario para cumplir con la ley.</p><h3>Seguridad</h3><p>Tomamos medidas razonables para proteger su información personal contra pérdida, robo y uso no autorizado.</p></span><span class="en"><h3>Information Collection</h3><p>We collect personal information such as name, email, and phone number when you voluntarily provide it through our contact or quote forms. We may also collect non-personal data like browser type and operating system to improve our website.</p><h3>Use of Information</h3><p>The information we collect is used to respond to your inquiries, process your orders, and improve our services. We will not share your personal information with third parties except as necessary to comply with the law.</p><h3>Security</h3><p>We take reasonable measures to protect your personal information from loss, theft, and unauthorized use.</p></span>`,
+            termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><span class="en"><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
             copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. Todos los derechos reservados.`
         },
         en: {
@@ -627,6 +656,10 @@ document.addEventListener('DOMContentLoaded', () => {
             footerTag: 'Premium stucco supplies & EIFS systems for the Tri-State area.',
             footerContact: 'Contact', footerLegal: 'Legal',
             privacy: 'Privacy Policy', terms: 'Terms & Conditions',
+            privacyTitle: 'Privacy Policy',
+            termsTitle: 'Terms and Conditions',
+            privacyContent: `<span class="es"><h3>Recopilación de Información</h3><p>Recopilamos información personal como nombre, correo electrónico y número de teléfono cuando la proporciona voluntariamente a través de nuestros formularios de contacto o cotización. También podemos recopilar datos no personales como el tipo de navegador y el sistema operativo para mejorar nuestro sitio web.</p><h3>Uso de la Información</h3><p>La información que recopilamos se utiliza para responder a sus consultas, procesar sus pedidos y mejorar nuestros servicios. No compartiremos su información personal con terceros, excepto cuando sea necesario para cumplir con la ley.</p><h3>Seguridad</h3><p>Tomamos medidas razonables para proteger su información personal contra pérdida, robo y uso no autorizado.</p></span><span class="en"><h3>Information Collection</h3><p>We collect personal information such as name, email, and phone number when you voluntarily provide it through our contact or quote forms. We may also collect non-personal data like browser type and operating system to improve our website.</p><h3>Use of Information</h3><p>The information we collect is used to respond to your inquiries, process your orders, and improve our services. We will not share your personal information with third parties except as necessary to comply with the law.</p><h3>Security</h3><p>We take reasonable measures to protect your personal information from loss, theft, and unauthorized use.</p></span>`,
+            termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><span class="en"><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
             copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. All rights reserved.`
         }
     };
@@ -637,12 +670,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-i18n]').forEach(el => { if (dict[lang][el.dataset.i18n]) { el.innerHTML = dict[lang][el.dataset.i18n]; }});
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { if (dict[lang][el.dataset.i18nPlaceholder]) { el.placeholder = dict[lang][el.dataset.i18nPlaceholder]; }});
         document.querySelectorAll('[data-i18n-alt]').forEach(el => { if (dict[lang][el.dataset.i18nAlt]) { el.alt = dict[lang][el.dataset.i18nAlt]; }});
+        document.querySelectorAll('[data-i18n-content]').forEach(el => { if (dict[lang][el.dataset.i18nContent]) { el.innerHTML = dict[lang][el.dataset.i18nContent]; }});
+
         document.title = dict[lang].docTitle;
         document.querySelector('meta[name="description"]').setAttribute('content', dict[lang].metaDesc);
         langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
         document.documentElement.lang = lang;
+        
         const cotizadorContent = document.getElementById('cotizadorContent');
-        if (cotizadorContent) { cotizadorContent.className = 'cotizador-content p-4 sm:p-6 ' + lang; }
+        if (cotizadorContent) { cotizadorContent.className = 'cotizador-content ' + lang; }
+
+        document.querySelectorAll('.legal-modal').forEach(el => {
+            el.classList.remove('es', 'en');
+            el.classList.add(lang);
+        });
+
         lucide.createIcons();
     }
     langBtn.onclick = () => { lang = lang === 'es' ? 'en' : 'es'; translate(); };
@@ -838,6 +880,33 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     if (radioAudio) radioAudio.onvolumechange = updateMuteBtn;
     
+    /* ===== LEGAL MODALS ===== */
+    const privacyModal = document.getElementById('privacyModal');
+    const termsModal = document.getElementById('termsModal');
+    const openPrivacyBtn = document.getElementById('openPrivacy');
+    const openTermsBtn = document.getElementById('openTerms');
+    const closeLegalModals = document.querySelectorAll('.close-legal-modal');
+
+    if(openPrivacyBtn) openPrivacyBtn.onclick = () => privacyModal.classList.add('active');
+    if(openTermsBtn) openTermsBtn.onclick = () => termsModal.classList.add('active');
+
+    closeLegalModals.forEach(btn => {
+        btn.onclick = () => {
+            privacyModal.classList.remove('active');
+            termsModal.classList.remove('active');
+        }
+    });
+
+    window.onclick = function(event) {
+        if (event.target == privacyModal) {
+            privacyModal.classList.remove('active');
+        }
+        if (event.target == termsModal) {
+            termsModal.classList.remove('active');
+        }
+    }
+
+
     /* ===== INITIALIZE ===== */
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
