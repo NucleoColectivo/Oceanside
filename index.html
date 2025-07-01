@@ -17,133 +17,153 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CDN (solo demo) -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tailwind is used in the user's provided design -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-  /* ===== VARIABLES ===== */
-  :root{--primary:#1E88E5;--primary-light:#90CAF9;--dark:#0F1116;--gray:#F3F5F7;--radius:1rem}
+    /* ===== VARIABLES ===== */
+    :root{--primary:#1E88E5;--primary-light:#90CAF9;--dark:#0F1116;--gray:#F3F5F7;--radius:1rem}
 
-  /* ===== BASE ===== */
-  html{scroll-behavior:smooth}
-  body{font-family:'Montserrat',sans-serif;color:#151924;background:#fff}
-  img{display:block;max-width:100%;border-radius:var(--radius)}
-  a{text-decoration:none;color:inherit}
+    /* ===== BASE ===== */
+    html{scroll-behavior:smooth}
+    body{font-family:'Montserrat',sans-serif;color:#151924;background:#fff; margin: 0;}
+    img{display:block;max-width:100%;border-radius:var(--radius)}
+    a{text-decoration:none;color:inherit}
 
-  /* ===== LAYOUT ===== */
-  section{padding:5rem 1.25rem;margin:auto;max-width:1280px}
-  .sec-title,.section-title{text-align:center;font-size:2.1rem;font-weight:700;margin-bottom:1.8rem}
-  .sec-desc{text-align:center;max-width:700px;margin:0 auto 3rem;color:#475569}
+    /* ===== LAYOUT ===== */
+    section{padding:5rem 1.25rem;margin:auto;max-width:1280px}
+    .sec-title,.section-title{text-align:center;font-size:2.1rem;font-weight:700;margin-bottom:1.8rem}
+    .sec-desc{text-align:center;max-width:700px;margin:0 auto 3rem;color:#475569}
 
-  /* ===== VIDEO RESPONSIVE (fallback) ===== */
-  .aspect-video{position:relative;width:100%;padding-top:56.25%}
-  .aspect-video iframe{position:absolute;inset:0;width:100%;height:100%}
+    /* ===== VIDEO RESPONSIVE (fallback) ===== */
+    .aspect-video{position:relative;width:100%;padding-top:56.25%}
+    .aspect-video iframe{position:absolute;inset:0;width:100%;height:100%}
 
-  /* ===== HEADER / NAV ===== */
-  header{position:fixed;top:0;inset-inline:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 2px 6px rgba(0,0,0,.05)}
-  nav{max-width:1280px;margin:auto;padding:.8rem 1rem;display:flex;align-items:center;justify-content:space-between}
-  nav ul{display:flex;gap:1.5rem;font-weight:500}
-  nav a:hover{color:var(--primary)}
-  .btn,.btn-primary{background:var(--primary);color:#fff;padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.15);transition:transform .25s}
-  .btn:hover,.btn-primary:hover{transform:translateY(-3px)}
-  .btn-primary{background:#fff;color:var(--primary)}
-
-  /* ===== HERO ===== */
-  .hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
-  .hero::before{content:'';position:absolute;inset:0;background:url('images/09.gif') center/cover no-repeat}
-  .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
-  .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center}
-  .hero-bullets{display:flex;flex-direction:column;gap:.4rem;font-weight:500;margin:1.2rem 0}
-
-  /* ===== RESTO DEL CSS ORIGINAL RECORTADO POR BREVEDAD ===== */  
+    /* ===== HEADER / NAV ===== */
+    header{position:fixed;top:0;inset-inline:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 2px 6px rgba(0,0,0,.05)}
+    nav ul{ list-style: none; padding: 0; margin: 0;}
+    nav a:hover{color:var(--primary)}
+    .btn,.btn-primary{background:var(--primary);color:#fff;padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.15);transition:transform .25s, box-shadow .25s}
+    .btn:hover,.btn-primary:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(0,0,0,.2)}
+    .btn-primary{background:#fff;color:var(--primary)}
     
-    
-    
-    
-/* ===== GRID CARDS ===== */
-.cards{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.card{background:#fff;padding:2.2rem 1.6rem;border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.06);
-      text-align:center;transition:transform .25s}
-.card:hover{transform:translateY(-6px)}
+    /* ===== HERO ===== */
+    .hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+    .hero::before{content:'';position:absolute;inset:0;background:url('images/09.gif') center/cover no-repeat; opacity: 0.8;}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
+    .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center}
+    .hero-bullets{display:flex;flex-direction:column;gap:.4rem;font-weight:500;margin:1.2rem 0}
 
-/* ===== SERVICES 2 ===== */
-.services{display:grid;gap:1.8rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.service-card{background:#fff;border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,0,0,.06);padding:1.6rem;text-align:center;transition:.25s}
-.service-card:hover{transform:translateY(-6px)}
-.service-card img{width:100%;height:140px;object-fit:cover;border-radius:var(--radius) var(--radius) 0 0;margin-bottom:1rem}
-.service-card h3{font-weight:600;margin-bottom:.6rem}
+    /* ===== GRID CARDS ===== */
+    .cards{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+    .card{background:#fff;padding:2.2rem 1.6rem;border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.06);
+          text-align:center;transition:transform .25s}
+    .card:hover{transform:translateY(-6px)}
 
-/* ===== ABOUT 2 ===== */
-.about{display:grid;gap:2.5rem;grid-template-columns:450px 1fr;align-items:center}
-.about img{box-shadow:0 6px 20px rgba(0,0,0,.08)}
-.about .text h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}
-.about .text p{margin-bottom:1rem;color:#475569}
-@media(max-width:900px){.about{grid-template-columns:1fr}.about img{order:-1}}
+    /* ===== ABOUT ===== */
+    .about{display:grid;gap:2.5rem;grid-template-columns:450px 1fr;align-items:center}
+    @media(max-width:900px){.about{grid-template-columns:1fr}.about img{order:-1}}
+    .about img{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .about .text h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}
+    .about .text p{margin-bottom:1rem;color:#475569}
 
-/* ===== GALLERY ===== */
-.gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s}
-.gallery img:hover{transform:scale(1.05)}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
-          transition:.3s;z-index:60}
-.lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:90%}
+    /* ===== GALLERY ===== */
+    .gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s}
+    .gallery img:hover{transform:scale(1.05)}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
+              transition:.3s;z-index:1100}
+    .lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:90%; border-radius: 1rem;}
 
-/* ===== BANNER CTA ===== */
-.banner{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);color:#fff;padding:4rem 1rem;
-        text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem}
-.banner h2{font-size:1.8rem;font-weight:700;margin-bottom:1.3rem}
+    /* ===== BANNER CTA ===== */
+    .banner{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);color:#fff;padding:4rem 1rem;
+            text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem}
+    .banner h2{font-size:1.8rem;font-weight:700;margin-bottom:1.3rem}
 
-/* ===== CONTACT ===== */
-.contact-grid{display:grid;gap:2rem;grid-template-columns:1fr 1fr}
-.contact-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.05)}
-.contact-grid input,.contact-grid textarea{width:100%;padding:.8rem 1rem;border:2px solid #E2E8F0;border-radius:.75rem}
-.contact-grid input:focus,.contact-grid textarea:focus{border-color:var(--primary);outline:none;
-                                                       box-shadow:0 0 0 2px rgba(30,136,229,.25)}
-@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+    /* ===== CONTACT ===== */
+    .contact-grid{display:grid;gap:2rem; grid-template-columns:1fr 1fr;}
+    @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+    .contact-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.05);}
+    .contact-grid input,.contact-grid textarea{width:100%;padding:.8rem 1rem;border:2px solid #E2E8F0;border-radius:.75rem; box-sizing: border-box;}
+    .contact-grid input:focus,.contact-grid textarea:focus{border-color:var(--primary);outline:none;
+                                                           box-shadow:0 0 0 2px rgba(30,136,229,.25)}
 
-/* ===== FOOTER ===== */
-footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
-.footer-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));max-width:1280px;margin:auto}
-.footer-grid a:hover{color:#fff}
+    /* ===== FOOTER ===== */
+    footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
+    .footer-grid{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));max-width:1280px;margin:auto}
+    .footer-grid a:hover{color:#fff}
+    .footer-map{grid-column: 1 / -1; overflow:hidden; border-radius: var(--radius);}
+    @media (min-width: 1024px) { .footer-map {grid-column: span 2 / span 2;}}
 
-/* ===== SOCIAL BUTTONS (footer) ===== */
-.footer-social{display:flex;gap:.8rem;margin-top:.8rem}
-.footer-social a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;
-                 background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
-                 color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
-.footer-social a:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
-.footer-social svg{width:22px;height:22px}
+    /* ===== SOCIAL BUTTONS (footer) ===== */
+    .footer-social{display:flex;gap:.8rem;margin-top:.8rem}
+    .footer-social a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;
+                     background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
+                     color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
+    .footer-social a:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .footer-social svg{width:22px;height:22px}
 
-/* ===== FLOATING BTNS ===== */
-.lang-btn,.wa-btn{position:fixed;border:none;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25);
-                  cursor:pointer;z-index:80}
-.lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
-.wa-btn{bottom:100px;right:22px;background:#ef31db;padding:.8rem}
-.top-btn{position:fixed;bottom:170px;right:27px;background:var(--primary);padding:.55rem .6rem;border-radius:9999px;
-         display:none}
+    /* ===== FLOATING BTNS ===== */
+    .floating-btn{position:fixed;border:none;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25);
+                      cursor:pointer;z-index:80; display:flex; align-items:center; justify-content:center;}
+    .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
+    .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
+    .radio-btn-container { bottom: 22px; left: 22px; background: #D81B60; width:52px; height: 52px; }
+    .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
+             display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none;}
 
-    
-/* ===== OTRAS CLASES RECORTADAS PARA BREVEDAD ===== */
-/* ... (conserva tu CSS existente) ... */
+    /* ===== MODAL COTIZADOR ===== */
+    .modal-cotizador { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-cotizador.active { display: flex; }
+    .cotizador-content { background: white; max-width: 600px; width: 100%; border-radius: 1rem; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
+    .cotizador-header-footer { padding: 1rem 1.5rem; flex-shrink: 0; }
+    .cotizador-body { overflow-y: auto; padding: 0 1.5rem; }
+    .cotizador-content .es, .cotizador-content .en { display: none; }
+    .cotizador-content.es .es, .cotizador-content.en .en { display: inline; }
+    .cotizador-content.en .es, .cotizador-content.es .en { display: none; }
+    #stucco-items .es, #stucco-items .en { display: none; }
+    .cotizador-content.es #stucco-items .es { display: inline; }
+    .cotizador-content.en #stucco-items .en { display: inline; }
+
+    /* ===== RADIO PLAYER ===== */
+    .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
+    .radio-modal.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto;}
+    .radio-header { background: var(--primary); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+    .radio-header .title { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; margin-right: 10px;}
+    .radio-header-buttons { display: flex; gap: 5px; }
+    .radio-header-buttons button { background: none; border: none; color: #fff; opacity: 0.8; cursor: pointer; transition: opacity 0.2s; padding: 5px;}
+    .radio-header-buttons button:hover { opacity: 1; }
+    .radio-body { transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; max-height: 200px; }
+    .radio-controls { background: #222; padding: 15px; display: flex; justify-content: space-around; align-items: center; }
+    .radio-controls button { background: none; border: 2px solid #fff; border-radius: 50%; width: 44px; height: 44px; color: #fff; display: flex; align-items:center; justify-content:center; cursor: pointer; transition: all .2s; }
+    .radio-controls button:hover { border-color: var(--primary-light); color: var(--primary-light); transform: scale(1.1); }
+    .radio-controls button.active { border-color: #D81B60; color: #D81B60; }
+    .radio-volume { background: #222; padding: 0 15px 15px; }
+    .radio-volume input[type=range] { width: 100%; height: 5px; background: #555; border-radius: 5px; outline: none; cursor: pointer; -webkit-appearance: none; }
+    .radio-volume input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: #D81B60; border-radius: 50%; cursor: pointer; border: 2px solid #222; }
+    .radio-modal.minimized .radio-body { max-height: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
   </style>
 </head>
 <body>
 <!-- ========== NAV ========= -->
-<header>
-  <nav>
-    <a href="#home" class="font-bold text-lg" data-i18n="brand">Oceanside Stucco</a>
-    <ul>
-      <li><a href="#products"  data-i18n="navProducts">Productos</a></li>
-      <li><a href="#services"  data-i18n="navServices">Servicios</a></li>
-      <li><a href="#gallery"   data-i18n="navGallery">Galería</a></li>
-      <li><a href="#about-extra" data-i18n="navAbout">Sobre Nosotros</a></li>
-      <li><a href="#faq"       data-i18n="navFAQ">FAQ</a></li>
-      <li><a href="#blog"      data-i18n="navBlog">Blog</a></li>
-      <li><a href="#contact"   data-i18n="navContact">Contacto</a></li>
-    </ul>
-    <a href="#contact" class="btn" data-i18n="ctaQuote">Cotiza Ya</a>
+<header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur shadow">
+  <nav class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6 px-4 py-3 font-[Montserrat]">
+    <div class="flex items-start gap-6">
+      <a href="#home" class="font-bold text-lg whitespace-nowrap" data-i18n="brand">
+        Oceanside Stucco Supply
+      </a>
+      <ul class="hidden lg:flex gap-6 font-medium">
+        <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)]"></a></li>
+        <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)]"></a></li>
+        <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)]"></a></li>
+        <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary)]"></a></li>
+        <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)]"></a></li>
+        <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)]"></a></li>
+      </ul>
+    </div>
+    <a href="#contact" class="btn" data-i18n="ctaQuote"></a>
   </nav>
 </header>
 
@@ -151,23 +171,21 @@ footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
 <section class="hero" id="home" role="banner">
   <div class="hero-content">
     <img src="images/logo-transparent.png" class="w-72 sm:w-96 mb-8 drop-shadow-lg" alt="Oceanside Stucco logo">
-    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1"></h1>
-    <p class="mb-6 text-lg sm:text-xl" data-i18n="heroP"></p>
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.5rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
+    <p class="mb-6 text-lg sm:text-xl" data-i18n="heroP" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"></p>
 
     <div class="hero-bullets text-lg">
-      <span><i data-lucide="phone" class="inline" width="23"></i> <strong>929-504-0773</strong></span>
-      <span><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
+      <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="23"></i> <strong>929-504-0773</strong></span>
+      <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
-      <a href="#contact" class="btn" data-i18n="ctaHero">Solicita tu Cotización</a>
-      <a href="https://wa.me/19295040773" target="_blank" class="btn bg-[#25D366] hover:translate-y-0" data-i18n="ctaWa">WhatsApp</a>
-      <a href="#video" class="btn-primary">video</a>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 flex-wrap">
+      <a href="#contact" class="btn" data-i18n="ctaHero"></a>
+      <a href="https://wa.me/19295040773" target="_blank" class="btn" style="background-color: #25D366;" data-i18n="ctaWa"></a>
+      <a href="#video" class="btn-primary" data-i18n="ctaVideo"></a>
     </div>
   </div>
 </section>
-  
-  
   
 <!-- ========== PRODUCTS ========== -->
 <section id="products">
@@ -179,51 +197,32 @@ footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
       <img src="images/Sistema de Estuco y EIFS.png" alt="Stucco & EIFS Systems" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod1"></h3>
     </div>
-
     <div class="card">
       <img src="images/Rodillo de pintura sobre fondo azul.png" alt="Base & Finish Coats" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod2"></h3>
     </div>
-
     <div class="card">
       <img src="images/Icono de adhesivo.png" alt="Mesh & Adhesives" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod3"></h3>
     </div>
-
     <div class="card">
       <img src="images/Pila de aislamiento en gradiente azul.png" alt="Insulation Boards" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod4"></h3>
     </div>
-
     <div class="card">
       <img src="images/Iconos de Herramientas.png" alt="Tools & Accessories" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod5"></h3>
     </div>
   </div>
 </section>
-
   
-  
-  
-  
-  <!-- ========== VIDEO INTRO ========== -->
-  <section id="video" class="py-20 bg-neutral-50">
-   
-    <div class="mx-auto max-w-5xl rounded-2xl overflow-hidden shadow-xl aspect-video">
-      <iframe
-        src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1"
-        title="Oceanside Stucco Supply – Presentación"
-        loading="lazy"
-        decoding="async"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
-  
-  
-  
-  
+<!-- ========== VIDEO INTRO ========== -->
+<section id="video" class="py-20 bg-neutral-50">
+  <div class="mx-auto max-w-5xl rounded-2xl overflow-hidden shadow-xl aspect-video">
+    <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+  </div>
+</section>
   
 <!-- ========== SERVICES (original) ========== -->
 <section id="services" class="bg-[var(--gray)]">
@@ -232,23 +231,20 @@ footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
 
   <div class="cards">
     <div class="card bg-white">
-      <img src="images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Camión de entrega en icono vectorial.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv1"></h3>
       <p class="text-sm mt-2" data-i18n="srv1d"></p>
     </div>
-
     <div class="card bg-white">
-      <img src="images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Soporte técnico en ícono digital.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv2"></h3>
       <p class="text-sm mt-2" data-i18n="srv2d"></p>
     </div>
-
     <div class="card bg-white">
-      <img src="images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Abierto para Todos.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv3"></h3>
       <p class="text-sm mt-2" data-i18n="srv3d"></p>
     </div>
-
     <div class="card bg-white">
       <img src="images/Icono minimalista de montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv4"></h3>
@@ -259,207 +255,31 @@ footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
 
 <!-- ========== ABOUT 2 (detallado) ========== -->
 <section class="section" id="about-extra">
-  <h2 class="section-title" data-i18n="about2Title"></h2>
-
   <div class="about">
     <img src="images/warehouse.png" alt="Warehouse" loading="lazy">
     <div class="text">
       <h2 data-i18n="about2Subtitle"></h2>
       <p data-i18n="about2P1"></p>
       <p data-i18n="about2P2"></p>
-      <a href="#contact" class="btn-primary" data-i18n="about2Btn"></a>
+      <a href="#contact" class="btn-primary" data-i18n="about2Btn" style="display: inline-block; margin-top: 1rem;"></a>
     </div>
   </div>
 </section>
 
-  
-  
-  
-  
-<!-- === MODAL COTIZADOR === -->
-<div id="cotizadorModal" class="fixed inset-0 z-[100] bg-black/60 hidden items-center justify-center">
-  <div class="bg-white max-w-lg w-full rounded-2xl p-6 relative shadow-2xl font-[Montserrat]">
-    <button onclick="toggleCotizador()" class="absolute top-4 right-4 text-gray-500 hover:text-red-500" aria-label="Cerrar">
-      <i data-lucide="x"></i>
-    </button>
-    <div class="text-center mb-4">
-      <h2 class="text-2xl font-bold text-[var(--primary)]"><span class='es'>Cotizador Interactivo</span><span class='en hidden'>Quote Tool</span></h2>
-      <button onclick="toggleLanguage()" class="mt-2 text-sm font-semibold text-[var(--primary)] underline">ES / EN</button>
-    </div>
-
-    <!-- Lista de servicios -->
-    <div id="stucco-items" class="space-y-4"></div>
-
-    <!-- Total y acciones -->
-    <div class="mt-6 border-t pt-4">
-      <div class="flex justify-between items-center mb-4">
-        <span class="text-lg font-medium">Total:</span>
-        <span class="text-xl font-bold text-[var(--primary)]">USD <span id="total-usd">0.00</span></span>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-3">
-        <button onclick="enviarWhatsApp()" class="btn w-full bg-[var(--primary)] text-white font-semibold py-2 rounded-full shadow hover:brightness-110">
-          📲 <span class="es">Pedir por WhatsApp</span><span class="en hidden">Order via WhatsApp</span>
-        </button>
-        <button onclick="window.print()" class="btn w-full border text-[var(--primary)] font-semibold py-2 rounded-full shadow">
-          🖨️ <span class="es">Imprimir</span><span class="en hidden">Print</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- === BOTÓN DE COTIZADOR DEBAJO DEL TEXTO === -->
-<div class="text-center mt-8">
-  <button onclick="toggleCotizador()" class="bg-[var(--primary)] text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:brightness-110">
-    💬 <span class="es">Abrir <span class='es'>Cotizador Interactivo</span><span class='en hidden'>Quote Tool</span></span><span class="en hidden">Open Quotation Tool</span>
-  </button>
-</div>
-
-<!-- === SCRIPT DEL COTIZADOR === -->
-<script>
-  const items = [
-    {
-      name: "<span class='es'>Aplicación de Stucco Exterior</span><span class='en hidden'>Exterior Stucco Application</span>",
-      desc: "<span class='es'>Recubrimiento resistente y decorativo</span><span class='en hidden'>Resistant and decorative coating</span>",
-      usd: 200.00
-    },
-    {
-      name: "<span class='es'>Reparación de Grietas</span><span class='en hidden'>Crack Repair</span>",
-      desc: "<span class='es'>Sellado y acabado de fisuras</span><span class='en hidden'>Fissure sealing and finishing</span>",
-      usd: 120.00
-    },
-    {
-      name: "<span class='es'>Impermeabilización de Fachadas</span><span class='en hidden'>Facade Waterproofing</span>",
-      desc: "<span class='es'>Protección contra agua y humedad</span><span class='en hidden'>Water and moisture protection</span>",
-      usd: 180.00
-    },
-    {
-      name: "<span class='es'>Instalación de Revestimiento</span><span class='en hidden'>Cladding Installation</span>",
-      desc: "<span class='es'>Revestimiento decorativo interior/exterior</span><span class='en hidden'>Interior/exterior decorative coating</span>",
-      usd: 150.00
-    },
-    {
-      name: "<span class='es'>Mantenimiento y Pintura</span><span class='en hidden'>Maintenance and Painting</span>",
-      desc: "<span class='es'>Limpieza y repintado de superficies</span><span class='en hidden'>Surface cleaning and repainting</span>",
-      usd: 100.00
-    }
-  ];
-
-  function cargarTabla() {
-    const container = document.getElementById("stucco-items");
-    items.forEach((item, i) => {
-      const div = document.createElement("div");
-      div.className = "border p-4 rounded-2xl shadow flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2";
-      div.innerHTML = `
-        <div>
-          <h4 class="font-bold text-[var(--primary)]">${item.name}</h4>
-          <p class="text-slate-600 text-sm">${item.desc}</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <input type="checkbox" data-idx="${i}" data-usd="${item.usd}" onchange="calcularTotal()">
-          <input type="number" min="1" value="1" onchange="calcularTotal()" class="w-16 border border-slate-300 rounded px-2 py-1">
-          <span class="text-[var(--primary)] font-semibold">$${item.usd.toFixed(2)}</span>
-        </div>
-      `;
-      container.appendChild(div);
-    });
-  }
-
-  function calcularTotal() {
-    let total = 0;
-    document.querySelectorAll("#stucco-items > div").forEach(card => {
-      const chk = card.querySelector("input[type='checkbox']");
-      const qty = card.querySelector("input[type='number']");
-      if (chk.checked) {
-        const usd = parseFloat(chk.dataset.usd);
-        const cant = parseInt(qty.value);
-        total += usd * cant;
-      }
-    });
-    document.getElementById("total-usd").textContent = total.toFixed(2);
-  }
-
-  function enviarWhatsApp() {
-    let mensaje = "🧱 Oceanside Cotización:%0A";
-    let total = 0;
-    document.querySelectorAll("#stucco-items > div").forEach(card => {
-      const chk = card.querySelector("input[type='checkbox']");
-      const qty = card.querySelector("input[type='number']");
-      const name = card.querySelector("h4").textContent;
-      if (chk.checked) {
-        const usd = parseFloat(chk.dataset.usd);
-        const cant = parseInt(qty.value);
-        mensaje += `• ${name} x${cant} = $${(usd * cant).toFixed(2)}%0A`;
-        total += usd * cant;
-      }
-    });
-    mensaje += `%0ATotal: $${total.toFixed(2)} USD`;
-    window.open(`https://wa.me/19295040773?text=${encodeURIComponent(mensaje)}`, '_blank');
-  }
-
-  function toggleCotizador() {
-    const modal = document.getElementById("cotizadorModal");
-    modal.classList.toggle("hidden");
-    modal.classList.toggle("flex");
-  }
-
-  function toggleLanguage() {
-    document.querySelectorAll('.es').forEach(el => el.classList.toggle('hidden'));
-    document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden'));
-  }
-
-  document.addEventListener("DOMContentLoaded", cargarTabla);
-</script>
- 
-  
-  
-  
-  
-  
-  
-  
-<!-- ========== SERVICES 2 (cards) ========== -->
-<section class="section" id="servicios">
-  <h2 class="section-title" data-i18n="serv2Title"></h2>
-
-  <div class="services">
-    <article class="service-card">
-      <img src="images/Almacen.png" alt="" loading="lazy">
-      <h3 data-i18n="servCard1H"></h3>
-      <p data-i18n="servCard1P"></p>
-    </article>
-
-    <article class="service-card">
-      <img src="images/Representante.png" alt="" loading="lazy">
-      <h3 data-i18n="servCard2H"></h3>
-      <p data-i18n="servCard2P"></p>
-    </article>
-
-    <article class="service-card">
-      <img src="images/Materiales.png" alt="" loading="lazy">
-      <h3 data-i18n="servCard3H"></h3>
-      <p data-i18n="servCard3P"></p>
-    </article>
-  </div>
-</section>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 <!-- ========== CTA BANNER ========== -->
 <section class="banner">
-  <h2 data-i18n="ctaBannerH"></h2>
-  <a href="#cotizar" class="btn-primary" data-i18n="ctaBannerBtn"></a>
+  <div class="banner-content">
+      <h2 data-i18n="ctaBannerH"></h2>
+      <a href="#contact" class="btn-primary" data-i18n="ctaBannerBtn"></a>
+  </div>
 </section>
 
-
-
+<!-- ========== COTIZADOR BUTTON ========== -->
+<section class="text-center" style="padding: 3rem 1rem;">
+    <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
+        <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
+    </button>
+</section>
 
 <!-- ========== GALLERY ========== -->
 <section id="gallery">
@@ -470,100 +290,86 @@ footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
     <img src="images/project-2.jpg" alt="" data-i18n-alt="alt2" loading="lazy">
     <img src="images/project-3.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
     <img src="images/project-7.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
-     <img src="images/project-5.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
-    <img src="images/project-6.jpg" altgif="" data-i18n-alt="alt4" loading="lazy">
+    <img src="images/project-5.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
+    <img src="images/project-6.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
   </div>
 </section>
 
 <!-- ========== FAQ ========== -->
-<section id="faq">
+<section id="faq" class="bg-[var(--gray)]">
   <h2 class="sec-title" data-i18n="faqTitle"></h2>
   <div class="max-w-3xl mx-auto">
-    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm">
-      <summary class="cursor-pointer font-semibold" data-i18n="faqQ1"></summary>
+    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm cursor-pointer">
+      <summary class="font-semibold" data-i18n="faqQ1"></summary>
       <p class="mt-2 text-slate-600" data-i18n="faqA1"></p>
     </details>
-    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm">
-      <summary class="cursor-pointer font-semibold" data-i18n="faqQ2"></summary>
+    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm cursor-pointer">
+      <summary class="font-semibold" data-i18n="faqQ2"></summary>
       <p class="mt-2 text-slate-600" data-i18n="faqA2"></p>
     </details>
-    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm">
-      <summary class="cursor-pointer font-semibold" data-i18n="faqQ3"></summary>
+    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm cursor-pointer">
+      <summary class="font-semibold" data-i18n="faqQ3"></summary>
       <p class="mt-2 text-slate-600" data-i18n="faqA3"></p>
     </details>
-    <details class="bg-white p-5 rounded-xl shadow-sm">
-      <summary class="cursor-pointer font-semibold" data-i18n="faqQ4"></summary>
+    <details class="bg-white p-5 rounded-xl shadow-sm cursor-pointer">
+      <summary class="font-semibold" data-i18n="faqQ4"></summary>
       <p class="mt-2 text-slate-600" data-i18n="faqA4"></p>
     </details>
   </div>
 </section>
 
-<!-- ========== BLOG PLACEHOLDER ========== -->
-<section id="blog" class="bg-[var(--gray)]">
-  <h2 class="sec-title" data-i18n="blogTitle"></h2>
-  <p class="sec-desc" data-i18n="blogDesc"></p>
-  <div class="cards">
-    <div class="card"><h3 class="font-semibold" data-i18n="blog1"></h3></div>
-    <div class="card"><h3 class="font-semibold" data-i18n="blog2"></h3></div>
-    <div class="card"><h3 class="font-semibold" data-i18n="blog3"></h3></div>
-    <div class="card"><h3 class="font-semibold" data-i18n="blog4"></h3></div>
-  </div>
-</section>
-
 <!-- ========== CONTACT ========== -->
-<section id="contact">
-  <h2 class="sec-title" data-i18n="contactTitle"></h2>
-  <div class="contact-grid">
-    <div class="contact-card">
-      <h3 class="font-semibold text-xl mb-4" data-i18n="contactBrand"></h3>
-      <ul class="space-y-3 text-slate-700">
-        <li class="flex items-center gap-1"><i data-lucide="phone" width="18" class="text-primary"></i> 929-504-0773</li>
-        <li class="flex items-center gap-1"><i data-lucide="mail"  width="18" class="text-primary"></i> info@oceansidestucco.com</li>
-        <li class="flex items-center gap-1"><i data-lucide="map-pin" width="18" class="text-primary"></i> White Plains, NY</li>
-        <li class="flex items-center gap-1"><i data-lucide="clock" width="18" class="text-primary"></i> <span data-i18n="hours"></span></li>
-      </ul>
+<section id="contact" class="py-14">
+    <div class="max-w-7xl mx-auto grid gap-12 md:grid-cols-2 items-start">
+      <div>
+        <h2 class="sec-title text-left mb-6 md:mb-10" data-i18n="contactTitle"></h2>
+        <div class="contact-card">
+          <h3 class="font-semibold text-xl mb-4" data-i18n="brandFull"></h3>
+          <ul class="space-y-3 text-slate-700">
+            <li class="flex items-center gap-2"><i data-lucide="phone" width="18" class="text-primary"></i> 929-504-0773</li>
+            <li class="flex items-center gap-2"><i data-lucide="mail"  width="18" class="text-primary"></i> info@oceansidestucco.com</li>
+            <li class="flex items-center gap-2"><i data-lucide="map-pin" width="18" class="text-primary"></i> White Plains, NY</li>
+            <li class="flex items-center gap-2"><i data-lucide="clock" width="18" class="text-primary"></i> <span data-i18n="hours"></span></li>
+          </ul>
+        </div>
+      </div>
+      <form id="formContact" class="contact-card grid gap-4 mt-0 md:mt-24">
+        <input type="text" placeholder="Nombre completo" data-i18n-placeholder="phName" required>
+        <input type="email" placeholder="Correo electrónico" data-i18n-placeholder="phEmail" required>
+        <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto" data-i18n-placeholder="phMsg"></textarea>
+        <button class="btn w-full" type="submit" data-i18n="contactBtn"></button>
+      </form>
     </div>
-
-    <form id="formContact" class="contact-card grid gap-4">
-      <input type="text" placeholder="Nombre completo" data-i18n-placeholder="phName" required>
-      <input type="email" placeholder="Correo electrónico" data-i18n-placeholder="phEmail" required>
-      <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto" data-i18n-placeholder="phMsg"></textarea>
-      <button class="btn w-full" type="submit" data-i18n="contactBtn"></button>
-    </form>
-  </div>
-</section>
+  </section>
 
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-grid">
+    <div class="footer-map">
+        <div class="aspect-video">
+          <iframe
+            class="w-full h-full" loading="lazy" allowfullscreen title="Mapa Oceanside Stucco Supply" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19120.301374523317!2d-73.78465905060447!3d41.0028214736531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c293cfd943486b%3A0xc47e30d1e57c63b4!2sWhite%20Plains%2C%20NY%2C%20USA!5e0!3m2!1sen!2sco!4v1719277087640!5m2!1sen!2sco">
+          </iframe>
+        </div>
+      </div>
     <div>
       <h4 class="text-lg font-semibold text-white mb-2" data-i18n="brandFull"></h4>
       <p class="text-slate-400 max-w-xs" data-i18n="footerTag"></p>
       <p class="mt-3 text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" width="16"></i> White Plains, NY</p>
     </div>
-
     <div>
       <h5 class="font-semibold text-white mb-2" data-i18n="footerContact"></h5>
       <p class="flex items-center gap-1 text-slate-400"><i data-lucide="phone" width="16"></i> 929-504-0773</p>
       <p class="flex items-center gap-1 text-slate-400"><i data-lucide="mail" width="16"></i> info@oceansidestucco.com</p>
-      <!-- Social -->
       <div class="footer-social">
-        <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0UX2wJq1cRBxDccZTD1VdUWT6Hb2j6wyC9cLqgTRoeoZELzK8dA7YoFz7aCFCJAabl&id=61573814677661" target="_blank" aria-label="Facebook">
+        <a href="#" target="_blank" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.595 0 0 .593 0 1.326v21.348C0 23.407.595 24 1.325 24h11.49v-9.294H9.692V11.08h3.123V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.762v2.31h3.59l-.467 3.626h-3.123V24h6.116C23.405 24 24 23.407 24 22.674V1.326C24 .593 23.405 0 22.675 0z"/></svg>
         </a>
-        <a href="https://www.instagram.com/oceansidestuccosupply/" target="_blank" aria-label="Instagram">
+        <a href="#" target="_blank" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9zm0 2h9A3.5 3.5 0 0 1 20 7.5v9A3.5 3.5 0 0 1 16.5 20h-9A3.5 3.5 0 0 1 4 16.5v-9A3.5 3.5 0 0 1 7.5 4zm9.8 1.7a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
         </a>
-        <a href="https://www.tiktok.com/@oceansidestuccosupply" target="_blank" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.305a6.153 6.153 0 0 1-4.286-1.734V14.4a6.665 6.665 0 1 1-7.014-6.638v3.35a3.322 3.322 0 1 0 3.335 3.288V0h3.332a2.88 2.88 0 0 0 2.863 2.537h1.77v3.35z"/></svg>
-        </a>
       </div>
-    </div>
-
-    <div>
-      <h5 class="font-semibold text-white mb-2" data-i18n="footerLegal"></h5>
-      <a href="#" class="block text-slate-400 mb-1" data-i18n="privacy"></a>
-      <a href="#" class="block text-slate-400" data-i18n="terms"></a>
     </div>
   </div>
   <hr class="border-slate-700 my-6">
@@ -571,189 +377,384 @@ footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
 </footer>
 
 <!-- ========== LIGHTBOX ========== -->
-<div class="lightbox" id="lightbox"><img src="" alt=""></div>
+<div class="lightbox" id="lightbox"><img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Project image"></div>
 
-<!-- ========== FLOATING BTNS ========== -->
-<button class="top-btn" id="topBtn"><i data-lucide="arrow-up" color="#fff" width="20"></i></button>
-<button class="lang-btn" id="langBtn">EN <i data-lucide="swap" class="inline" width="18"></i></button>
-<a href="https://wa.me/19295040773" class="wa-btn rounded-full" aria-label="WhatsApp" target="_blank" rel="noopener">
-  <img src="images/whatsapp.png" alt="WhatsApp" width="32" height="32">
+<!-- ========== MODAL COTIZADOR ========== -->
+<div id="cotizadorModal" class="modal-cotizador">
+  <div id="cotizadorContent" class="cotizador-content p-4 sm:p-6">
+    <div class="cotizador-header-footer">
+        <button id="closeCotizadorBtn" class="absolute top-4 right-4 text-gray-500 hover:text-red-500" aria-label="Cerrar">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="text-center">
+          <h2 class="text-xl sm:text-2xl font-bold text-[var(--primary)]"><span class="es">Cotizador Interactivo</span><span class="en">Quote Tool</span></h2>
+          <button id="toggleQuoteLang" class="mt-2 text-sm font-semibold text-[var(--primary)] underline">ES / EN</button>
+        </div>
+    </div>
+
+    <div id="stucco-items" class="cotizador-body space-y-4"></div>
+
+    <div class="cotizador-header-footer mt-auto border-t pt-4">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-lg font-medium">Total:</span>
+        <span class="text-xl font-bold text-[var(--primary)]">USD <span id="total-usd">0.00</span></span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="sendQuoteWhatsApp" class="btn w-full flex items-center justify-center gap-2" style="background: var(--primary); color: white;">
+          <i data-lucide="send" width="18"></i> <span class="es">Pedir por WhatsApp</span><span class="en">Order via WhatsApp</span>
+        </button>
+        <button onclick="window.print()" class="btn w-full flex items-center justify-center gap-2" style="background: white; color: var(--primary); border: 1px solid var(--primary)">
+           <i data-lucide="printer" width="18"></i> <span class="es">Imprimir</span><span class="en">Print</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FLOATING BTNS & RADIO PLAYER ========== -->
+<button class="top-btn floating-btn" id="topBtn" title="Go to top"><i data-lucide="arrow-up" color="#fff" width="24"></i></button>
+<a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp">
+    <img src="images/whatsapp.png" alt="WhatsApp" width="28" height="28">
 </a>
+<button class="radio-btn-container floating-btn" id="radioBtnContainer" title="Open Radio Player">
+    <i data-lucide="radio" color="#fff" width="28"></i>
+</button>
+<button class="lang-btn floating-btn" id="langBtn" title="Change language">EN</button>
+
+<div id="radioModal" class="radio-modal">
+    <div class="radio-header">
+      <span id="stationName" class="title">Cargando…</span>
+      <div class="radio-header-buttons">
+          <button id="radioMinimize" title="Minimizar"><i data-lucide="chevrons-down-up" width="18"></i></button>
+          <button id="radioClose" title="Cerrar"><i data-lucide="x" width="18"></i></button>
+      </div>
+    </div>
+    <div class="radio-body">
+        <div class="radio-controls">
+          <button id="radioPrev" title="Anterior"><i data-lucide="skip-back" width="20"></i></button>
+          <button id="radioPlay" title="Play/Pause" class="active"><i data-lucide="pause" width="20"></i></button>
+          <button id="radioNext" title="Siguiente"><i data-lucide="skip-forward" width="20"></i></button>
+          <button id="radioMute" title="Silenciar"><i data-lucide="volume-2" width="20"></i></button>
+        </div>
+        <div class="radio-volume">
+          <input type="range" id="radioVolume" min="0" max="1" step="0.01" value="0.6">
+        </div>
+    </div>
+</div>
+<audio id="radioAudio" preload="none"></audio>
+
 
 <script>
-/* ===== LIGHTBOX ===== */
-const lb=document.getElementById('lightbox');
-document.querySelectorAll('.gallery img').forEach(img=>img.onclick=()=>{
-  lb.querySelector('img').src=img.src;lb.classList.add('active');
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* ===== i18n DICTIONARY ===== */
+    let lang = 'es';
+    const dict = {
+        es: {
+            docTitle: 'Oceanside Stucco Supply | Materiales de Estuco & EIFS – Entrega el Mismo Día',
+            metaDesc: 'Materiales de estuco y sistemas EIFS certificados. Entrega el mismo día en el área Tri-State. Cotiza gratis ahora.',
+            brand: 'Oceanside Stucco',
+            brandFull: 'Oceanside Stucco Supply',
+            navProducts: 'Productos', navServices: 'Servicios', navGallery: 'Galería', navAbout: 'Sobre Nosotros',
+            navFAQ: 'FAQ', navContact: 'Contacto', ctaQuote: 'Cotiza Ya',
+            heroH1: 'Materiales de Calidad. Atención Rápida. Entregas en el Mismo Día.',
+            heroBullet: 'Entrega el mismo día disponible',
+            heroP: 'En Oceanside Stucco Supply ofrecemos suministros de estuco y sistemas EIFS confiables para contratistas, remodeladores y propietarios en el área Tri-State.',
+            ctaHero: 'Solicita tu Cotización', ctaWa: 'WhatsApp', ctaVideo: 'Ver Video',
+            productsTitle: 'Productos Especializados',
+            productsDesc: 'Ofrecemos productos duraderos y certificados para proyectos de construcción, remodelación y diseño exterior.',
+            prod1: 'Stucco y Sistemas EIFS', prod2: 'Revestimientos Base y Acabados', prod3: 'Mallas y Adhesivos',
+            prod4: 'Tableros de Aislamiento', prod5: 'Herramientas y Accesorios',
+            servicesTitle: 'Servicios Profesionales',
+            servicesDesc: 'Entregas rápidas, soporte técnico personalizado y ventas al por mayor o unidad.',
+            srv1: 'Entregas Rápidas', srv1d: 'Cobertura White Plains y alrededores.',
+            srv2: 'Soporte Técnico', srv2d: 'Asesoría personalizada.',
+            srv3: 'Abierto a Todos', srv3d: 'Público y contratistas.',
+            srv4: 'Mayorista y Retail', srv4d: 'Ventas por volumen o unidad.',
+            about2Title: 'Sobre nosotros',
+            about2Subtitle: '15 años inspirados en el acabado perfecto',
+            about2P1: 'En <strong>Stucco Supply</strong> hemos acompañado a constructores, arquitectos y diseñadores en más de <em>2,000</em> proyectos residenciales y comerciales. Somos especialistas en recubrimientos y sistemas EIFS: entendemos cada fase del proceso y garantizamos inventario Just-in-Time.',
+            about2P2: 'Trabajamos para que tu obra avance sin contratiempos: mezclas personalizadas, matching de color, soporte técnico y logística de entrega <abbr title="Delivery Just-in-Time">JIT</abbr> a pie de obra.',
+            about2Btn: 'Hablemos',
+            ctaBannerH: '¿Listo para elevar la calidad de tu proyecto?',
+            ctaBannerBtn: 'Solicitar cotización',
+            openQuoteTool: 'Abrir Cotizador Interactivo',
+            galleryTitle: 'Proyectos Recientes', galleryDesc: 'Calidad y precisión en cada detalle.',
+            alt1: 'Fachada residencial', alt2: 'Acabado comercial', alt3: 'Detalle EIFS', alt4: 'Proceso de aplicación',
+            faqTitle: 'Preguntas Frecuentes',
+            faqQ1: '¿Ofrecen garantía?', faqA1: 'Sí, todos nuestros materiales cuentan con garantía de fábrica.',
+            faqQ2: '¿Puedo hacer pedidos grandes?', faqA2: 'Claro, ofrecemos descuentos por volumen y logística dedicada.',
+            faqQ3: '¿Tienen sistema EIFS completo?', faqA3: 'Sí, proveemos kits completos con basecoat, malla, adhesivo y acabados.',
+            faqQ4: '¿Entregan el mismo día?', faqA4: 'En la mayoría de los casos dentro del área Tri-State, sí.',
+            contactTitle: 'Contáctanos Hoy',
+            phName: 'Nombre completo', phEmail: 'Correo electrónico', phMsg: 'Cuéntanos sobre tu proyecto',
+            contactBtn: 'Enviar Mensaje',
+            hours: 'L-V 6 am-5 pm, Sáb 7 am-2 pm',
+            footerTag: 'Suministros de estuco y sistemas EIFS de calidad para el área Tri-State.',
+            footerContact: 'Contacto', footerLegal: 'Legal',
+            privacy: 'Política de Privacidad', terms: 'Términos y Condiciones',
+            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. Todos los derechos reservados.`
+        },
+        en: {
+            docTitle: 'Oceanside Stucco Supply | Quality Stucco & EIFS – Same-Day Delivery',
+            metaDesc: 'Certified stucco materials & EIFS systems. Same-day delivery in the Tri-State area. Get a free quote now.',
+            brand: 'Oceanside Stucco', brandFull: 'Oceanside Stucco Supply',
+            navProducts: 'Products', navServices: 'Services', navGallery: 'Gallery', navAbout: 'About Us',
+            navFAQ: 'FAQ', navContact: 'Contact', ctaQuote: 'Get a Quote',
+            heroH1: 'Quality Materials. Fast Service. Same-Day Delivery.',
+            heroBullet: 'Same-day delivery available',
+            heroP: 'At Oceanside Stucco Supply, we provide trusted stucco and EIFS systems for contractors, remodelers and property owners in the Tri-State area.',
+            ctaHero: 'Request Your Quote', ctaWa: 'WhatsApp', ctaVideo: 'Watch Video',
+            productsTitle: 'Specialized Products',
+            productsDesc: 'Durable and certified materials for construction, remodeling and exterior finishing projects.',
+            prod1: 'Stucco & EIFS Systems', prod2: 'Base & Finish Coats', prod3: 'Mesh & Adhesives',
+            prod4: 'Insulation Boards', prod5: 'Tools & Accessories',
+            servicesTitle: 'Professional Services',
+            servicesDesc: 'Fast deliveries, personalized technical support and wholesale or unit sales.',
+            srv1: 'Fast Deliveries', srv1d: 'Coverage across White Plains.',
+            srv2: 'Technical Support', srv2d: 'Personalized assistance.',
+            srv3: 'Open to Everyone', srv3d: 'Public and contractors.',
+            srv4: 'Wholesale & Retail', srv4d: 'Volume or unit sales.',
+            about2Title: 'About Us',
+            about2Subtitle: '15 years inspired by the perfect finish',
+            about2P1: 'At <strong>Stucco Supply</strong> we have supported builders, architects and designers in more than <em>2,000</em> residential and commercial projects. We specialize in coatings and EIFS systems and guarantee just-in-time inventory.',
+            about2P2: 'We keep your project moving smoothly: custom mixes, color matching, on-site technical support and just-in-time delivery logistics right to the job site.',
+            about2Btn: 'Let’s talk',
+            ctaBannerH: 'Ready to raise the quality of your project?',
+            ctaBannerBtn: 'Request a quote',
+            openQuoteTool: 'Open Interactive Quote Tool',
+            galleryTitle: 'Recent Projects', galleryDesc: 'Quality and precision in every detail.',
+            alt1: 'Residential facade', alt2: 'Commercial finish', alt3: 'EIFS detail', alt4: 'Application process',
+            faqTitle: 'Frequently Asked Questions',
+            faqQ1: 'Do you offer warranty?', faqA1: 'Yes, all our materials come with full manufacturer warranty.',
+            faqQ2: 'Can I place bulk orders?', faqA2: 'Absolutely, we provide volume discounts and dedicated logistics.',
+            faqQ3: 'Do you offer complete EIFS systems?', faqA3: 'Yes, we supply complete kits including basecoat, mesh, adhesive and finish.',
+            faqQ4: 'Do you deliver same day?', faqA4: 'In most of the Tri-State area, yes.',
+            contactTitle: 'Contact Us Today',
+            phName: 'Full name', phEmail: 'Email address', phMsg: 'Tell us about your project',
+            contactBtn: 'Send Message',
+            hours: 'Mon-Fri 6 am-5 pm, Sat 7 am-2 pm',
+            footerTag: 'Premium stucco supplies & EIFS systems for the Tri-State area.',
+            footerContact: 'Contact', footerLegal: 'Legal',
+            privacy: 'Privacy Policy', terms: 'Terms & Conditions',
+            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. All rights reserved.`
+        }
+    };
+
+    /* ===== TRANSLATE FUNCTION ===== */
+    const langBtn = document.getElementById('langBtn');
+    function translate() {
+        document.querySelectorAll('[data-i18n]').forEach(el => { if (dict[lang][el.dataset.i18n]) { el.innerHTML = dict[lang][el.dataset.i18n]; }});
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { if (dict[lang][el.dataset.i18nPlaceholder]) { el.placeholder = dict[lang][el.dataset.i18nPlaceholder]; }});
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => { if (dict[lang][el.dataset.i18nAlt]) { el.alt = dict[lang][el.dataset.i18nAlt]; }});
+        document.title = dict[lang].docTitle;
+        document.querySelector('meta[name="description"]').setAttribute('content', dict[lang].metaDesc);
+        langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+        document.documentElement.lang = lang;
+        const cotizadorContent = document.getElementById('cotizadorContent');
+        if (cotizadorContent) { cotizadorContent.className = 'cotizador-content p-4 sm:p-6 ' + lang; }
+        lucide.createIcons();
+    }
+    langBtn.onclick = () => { lang = lang === 'es' ? 'en' : 'es'; translate(); };
+
+    /* ===== LIGHTBOX ===== */
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    if(lb) {
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.onclick = () => { lbImg.src = img.src; lb.classList.add('active'); };
+        });
+        lb.onclick = () => lb.classList.remove('active');
+    }
+
+    /* ===== BACK TO TOP ===== */
+    const topBtn = document.getElementById('topBtn');
+    if(topBtn) {
+        window.addEventListener('scroll', () => { topBtn.style.display = window.scrollY > 600 ? 'flex' : 'none'; });
+        topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ===== CONTACT FORM ===== */
+    const formContact = document.getElementById('formContact');
+    if(formContact) {
+        formContact.onsubmit = e => {
+            e.preventDefault();
+            // A custom modal would be better than alert() for production
+            alert(lang === 'es' ? '¡Gracias! Te contactaremos pronto.' : 'Thank you! We will get back to you shortly.');
+            e.target.reset();
+        };
+    }
+
+    /* ===== COTIZADOR INTERACTIVO ===== */
+    const cotizadorModal = document.getElementById('cotizadorModal');
+    const openCotizadorBtn = document.getElementById('openCotizadorBtn');
+    const closeCotizadorBtn = document.getElementById('closeCotizadorBtn');
+    const toggleQuoteLangBtn = document.getElementById('toggleQuoteLang');
+    const cotizadorContent = document.getElementById('cotizadorContent');
+    const quoteItemsContainer = document.getElementById('stucco-items');
+    const totalUsdEl = document.getElementById('total-usd');
+    const sendQuoteWhatsAppBtn = document.getElementById('sendQuoteWhatsApp');
+    const quoteItems = [
+        { name_es: 'Aplicación de Stucco Exterior', name_en: 'Exterior Stucco Application', desc_es: 'Recubrimiento resistente y decorativo', desc_en: 'Resistant and decorative coating', usd: 200.00 },
+        { name_es: 'Reparación de Grietas', name_en: 'Crack Repair', desc_es: 'Sellado y acabado de fisuras', desc_en: 'Fissure sealing and finishing', usd: 120.00 },
+        { name_es: 'Impermeabilización de Fachadas', name_en: 'Facade Waterproofing', desc_es: 'Protección contra agua y humedad', desc_en: 'Water and moisture protection', usd: 180.00 },
+        { name_es: 'Instalación de Revestimiento', name_en: 'Cladding Installation', desc_es: 'Revestimiento decorativo interior/exterior', desc_en: 'Interior/exterior decorative coating', usd: 150.00 },
+        { name_es: 'Mantenimiento y Pintura', name_en: 'Maintenance and Painting', desc_es: 'Limpieza y repintado de superficies', desc_en: 'Surface cleaning and repainting', usd: 100.00 }
+    ];
+    function cargarTablaCotizador() {
+        if(!quoteItemsContainer) return;
+        quoteItemsContainer.innerHTML = '';
+        quoteItems.forEach((item, i) => {
+            const div = document.createElement("div");
+            div.className = "border p-3 sm:p-4 rounded-xl shadow-sm bg-slate-50";
+            div.innerHTML = `
+                <div class="flex justify-between items-start gap-3">
+                  <div class="flex-grow">
+                    <h4 class="font-bold text-base text-[var(--primary)]">
+                        <span class="es">${item.name_es}</span>
+                        <span class="en">${item.name_en}</span>
+                    </h4>
+                    <p class="text-slate-600 text-sm mt-1">
+                        <span class="es">${item.desc_es}</span>
+                        <span class="en">${item.desc_en}</span>
+                    </p>
+                  </div>
+                  <input type="checkbox" id="item_check_${i}" data-idx="${i}" data-usd="${item.usd}" onchange="calcularTotal()" class="w-5 h-5 cursor-pointer flex-shrink-0 mt-1 accent-[var(--primary)]">
+                </div>
+                <div class="flex justify-end items-center gap-3 mt-3 pt-3 border-t border-slate-200">
+                  <label for="item_qty_${i}" class="text-sm font-medium text-slate-700">
+                      <span class="es">Cant:</span><span class="en">Qty:</span>
+                  </label>
+                  <input type="number" id="item_qty_${i}" min="1" value="1" onchange="calcularTotal()" class="w-20 border border-slate-300 rounded-md px-2 py-1 text-center" disabled>
+                  <span class="font-semibold w-24 text-right text-slate-800">$${item.usd.toFixed(2)}</span>
+                </div>
+              `;
+            quoteItemsContainer.appendChild(div);
+        });
+        calcularTotal();
+    }
+    window.calcularTotal = function() {
+        let total = 0;
+        document.querySelectorAll("#stucco-items > div").forEach((card, i) => {
+            const chk = card.querySelector(`#item_check_${i}`);
+            const qtyInput = card.querySelector(`#item_qty_${i}`);
+            if(!chk || !qtyInput) return;
+            const qty = parseInt(qtyInput.value) || 1;
+            qtyInput.disabled = !chk.checked;
+            if (chk.checked) {
+                total += parseFloat(chk.dataset.usd) * qty;
+            }
+        });
+        if(totalUsdEl) totalUsdEl.textContent = total.toFixed(2);
+    }
+    if(sendQuoteWhatsAppBtn) {
+        sendQuoteWhatsAppBtn.onclick = function() {
+            let quoteLang = cotizadorContent.classList.contains('es') ? 'es' : 'en';
+            let mensaje = quoteLang === 'es' ? "🧱 Oceanside Cotización:%0A" : "🧱 Oceanside Quote:%0A";
+            let total = 0;
+            let hasItems = false;
+            quoteItems.forEach((item, i) => {
+                const chk = document.getElementById(`item_check_${i}`);
+                if (chk && chk.checked) {
+                    hasItems = true;
+                    const qty = parseInt(document.getElementById(`item_qty_${i}`).value);
+                    const name = quoteLang === 'es' ? item.name_es : item.name_en;
+                    const subtotal = item.usd * qty;
+                    mensaje += `• ${name} x${qty} = $${subtotal.toFixed(2)}%0A`;
+                    total += subtotal;
+                }
+            });
+            if (!hasItems) { alert(quoteLang === 'es' ? 'Por favor, selecciona al menos un item.' : 'Please select at least one item.'); return; }
+            mensaje += `%0A${quoteLang === 'es' ? 'Total' : 'Total'}: $${total.toFixed(2)} USD`;
+            window.open(`https://wa.me/19295040773?text=${encodeURIComponent(mensaje)}`, '_blank');
+        };
+    }
+    if (openCotizadorBtn) openCotizadorBtn.onclick = () => cotizadorModal.classList.add('active');
+    if (closeCotizadorBtn) closeCotizadorBtn.onclick = () => cotizadorModal.classList.remove('active');
+    if (toggleQuoteLangBtn) {
+        toggleQuoteLangBtn.onclick = () => {
+             cotizadorContent.classList.toggle('es');
+             cotizadorContent.classList.toggle('en');
+        }
+    }
+
+    /* ===== RADIO PLAYER ===== */
+    const stations = [
+        { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
+        { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
+        { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' },
+        { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
+        { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
+        { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
+    ];
+    let currentStation = 0;
+    const radioBtnContainer = document.getElementById('radioBtnContainer');
+    const radioModal = document.getElementById('radioModal');
+    const stationNameEl = document.getElementById('stationName');
+    const radioAudio = document.getElementById('radioAudio');
+    const btnCloseRadio = document.getElementById('radioClose');
+    const btnMinimizeRadio = document.getElementById('radioMinimize');
+    const btnPrev = document.getElementById('radioPrev');
+    const btnPlay = document.getElementById('radioPlay');
+    const btnNext = document.getElementById('radioNext');
+    const btnMute = document.getElementById('radioMute');
+    const volSlider = document.getElementById('radioVolume');
+
+    function loadStation(idx) {
+        currentStation = idx;
+        stationNameEl.textContent = stations[idx].name;
+        radioAudio.src = stations[idx].url;
+        radioAudio.load();
+        radioAudio.play().catch(e => console.error("Radio play failed:", e));
+    }
+
+    function updatePlayBtn() {
+        btnPlay.innerHTML = radioAudio.paused ? '<i data-lucide="play" width="20"></i>' : '<i data-lucide="pause" width="20"></i>';
+        btnPlay.classList.toggle('active', !radioAudio.paused);
+        lucide.createIcons();
+    }
+    
+    function updateMuteBtn() {
+        btnMute.innerHTML = radioAudio.muted || radioAudio.volume === 0 ? '<i data-lucide="volume-x" width="20"></i>' : '<i data-lucide="volume-2" width="20"></i>';
+        lucide.createIcons();
+    }
+    
+    if(radioBtnContainer) {
+        radioBtnContainer.onclick = () => {
+            radioModal.classList.add('visible');
+            if (!radioAudio.src) {
+                 loadStation(currentStation);
+            }
+        };
+    }
+    if(btnCloseRadio) btnCloseRadio.onclick = () => radioModal.classList.remove('visible');
+    if(btnMinimizeRadio) {
+        btnMinimizeRadio.onclick = () => {
+            radioModal.classList.toggle('minimized');
+            const icon = radioModal.classList.contains('minimized') ? 'chevrons-up-down' : 'chevrons-down-up';
+            btnMinimizeRadio.innerHTML = `<i data-lucide="${icon}" width="18"></i>`;
+            lucide.createIcons();
+        };
+    }
+    if(btnPlay) btnPlay.onclick = () => radioAudio.paused ? radioAudio.play() : radioAudio.pause();
+    if(radioAudio){ radioAudio.onplay = radioAudio.onpause = updatePlayBtn; }
+    if(btnPrev) btnPrev.onclick = () => loadStation((currentStation - 1 + stations.length) % stations.length);
+    if(btnNext) btnNext.onclick = () => loadStation((currentStation + 1) % stations.length);
+    if(btnMute) btnMute.onclick = () => { radioAudio.muted = !radioAudio.muted; updateMuteBtn(); };
+    if(volSlider) volSlider.oninput = () => {
+        radioAudio.volume = volSlider.value;
+        radioAudio.muted = volSlider.value == 0;
+        updateMuteBtn();
+    };
+    if (radioAudio) radioAudio.onvolumechange = updateMuteBtn;
+    
+    /* ===== INITIALIZE ===== */
+    translate();
+    cargarTablaCotizador();
+    if (volSlider) radioAudio.volume = volSlider.value;
+    updateMuteBtn();
+    updatePlayBtn();
 });
-lb.onclick=()=>lb.classList.remove('active');
-
-/* ===== BACK TO TOP ===== */
-const topBtn=document.getElementById('topBtn');
-window.addEventListener('scroll',()=>{topBtn.style.display=window.scrollY>600?'block':'none';});
-topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-
-/* ===== CONTACT FORM ===== */
-document.getElementById('formContact').onsubmit=e=>{
-  e.preventDefault();
-  alert(lang==='es'?'¡Gracias! Te contactaremos pronto.':'Thank you! We will get back to you shortly.');
-  e.target.reset();
-};
-
-/* ===== i18n DICTIONARY ===== */
-let lang='es';
-const dict={
-  es:{
-    docTitle:'Oceanside Stucco Supply | Materiales de Estuco & EIFS – Entrega el Mismo Día',
-    metaDesc:'Materiales de estuco y sistemas EIFS certificados. Entrega el mismo día en el área Tri-State. Cotiza gratis ahora.',
-    brand:'Oceanside Stucco',brandFull:'Oceanside Stucco Supply',
-    navProducts:'Productos',navServices:'Servicios',navGallery:'Galería',navAbout:'Sobre Nosotros',
-    navFAQ:'FAQ',navBlog:'Blog',navContact:'Contacto',ctaQuote:'Cotiza Ya',
-    heroH1:'Materiales de Calidad. Atención Rápida. Entregas en el Mismo Día.',
-    heroBullet:'Entrega el mismo día disponible',
-    heroP:'En Oceanside Stucco Supply ofrecemos suministros de estuco y sistemas EIFS confiables para contratistas, remodeladores y propietarios en el área Tri-State.',
-    ctaHero:'Solicita tu Cotización',ctaWa:'WhatsApp',
-
-    productsTitle:'Productos Especializados',
-    productsDesc:'Ofrecemos productos duraderos y certificados para proyectos de construcción, remodelación y diseño exterior.',
-    prod1:'Stucco y Sistemas EIFS',prod2:'Revestimientos Base y Acabados',prod3:'Mallas y Adhesivos',
-    prod4:'Tableros de Aislamiento',prod5:'Herramientas y Accesorios',
-
-    servicesTitle:'Servicios Profesionales',
-    servicesDesc:'Entregas rápidas, soporte técnico personalizado y ventas al por mayor o unidad.',
-    srv1:'Entregas Rápidas',srv1d:'Cobertura White Plains y alrededores.',
-    srv2:'Soporte Técnico',srv2d:'Asesoría personalizada.',
-    srv3:'Abierto a Todos',srv3d:'Público y contratistas.',
-    srv4:'Mayorista y Retail',srv4d:'Ventas por volumen o unidad.',
-
-    about2Title:'Sobre nosotros',
-    about2Subtitle:'15 años inspirados en el acabado perfecto',
-    about2P1:'En <strong>Stucco Supply</strong> hemos acompañado a constructores, arquitectos y diseñadores en más de <em>2 000</em> proyectos residenciales y comerciales en la Costa Oeste. Somos especialistas en recubrimientos y sistemas EIFS: entendemos cada fase del proceso constructivo y garantizamos inventario Just-in-Time.',
-    about2P2:'Trabajamos para que tu obra avance sin contratiempos: mezclas personalizadas, matching de color, soporte técnico en obra y logística de entrega <abbr title="Delivery Just-in-Time">JIT</abbr> a pie de obra.',
-    about2Btn:'Hablemos',
-
-    serv2Title:'Lo que hacemos',
-    servCard1H:'Suministro integral',
-    servCard1P:'Estuco base, texturas, mallas, sellantes y accesorios: todo en un solo lugar, stock garantizado.',
-    servCard2H:'Asesoría técnica',
-    servCard2P:'Te guiamos desde el cálculo de consumo hasta la prueba final de adherencia y color.',
-    servCard3H:'Mezclas personalizadas',
-    servCard3P:'Laboratorio in-house para igualar tonalidades y desarrollar texturas exclusivas.',
-
-    ctaBannerH:'¿Listo para elevar la calidad de tu proyecto?',
-    ctaBannerBtn:'Solicitar cotización',
-
-    quoteTitle:'Cotiza en 60 segundos',
-    quoteP:'Integra aquí tu calculadora interactiva o un formulario de contacto.',
-
-    galleryTitle:'Proyectos Recientes',galleryDesc:'Calidad y precisión en cada detalle.',
-    alt1:'Fachada residencial',alt2:'Acabado comercial',alt3:'Detalle EIFS',alt4:'Proceso de aplicación',
-
-    faqTitle:'Preguntas Frecuentes',
-    faqQ1:'¿Ofrecen garantía?',faqA1:'Sí, todos nuestros materiales cuentan con garantía de fábrica.',
-    faqQ2:'¿Puedo hacer pedidos grandes?',faqA2:'Claro, ofrecemos descuentos por volumen y logística dedicada.',
-    faqQ3:'¿Tienen sistema EIFS completo?',faqA3:'Sí, proveemos kits completos con basecoat, malla, adhesivo y acabados.',
-    faqQ4:'¿Entregan el mismo día?',faqA4:'En la mayoría de los casos dentro del área Tri-State, sí.',
-
-    blogTitle:'Blog',blogDesc:'Próximamente encontrarás guías, tips y casos de éxito.',
-    blog1:'Consejos de instalación',blog2:'Diferencias entre tipos de estuco',blog3:'Cómo elegir materiales',blog4:'Casos de éxito',
-
-    contactTitle:'Contáctanos Hoy',contactBrand:'Oceanside Stucco Supply',
-    phName:'Nombre completo',phEmail:'Correo electrónico',phMsg:'Cuéntanos sobre tu proyecto',
-    contactBtn:'Enviar Mensaje',hours:'L-V 6 am-5 pm, Sáb 7 am-2 pm',
-
-    footerTag:'Suministros de estuco y sistemas EIFS de calidad para el área Tri-State.',
-    footerContact:'Contacto',footerLegal:'Legal',privacy:'Política de Privacidad',terms:'Términos y Condiciones',
-    copyright:'© 2025 Oceanside Stucco Supply. Todos los derechos reservados.'
-  },
-
-  en:{
-    docTitle:'Oceanside Stucco Supply | Quality Stucco & EIFS – Same-Day Delivery',
-    metaDesc:'Certified stucco materials & EIFS systems. Same-day delivery in the Tri-State area. Get a free quote now.',
-    brand:'Oceanside Stucco',brandFull:'Oceanside Stucco Supply',
-    navProducts:'Products',navServices:'Services',navGallery:'Gallery',navAbout:'About Us',
-    navFAQ:'FAQ',navBlog:'Blog',navContact:'Contact',ctaQuote:'Get a Quote',
-    heroH1:'Quality Materials. Fast Service. Same-Day Delivery.',
-    heroBullet:'Same-day delivery available',
-    heroP:'At Oceanside Stucco Supply, we provide trusted stucco and EIFS systems for contractors, remodelers and property owners in the Tri-State area.',
-    ctaHero:'Request Your Quote',ctaWa:'WhatsApp',
-
-    productsTitle:'Specialized Products',
-    productsDesc:'Durable and certified materials for construction, remodeling and exterior finishing projects.',
-    prod1:'Stucco & EIFS Systems',prod2:'Base & Finish Coats',prod3:'Mesh & Adhesives',
-    prod4:'Insulation Boards',prod5:'Tools & Accessories',
-
-    servicesTitle:'Professional Services',
-    servicesDesc:'Fast deliveries, personalized technical support and wholesale or unit sales.',
-    srv1:'Fast Deliveries',srv1d:'Coverage across White Plains.',
-    srv2:'Technical Support',srv2d:'Personalized assistance.',
-    srv3:'Open to Everyone',srv3d:'Public and contractors.',
-    srv4:'Wholesale & Retail',srv4d:'Volume or unit sales.',
-
-    about2Title:'About Us',
-    about2Subtitle:'15 years inspired by the perfect finish',
-    about2P1:'At <strong>Stucco Supply</strong> we have supported builders, architects and designers in more than <em>2,000</em> residential and commercial projects on the West Coast. We specialize in coatings and EIFS systems and guarantee just-in-time inventory.',
-    about2P2:'We keep your project moving smoothly: custom mixes, color matching, on-site technical support and just-in-time delivery logistics right to the job site.',
-    about2Btn:'Let’s talk',
-
-    serv2Title:'What we do',
-    servCard1H:'Full supply',
-    servCard1P:'Base coat, textures, mesh, sealants and accessories – everything in one place, guaranteed stock.',
-    servCard2H:'Technical advice',
-    servCard2P:'We guide you from consumption calculation to final adhesion and color tests.',
-    servCard3H:'Custom mixes',
-    servCard3P:'In-house lab for color matching and exclusive textures.',
-
-    ctaBannerH:'Ready to raise the quality of your project?',
-    ctaBannerBtn:'Request a quote',
-
-    quoteTitle:'Get a quote in 60 seconds',
-    quoteP:'Embed your interactive calculator or a contact form here.',
-
-    galleryTitle:'Recent Projects',galleryDesc:'Quality and precision in every detail.',
-    alt1:'Residential facade',alt2:'Commercial finish',alt3:'EIFS detail',alt4:'Application process',
-
-    faqTitle:'Frequently Asked Questions',
-    faqQ1:'Do you offer warranty?',faqA1:'Yes, all our materials come with full manufacturer warranty.',
-    faqQ2:'Can I place bulk orders?',faqA2:'Absolutely, we provide volume discounts and dedicated logistics.',
-    faqQ3:'Do you offer complete EIFS systems?',faqA3:'Yes, we supply complete kits including basecoat, mesh, adhesive and finish.',
-    faqQ4:'Do you deliver same day?',faqA4:'In most of the Tri-State area, yes.',
-
-    blogTitle:'Blog',blogDesc:'Coming soon: guides, tips and success stories.',
-    blog1:'Installation tips',blog2:'Differences between stucco types',blog3:'How to choose materials',blog4:'Success stories',
-
-    contactTitle:'Contact Us Today',contactBrand:'Oceanside Stucco Supply',
-    phName:'Full name',phEmail:'Email address',phMsg:'Tell us about your project',
-    contactBtn:'Send Message',hours:'Mon-Fri 6 am-5 pm, Sat 7 am-2 pm',
-
-    footerTag:'Premium stucco supplies & EIFS systems for the Tri-State area.',
-    footerContact:'Contact',footerLegal:'Legal',privacy:'Privacy Policy',terms:'Terms & Conditions',
-    copyright:'© 2025 Oceanside Stucco Supply. All rights reserved.'
-  }
-};
-
-/* ===== TRANSLATE FUNCTION ===== */
-function translate(){
-  document.querySelectorAll('[data-i18n]').forEach(el=>el.innerHTML=dict[lang][el.dataset.i18n]);
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.placeholder=dict[lang][el.dataset.i18nPlaceholder]);
-  document.querySelectorAll('[data-i18n-alt]').forEach(el=>el.alt=dict[lang][el.dataset.i18nAlt]);
-  document.title=dict[lang].docTitle;
-  document.querySelector('meta[name="description"]').setAttribute('content',dict[lang].metaDesc);
-  btnLang.innerHTML=`${lang==='es'?'EN':'ES'}
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" class="inline">
-      <path d="m16 3-4.35 4.35M16 3v4.14M16 3h-4.14"/>
-      <path d="m8 21 4.35-4.35M8 21v-4.14M8 21h4.14"/>
-    </svg>`;
-  document.documentElement.lang=lang;
-  lucide.createIcons();
-}
-const btnLang=document.getElementById('langBtn');
-btnLang.onclick=()=>{lang=lang==='es'?'en':'es';translate();};
-
-/* INITIALIZE */
-translate();
-lucide.createIcons();
 </script>
 </body>
-</html>
+</html
