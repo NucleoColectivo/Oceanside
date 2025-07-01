@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Oceanside Stucco Supply · Landing ES/EN -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title data-i18n="docTitle">Oceanside Stucco Supply | Quality Stucco & EIFS – Same-Day Delivery</title>
@@ -16,7 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tailwind is used in the user's provided design -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -47,38 +50,9 @@
     .btn-primary{background:#fff;color:var(--primary)}
     
     /* ===== HERO ===== */
-    .hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        padding: 0;
-        width: 100%;
-        max-width: 100vw;
-    }
-    .hero-video-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        pointer-events: none;
-    }
-    .hero-video-container iframe {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100vw;
-        height: 56.25vw; /* 16:9 Aspect Ratio */
-        min-height: 100vh;
-        min-width: 177.77vh; /* 16:9 Aspect Ratio */
-        transform: translate(-50%, -50%);
-    }
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
+    .hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+    .hero::before{content:'';position:absolute;inset:0;background:url('images/09.gif') center/cover no-repeat; opacity: 0.8;}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
     .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center}
     .hero-bullets{display:flex;flex-direction:column;gap:.4rem;font-weight:500;margin:1.2rem 0}
 
@@ -136,6 +110,7 @@
                       cursor:pointer;z-index:80; display:flex; align-items:center; justify-content:center;}
     .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
     .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
+    .radio-btn-container { bottom: 22px; left: 22px; background: transparent; width:52px; height: 52px; box-shadow: none; }
     .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
              display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none;}
 
@@ -153,76 +128,34 @@
     .cotizador-content.en #stucco-items .en { display: inline; }
 
     /* ===== RADIO PLAYER ===== */
-    #radioBtn {
-        position: fixed; bottom: 20px; left: 20px;
-        width: 64px; height: 64px; cursor: pointer; z-index: 1000;
-        border-radius: 0;
-        transition: transform 0.2s;
-    }
-    #radioBtn:hover {
-        transform: scale(1.1);
-    }
-    .radio-modal { position: fixed; bottom: 100px; left: 20px; width: 280px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); z-index: 1000; }
-    .radio-modal.hidden { display: none; }
-    .radio-header { background: var(--primary); padding: 8px; display: flex; justify-content: space-between; align-items: center; }
-    .radio-header .title { font-weight: bold; font-size: 0.95rem; }
-    .radio-header button { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
-    .radio-controls { background: #222; padding: 12px; display: flex; justify-content: space-around; align-items: center; }
-    .radio-controls button { background: none; border: 2px solid #fff; border-radius: 50%; width: 40px; height: 40px; color: #fff; font-size: 1.1rem; cursor: pointer; transition: border-color .2s, color .2s; }
-    .radio-controls button:hover { border-color: var(--primary); color: var(--primary); }
+    .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
+    .radio-modal.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto;}
+    .radio-header { background: var(--primary); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+    .radio-header .title { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; margin-right: 10px;}
+    .radio-header-buttons { display: flex; gap: 5px; }
+    .radio-header-buttons button { background: none; border: none; color: #fff; opacity: 0.8; cursor: pointer; transition: opacity 0.2s; padding: 5px;}
+    .radio-header-buttons button:hover { opacity: 1; }
+    .radio-body { transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; max-height: 200px; }
+    .radio-controls { background: #222; padding: 15px; display: flex; justify-content: space-around; align-items: center; }
+    .radio-controls button { background: none; border: 2px solid #fff; border-radius: 50%; width: 44px; height: 44px; color: #fff; display: flex; align-items:center; justify-content:center; cursor: pointer; transition: all .2s; }
+    .radio-controls button:hover { border-color: var(--primary-light); color: var(--primary-light); transform: scale(1.1); }
     .radio-controls button.active { border-color: #D81B60; color: #D81B60; }
-    .radio-volume { background: #222; padding: 0 12px 12px; }
-    .radio-volume input[type=range] { width: 100%; height: 4px; background: #fff; border-radius: 2px; outline: none; cursor: pointer; -webkit-appearance: none; }
-    .radio-volume input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: #D81B60; border-radius: 50%; cursor: pointer; }
-    
-    @keyframes glow {
-      from {
-        filter: drop-shadow(0 0 6px rgba(30, 136, 229, 0.7)) drop-shadow(0 0 12px rgba(144, 202, 249, 0.7));
-      }
-      to {
-        filter: drop-shadow(0 0 12px rgba(30, 136, 229, 1)) drop-shadow(0 0 24px rgba(144, 202, 249, 1));
-      }
-    }
-    #radioBtn.glowing {
-      animation: glow 1.5s infinite alternate;
-    }
-
-    /* ===== MOBILE MENU ===== */
-    .mobile-menu-btn { display: none; }
-    .mobile-nav { display: none; }
-
-    @media (max-width: 1023px) {
-      .desktop-nav { display: none; }
-      .mobile-menu-btn { display: block; }
-      .mobile-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        padding: 1rem;
-      }
-      .mobile-nav.active { display: block; }
-      .mobile-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-      }
-    }
+    .radio-volume { background: #222; padding: 0 15px 15px; }
+    .radio-volume input[type=range] { width: 100%; height: 5px; background: #555; border-radius: 5px; outline: none; cursor: pointer; -webkit-appearance: none; }
+    .radio-volume input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: #D81B60; border-radius: 50%; cursor: pointer; border: 2px solid #222; }
+    .radio-modal.minimized .radio-body { max-height: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
 
   </style>
 </head>
 <body>
+<!-- ========== NAV ========= -->
 <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur shadow">
   <nav class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6 px-4 py-3 font-[Montserrat]">
-    <a href="#home" class="font-bold text-lg whitespace-nowrap" data-i18n="brand">
-      Oceanside Stucco Supply
-    </a>
-
-    <div class="desktop-nav hidden lg:flex items-center gap-6">
-      <ul class="flex gap-6 font-medium">
+    <div class="flex items-start gap-6">
+      <a href="#home" class="font-bold text-lg whitespace-nowrap" data-i18n="brand">
+        Oceanside Stucco Supply
+      </a>
+      <ul class="hidden lg:flex gap-6 font-medium">
         <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)]"></a></li>
@@ -230,37 +163,13 @@
         <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)]"></a></li>
       </ul>
-      <a href="#contact" class="btn" data-i18n="ctaQuote"></a>
     </div>
-
-    <button class="mobile-menu-btn lg:hidden" id="mobileMenuBtn">
-      <i data-lucide="menu" class="text-gray-700"></i>
-    </button>
-    
-    <div class="mobile-nav w-full lg:hidden" id="mobileNav">
-      <ul class="flex flex-col items-center gap-4 py-4">
-        <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)] mobile-link"></a></li>
-        <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)] mobile-link"></a></li>
-        <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)] mobile-link"></a></li>
-        <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary)] mobile-link"></a></li>
-        <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)] mobile-link"></a></li>
-        <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)] mobile-link"></a></li>
-        <li><a href="#contact" class="btn mt-4" data-i18n="ctaQuote"></a></li>
-      </ul>
-    </div>
+    <a href="#contact" class="btn" data-i18n="ctaQuote"></a>
   </nav>
 </header>
 
+<!-- ========== HERO ========== -->
 <section class="hero" id="home" role="banner">
-  <div class="hero-video-container">
-    <iframe 
-      src="https://www.youtube.com/embed/pZPI3jQ_8-U?autoplay=1&loop=1&mute=1&controls=0&playlist=pZPI3jQ_8-U&vq=hd1080" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-  </div>
   <div class="hero-content">
     <img src="images/logo-transparent.png" class="w-72 sm:w-96 mb-8 drop-shadow-lg" alt="Oceanside Stucco logo">
     <h1 class="text-4xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.5rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
@@ -279,6 +188,7 @@
   </div>
 </section>
   
+<!-- ========== PRODUCTS ========== -->
 <section id="products">
   <h2 class="sec-title" data-i18n="productsTitle"></h2>
   <p class="sec-desc" data-i18n="productsDesc"></p>
@@ -307,6 +217,7 @@
   </div>
 </section>
   
+<!-- ========== VIDEO INTRO ========== -->
 <section id="video" class="py-20 bg-neutral-50">
   <div class="mx-auto max-w-5xl rounded-2xl overflow-hidden shadow-xl aspect-video">
     <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
@@ -314,34 +225,36 @@
   </div>
 </section>
   
+<!-- ========== SERVICES (original) ========== -->
 <section id="services" class="bg-[var(--gray)]">
   <h2 class="sec-title" data-i18n="servicesTitle"></h2>
   <p class="sec-desc" data-i18n="servicesDesc"></p>
 
   <div class="cards">
     <div class="card bg-white">
-      <img src="images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Camión de entrega en icono vectorial.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv1"></h3>
       <p class="text-sm mt-2" data-i18n="srv1d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Soporte técnico en ícono digital.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv2"></h3>
       <p class="text-sm mt-2" data-i18n="srv2d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Abierto para Todos.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv3"></h3>
       <p class="text-sm mt-2" data-i18n="srv3d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Icono minimalista de montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv4"></h3>
       <p class="text-sm mt-2" data-i18n="srv4d"></p>
     </div>
   </div>
 </section>
 
+<!-- ========== ABOUT 2 (detallado) ========== -->
 <section class="section" id="about-extra">
   <div class="about">
     <img src="images/warehouse.png" alt="Warehouse" loading="lazy">
@@ -354,6 +267,7 @@
   </div>
 </section>
 
+<!-- ========== CTA BANNER ========== -->
 <section class="banner">
   <div class="banner-content">
       <h2 data-i18n="ctaBannerH"></h2>
@@ -361,12 +275,14 @@
   </div>
 </section>
 
+<!-- ========== COTIZADOR BUTTON ========== -->
 <section class="text-center" style="padding: 3rem 1rem;">
     <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
         <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
     </button>
 </section>
 
+<!-- ========== GALLERY ========== -->
 <section id="gallery">
   <h2 class="sec-title" data-i18n="galleryTitle"></h2>
   <p class="sec-desc" data-i18n="galleryDesc"></p>
@@ -380,6 +296,7 @@
   </div>
 </section>
 
+<!-- ========== FAQ ========== -->
 <section id="faq" class="bg-[var(--gray)]">
   <h2 class="sec-title" data-i18n="faqTitle"></h2>
   <div class="max-w-3xl mx-auto">
@@ -402,6 +319,7 @@
   </div>
 </section>
 
+<!-- ========== CONTACT ========== -->
 <section id="contact" class="py-14">
     <div class="max-w-7xl mx-auto grid gap-12 md:grid-cols-2 items-start">
       <div>
@@ -425,6 +343,7 @@
     </div>
   </section>
 
+<!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-grid">
     <div class="footer-map">
@@ -445,14 +364,11 @@
       <p class="flex items-center gap-1 text-slate-400"><i data-lucide="phone" width="16"></i> 929-504-0773</p>
       <p class="flex items-center gap-1 text-slate-400"><i data-lucide="mail" width="16"></i> info@oceansidestucco.com</p>
       <div class="footer-social">
-        <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0UX2wJq1cRBxDccZTD1VdUWT6Hb2j6wyC9cLqgTRoeoZELzK8dA7YoFz7aCFCJAabl&id=61573814677661" target="_blank" aria-label="Facebook">
+        <a href="#" target="_blank" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.595 0 0 .593 0 1.326v21.348C0 23.407.595 24 1.325 24h11.49v-9.294H9.692V11.08h3.123V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.762v2.31h3.59l-.467 3.626h-3.123V24h6.116C23.405 24 24 23.407 24 22.674V1.326C24 .593 23.405 0 22.675 0z"/></svg>
         </a>
-        <a href="https://www.instagram.com/oceansidestuccosupply/" target="_blank" aria-label="Instagram">
+        <a href="#" target="_blank" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9zm0 2h9A3.5 3.5 0 0 1 20 7.5v9A3.5 3.5 0 0 1 16.5 20h-9A3.5 3.5 0 0 1 4 16.5v-9A3.5 3.5 0 0 1 7.5 4zm9.8 1.7a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@oceansidestuccosupply" target="_blank" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.305a6.153 6.153 0 0 1-4.286-1.734V14.4a6.665 6.665 0 1 1-7.014-6.638v3.35a3.322 3.322 0 1 0 3.335 3.288V0h3.332a2.88 2.88 0 0 0 2.863 2.537h1.77v3.35z"/></svg>
         </a>
       </div>
     </div>
@@ -461,8 +377,10 @@
   <p class="text-center text-slate-500 text-sm" data-i18n="copyright"></p>
 </footer>
 
+<!-- ========== LIGHTBOX ========== -->
 <div class="lightbox" id="lightbox"><img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Project image"></div>
 
+<!-- ========== MODAL COTIZADOR ========== -->
 <div id="cotizadorModal" class="modal-cotizador">
   <div id="cotizadorContent" class="cotizador-content p-4 sm:p-6">
     <div class="cotizador-header-footer">
@@ -494,29 +412,37 @@
   </div>
 </div>
 
+<!-- ========== FLOATING BTNS & RADIO PLAYER ========== -->
 <button class="top-btn floating-btn" id="topBtn" title="Go to top"><i data-lucide="arrow-up" color="#fff" width="24"></i></button>
 <a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp">
     <img src="images/whatsapp.png" alt="WhatsApp" width="28" height="28">
 </a>
-<img id="radioBtn" src="images/radio.png" alt="Radio" />
+<button class="radio-btn-container floating-btn" id="radioBtnContainer" title="Open Radio Player">
+    <img src="images/regalo.png" alt="Abrir Radio Regalo" width="40">
+</button>
 <button class="lang-btn floating-btn" id="langBtn" title="Change language">EN</button>
 
-<div id="radioModal" class="radio-modal hidden">
+<div id="radioModal" class="radio-modal">
     <div class="radio-header">
       <span id="stationName" class="title">Cargando…</span>
-      <button id="radioClose" title="Cerrar">✕</button>
+      <div class="radio-header-buttons">
+          <button id="radioMinimize" title="Minimizar"><i data-lucide="chevrons-down-up" width="18"></i></button>
+          <button id="radioClose" title="Cerrar"><i data-lucide="x" width="18"></i></button>
+      </div>
     </div>
-    <div class="radio-controls">
-      <button id="radioPrev" title="Anterior">⏮</button>
-      <button id="radioPlay" title="Play/Pause" class="active">⏸</button>
-      <button id="radioNext" title="Siguiente">⏭</button>
-      <button id="radioMute" title="Silenciar">🔊</button>
-    </div>
-    <div class="radio-volume">
-      <input type="range" id="radioVolume" min="0" max="1" step="0.01" value="0.6">
+    <div class="radio-body">
+        <div class="radio-controls">
+          <button id="radioPrev" title="Anterior"><i data-lucide="skip-back" width="20"></i></button>
+          <button id="radioPlay" title="Play/Pause" class="active"><i data-lucide="pause" width="20"></i></button>
+          <button id="radioNext" title="Siguiente"><i data-lucide="skip-forward" width="20"></i></button>
+          <button id="radioMute" title="Silenciar"><i data-lucide="volume-2" width="20"></i></button>
+        </div>
+        <div class="radio-volume">
+          <input type="range" id="radioVolume" min="0" max="1" step="0.01" value="0.6">
+        </div>
     </div>
 </div>
-<audio id="radioAudio" preload="none" loop></audio>
+<audio id="radioAudio" preload="none"></audio>
 
 
 <script>
@@ -631,21 +557,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
     langBtn.onclick = () => { lang = lang === 'es' ? 'en' : 'es'; translate(); };
-
-    /* ===== MOBILE MENU ===== */
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    if(mobileMenuBtn && mobileNav) {
-        mobileMenuBtn.onclick = () => {
-            mobileNav.classList.toggle('active');
-        }
-        mobileLinks.forEach(link => {
-            link.onclick = () => {
-                mobileNav.classList.remove('active');
-            }
-        })
-    }
 
     /* ===== LIGHTBOX ===== */
     const lb = document.getElementById('lightbox');
@@ -768,102 +679,81 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* ===== RADIO PLAYER (versión simplificada) ===== */
+    /* ===== RADIO PLAYER ===== */
     const stations = [
-        { name: 'SomaFM: Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
-        { name: 'SomaFM: Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
-        { name: 'Radio Paradise', url: 'https://stream.radioparadise.com/mp3-128' },
-        { name: 'SomaFM: Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
-        { name: 'SomaFM: Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
-        { name: 'SomaFM: Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
-        { name: 'SomaFM: Beat Blender', url: 'https://ice3.somafm.com/beatblender-128-mp3' },
-        { name: 'SomaFM: Sonic Universe', url: 'https://ice1.somafm.com/sonicuniverse-128-mp3' },
-        { name: 'SomaFM: Covers', url: 'https://ice2.somafm.com/covers-128-mp3' },
+        { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
+        { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
+        { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' },
+        { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
+        { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
+        { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
     ];
-    let current = 0;
-    const radioBtn = document.getElementById('radioBtn');
+    let currentStation = 0;
+    const radioBtnContainer = document.getElementById('radioBtnContainer');
     const radioModal = document.getElementById('radioModal');
-    const stationName = document.getElementById('stationName');
+    const stationNameEl = document.getElementById('stationName');
     const radioAudio = document.getElementById('radioAudio');
-    const btnClose = document.getElementById('radioClose');
+    const btnCloseRadio = document.getElementById('radioClose');
+    const btnMinimizeRadio = document.getElementById('radioMinimize');
     const btnPrev = document.getElementById('radioPrev');
     const btnPlay = document.getElementById('radioPlay');
     const btnNext = document.getElementById('radioNext');
     const btnMute = document.getElementById('radioMute');
     const volSlider = document.getElementById('radioVolume');
 
-    radioBtn.addEventListener('click', () => {
-      radioModal.classList.toggle('hidden');
-      if (!radioModal.classList.contains('hidden') && !radioAudio.src) {
-        loadStation(current);
-      } else if(radioAudio.src && radioAudio.paused){
-        radioAudio.play();
-      }
-    });
-
-    btnClose.addEventListener('click', () => {
-      radioModal.classList.add('hidden');
-      radioAudio.pause();
-    });
-
     function loadStation(idx) {
-      current = idx;
-      stationName.textContent = stations[idx].name;
-      radioAudio.src = stations[idx].url;
-      radioAudio.load();
-      const playPromise = radioAudio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error("Autoplay was prevented:", error);
-        });
-      }
+        currentStation = idx;
+        stationNameEl.textContent = stations[idx].name;
+        radioAudio.src = stations[idx].url;
+        radioAudio.load();
+        radioAudio.play().catch(e => console.error("Radio play failed:", e));
     }
-
-    function togglePlay() {
-      if (radioAudio.paused) {
-        const playPromise = radioAudio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(error => console.error("Play was prevented:", error));
-        }
-      } else {
-        radioAudio.pause();
-      }
-    }
-    btnPlay.addEventListener('click', togglePlay);
 
     function updatePlayBtn() {
-      if (radioAudio.paused) {
-        btnPlay.textContent = '▶️';
-        btnPlay.classList.remove('active');
-        radioBtn.classList.remove('glowing');
-      } else {
-        btnPlay.textContent = '⏸';
-        btnPlay.classList.add('active');
-        radioBtn.classList.add('glowing');
-      }
+        btnPlay.innerHTML = radioAudio.paused ? '<i data-lucide="play" width="20"></i>' : '<i data-lucide="pause" width="20"></i>';
+        btnPlay.classList.toggle('active', !radioAudio.paused);
+        lucide.createIcons();
     }
-    radioAudio.addEventListener('play', updatePlayBtn);
-    radioAudio.addEventListener('pause', updatePlayBtn);
-
-    btnPrev.addEventListener('click', () => loadStation((current - 1 + stations.length) % stations.length));
-    btnNext.addEventListener('click', () => loadStation((current + 1) % stations.length));
-    radioAudio.addEventListener('ended', () => loadStation((current + 1) % stations.length));
-
-    btnMute.addEventListener('click', () => {
-      radioAudio.muted = !radioAudio.muted;
-      btnMute.textContent = radioAudio.muted ? '🔇' : '🔊';
-    });
-
-    volSlider.addEventListener('input', () => {
-      radioAudio.muted = false;
-      radioAudio.volume = volSlider.value;
-      btnMute.textContent = '🔊';
-    });
-
+    
+    function updateMuteBtn() {
+        btnMute.innerHTML = radioAudio.muted || radioAudio.volume === 0 ? '<i data-lucide="volume-x" width="20"></i>' : '<i data-lucide="volume-2" width="20"></i>';
+        lucide.createIcons();
+    }
+    
+    if(radioBtnContainer) {
+        radioBtnContainer.onclick = () => {
+            radioModal.classList.add('visible');
+            if (!radioAudio.src) {
+                 loadStation(currentStation);
+            }
+        };
+    }
+    if(btnCloseRadio) btnCloseRadio.onclick = () => radioModal.classList.remove('visible');
+    if(btnMinimizeRadio) {
+        btnMinimizeRadio.onclick = () => {
+            radioModal.classList.toggle('minimized');
+            const icon = radioModal.classList.contains('minimized') ? 'chevrons-up-down' : 'chevrons-down-up';
+            btnMinimizeRadio.innerHTML = `<i data-lucide="${icon}" width="18"></i>`;
+            lucide.createIcons();
+        };
+    }
+    if(btnPlay) btnPlay.onclick = () => radioAudio.paused ? radioAudio.play() : radioAudio.pause();
+    if(radioAudio){ radioAudio.onplay = radioAudio.onpause = updatePlayBtn; }
+    if(btnPrev) btnPrev.onclick = () => loadStation((currentStation - 1 + stations.length) % stations.length);
+    if(btnNext) btnNext.onclick = () => loadStation((currentStation + 1) % stations.length);
+    if(btnMute) btnMute.onclick = () => { radioAudio.muted = !radioAudio.muted; updateMuteBtn(); };
+    if(volSlider) volSlider.oninput = () => {
+        radioAudio.volume = volSlider.value;
+        radioAudio.muted = volSlider.value == 0;
+        updateMuteBtn();
+    };
+    if (radioAudio) radioAudio.onvolumechange = updateMuteBtn;
+    
     /* ===== INITIALIZE ===== */
     translate();
     cargarTablaCotizador();
     if (volSlider) radioAudio.volume = volSlider.value;
+    updateMuteBtn();
     updatePlayBtn();
 });
 </script>
