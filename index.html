@@ -811,18 +811,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ===== RADIO PLAYER ===== */
     const stations = [
+        // USA
+        { name: 'Classic Rock Florida', url: 'https://stream.revma.cv-cdn.net/4474kvmkdm8uv' },
+        { name: 'Country Hits Radio', url: 'https://media-ice.musicradio.com/CountryHitsRadio' },
+        { name: 'SomaFM: Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
+        { name: 'SomaFM: Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
+        { name: 'Radio Paradise', url: 'https://stream.radioparadise.com/mp3-128' },
+        // Mexico
         { name: 'La Z 107.3 FM - CDMX', url: 'https://ice.zradio.com.mx/laz' },
         { name: 'EXA FM 104.9 - CDMX', url: 'https://live.exa.gpromocion.com/mp3' },
         { name: 'La Ke Buena 92.9 FM - CDMX', url: 'https://kebuenacdmx.stream.flumotion.com/kebuenacdmx/kebuenacdmx.mp3' },
         { name: 'Amor 95.3 FM - CDMX', url: 'https://amor953.radioca.st/stream' },
-        { name: 'Classic Rock 101 - USA', url: 'http://ice64.securenetsystems.net/KLDE' },
-        { name: 'Country Hits Radio - USA', url: 'https://media-ice.musicradio.com/CountryHitsRadio' },
-        { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
-        { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
-        { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' },
-        { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
-        { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
-        { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
+        // Colombia
+        { name: 'La Mega - Bogotá', url: 'https://stream.rcnradio.com/lamegabogota' },
+        { name: 'W Radio - Bogotá', url: 'https://live.wradio.com.co/directo/WRADIO_A.mp3' },
+        // Spain
+        { name: 'Rock FM', url: 'https://flucast-b02-01.flumotion.com/cope/rockfm.mp3' },
+        { name: 'Los 40 Classic', url: 'https://live.los40.com/los40-classic_d' },
     ];
     let currentStation = 0;
     const radioBtnContainer = document.getElementById('radioBtnContainer');
@@ -842,8 +847,16 @@ document.addEventListener('DOMContentLoaded', () => {
         stationNameEl.textContent = stations[idx].name;
         radioAudio.src = stations[idx].url;
         radioAudio.load();
-        radioAudio.play().catch(e => console.error("Radio play failed:", e));
+        radioAudio.play().catch(e => {
+            console.warn(`Error playing ${stations[idx].name}:`, e);
+            radioAudio.dispatchEvent(new Event('error'));
+        });
     }
+    
+    radioAudio.addEventListener('error', () => {
+        console.warn(`Error loading station: ${stations[currentStation].name}. Trying next one.`);
+        loadStation((currentStation + 1) % stations.length);
+    });
 
     function updatePlayBtn() {
         btnPlay.innerHTML = radioAudio.paused ? '<i data-lucide="play" width="20"></i>' : '<i data-lucide="pause" width="20"></i>';
