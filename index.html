@@ -82,7 +82,7 @@
         transform: translate(-50%, -50%);
     }
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
-    .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center}
+    .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center; justify-content: center;}
     
     /* ===== GRID CARDS ===== */
     .cards{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
@@ -251,17 +251,17 @@
       allowfullscreen>
     </iframe>
   </div>
-  <div class="hero-content pt-24 pb-12">
-    <img src="images/logo-transparent.png" class="w-64 sm:w-80 mb-6 drop-shadow-lg" alt="Oceanside Stucco logo">
-    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.5rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
-    <p class="mb-8 text-lg sm:text-xl" data-i18n="heroP" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"></p>
+  <div class="hero-content">
+    <img src="images/logo-transparent.png" class="w-48 sm:w-80 mb-4 drop-shadow-lg" alt="Oceanside Stucco logo">
+    <h1 class="text-3xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.5rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
+    <p class="mb-6 text-lg sm:text-xl" data-i18n="heroP" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"></p>
 
-    <div class="flex flex-col gap-2 font-medium my-6 text-lg">
+    <div class="flex flex-col gap-2 font-medium my-4 text-lg">
       <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="23"></i> <strong>929-504-0773</strong></span>
       <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 flex-wrap">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 flex-wrap">
       <a href="#contact" class="btn" data-i18n="ctaHero"></a>
       <a href="https://wa.me/19295040773" target="_blank" class="btn" style="background-color: #25D366;" data-i18n="ctaWa"></a>
       <a href="#video" class="btn-primary" data-i18n="ctaVideo"></a>
@@ -313,22 +313,22 @@
 
   <div class="cards">
     <div class="card bg-white">
-      <img src="images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Camión de entrega en icono vectorial.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv1"></h3>
       <p class="text-sm mt-2" data-i18n="srv1d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Soporte técnico en ícono digital.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv2"></h3>
       <p class="text-sm mt-2" data-i18n="srv2d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Abierto para Todos.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv3"></h3>
       <p class="text-sm mt-2" data-i18n="srv3d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="images/Icono minimalista de montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv4"></h3>
       <p class="text-sm mt-2" data-i18n="srv4d"></p>
     </div>
