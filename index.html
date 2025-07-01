@@ -139,16 +139,20 @@
                       cursor:pointer;z-index:80; display:flex; align-items:center; justify-content:center;}
     .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
     .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
-    .radio-btn-container { 
-        bottom: 22px; 
-        left: 22px; 
-        width:52px; 
-        height: 52px; 
-        padding: 0;
-        overflow: hidden;
-    }
-    .radio-btn-container img {
+    #radioBtnIcon {
+        position: fixed;
+        bottom: 22px;
+        left: 22px;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        z-index: 80;
         border-radius: 0;
+        animation: blue-glow 2s infinite alternate;
+        transition: transform 0.2s ease;
+    }
+    #radioBtnIcon:hover {
+        transform: scale(1.1);
     }
     .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
              display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none;}
@@ -183,6 +187,15 @@
     .radio-volume input[type=range] { width: 100%; height: 5px; background: #555; border-radius: 5px; outline: none; cursor: pointer; -webkit-appearance: none; }
     .radio-volume input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: #D81B60; border-radius: 50%; cursor: pointer; border: 2px solid #222; }
     .radio-modal.minimized .radio-body { max-height: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
+
+    @keyframes blue-glow {
+      from {
+        filter: drop-shadow(0 0 5px rgba(30, 136, 229, 0.6)) drop-shadow(0 0 10px rgba(30, 136, 229, 0.4));
+      }
+      to {
+        filter: drop-shadow(0 0 10px rgba(30, 136, 229, 1)) drop-shadow(0 0 20px rgba(30, 136, 229, 0.8));
+      }
+    }
 
   </style>
 </head>
@@ -465,9 +478,7 @@
 <a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp">
     <img src="images/whatsapp.png" alt="WhatsApp" width="28" height="28">
 </a>
-<button class="radio-btn-container floating-btn" id="radioBtnContainer" title="Open Radio Player">
-    <img src="images/radio.png" alt="Abrir Radio" class="h-full w-full object-cover">
-</button>
+<img src="images/radio.png" id="radioBtnIcon" alt="Abrir Radio" title="Abrir Radio">
 <button class="lang-btn floating-btn" id="langBtn" title="Change language">EN</button>
 
 <div id="radioModal" class="radio-modal">
@@ -737,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
     ];
     let currentStation = 0;
-    const radioBtnContainer = document.getElementById('radioBtnContainer');
+    const radioBtnIcon = document.getElementById('radioBtnIcon');
     const radioModal = document.getElementById('radioModal');
     const stationNameEl = document.getElementById('stationName');
     const radioAudio = document.getElementById('radioAudio');
@@ -768,8 +779,8 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
     
-    if(radioBtnContainer) {
-        radioBtnContainer.onclick = () => {
+    if(radioBtnIcon) {
+        radioBtnIcon.onclick = () => {
             radioModal.classList.add('visible');
             if (!radioAudio.src) {
                  loadStation(currentStation);
