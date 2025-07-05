@@ -8,18 +8,18 @@
   <meta name="description" data-i18n="metaDesc" content="Materiales de estuco y sistemas EIFS certificados. Entrega el mismo día en el área Tri‑State. Cotiza gratis ahora.">
   <meta property="og:title" content="Oceanside Stucco Supply">
   <meta property="og:description" content="Quality stucco & EIFS systems. Same‑day delivery across the Tri‑State area.">
-  <meta property="og:image" content="images/gif/Application.gif">
+  <meta property="og:image" content="https://nucleocolectivo.github.io/Oceanside/images/gif/Application.gif">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
   <meta property="og:locale:alternate" content="en_US">
 
-  <link rel="icon" type="image/png" href="images/logo-main.png">
+  <link rel="icon" type="image/png" href="https://nucleocolectivo.github.io/Oceanside/images/logo-main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Tailwind is used in the user's provided design -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -34,7 +34,7 @@
 
     /* ===== LAYOUT ===== */
     section{padding:5rem 1.25rem;margin:auto;max-width:1280px}
-    .sec-title,.section-title{text-align:center;font-size:2.1rem;font-weight:700;margin-bottom:1.8rem}
+    .sec-title,.section-title{text-align:center;font-size:clamp(1.8rem, 5vw, 2.5rem);font-weight:700;margin-bottom:1.8rem}
     .sec-desc{text-align:center;max-width:700px;margin:0 auto 3rem;color:#475569}
 
     /* ===== VIDEO RESPONSIVE (fallback) ===== */
@@ -45,20 +45,21 @@
     header{position:fixed;top:0;inset-inline:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 2px 6px rgba(0,0,0,.05)}
     nav ul{ list-style: none; padding: 0; margin: 0;}
     nav a:hover{color:var(--primary)}
-    .btn,.btn-primary{background:var(--primary);color:#fff;padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.15);transition:transform .25s, box-shadow .25s}
+    .btn,.btn-primary{background:var(--primary);color:#fff;padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.15);transition:transform .25s, box-shadow .25s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;}
     .btn:hover,.btn-primary:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(0,0,0,.2)}
-    .btn-primary{background:#fff;color:var(--primary)}
+    .btn-primary{background:#fff;color:var(--primary); border: 1px solid var(--primary);}
     
     /* ===== HERO ===== */
     .hero {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         position: relative;
         overflow: hidden;
-        padding: 0;
+        padding: 8rem 0;
         width: 100%;
         max-width: 100vw;
     }
@@ -77,7 +78,7 @@
         left: 50%;
         width: 100vw;
         height: 56.25vw; /* 16:9 Aspect Ratio */
-        min-height: 100vh;
+        min-height: 100%;
         min-width: 177.77vh; /* 16:9 Aspect Ratio */
         transform: translate(-50%, -50%);
     }
@@ -91,7 +92,7 @@
     .card:hover{transform:translateY(-6px)}
 
     /* ===== ABOUT ===== */
-    .about{display:grid;gap:2.5rem;grid-template-columns:450px 1fr;align-items:center}
+    .about{display:grid;gap:2.5rem;grid-template-columns:minmax(300px, 450px) 1fr;align-items:center}
     @media(max-width:900px){.about{grid-template-columns:1fr}.about img{order:-1}}
     .about img{box-shadow:0 6px 20px rgba(0,0,0,.08)}
     .about .text h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}
@@ -102,12 +103,12 @@
     .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s; width: 100%;}
     .gallery img:hover{transform:scale(1.05)}
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
-              transition:.3s;z-index:1100}
+             transition:.3s;z-index:1100}
     .lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:90%; border-radius: 1rem;}
 
     /* ===== BANNER CTA ===== */
     .banner{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);color:#fff;padding:4rem 1rem;
-            text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem}
+            text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem; border-radius: var(--radius);}
     .banner h2{font-size:1.8rem;font-weight:700;margin-bottom:1.3rem}
 
     /* ===== CONTACT ===== */
@@ -116,7 +117,7 @@
     .contact-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.05);}
     .contact-grid input,.contact-grid textarea{width:100%;padding:.8rem 1rem;border:2px solid #E2E8F0;border-radius:.75rem; box-sizing: border-box;}
     .contact-grid input:focus,.contact-grid textarea:focus{border-color:var(--primary);outline:none;
-                                                           box-shadow:0 0 0 2px rgba(30,136,229,.25)}
+                                                            box-shadow:0 0 0 2px rgba(30,136,229,.25)}
 
     /* ===== FOOTER ===== */
     footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
@@ -128,14 +129,15 @@
     /* ===== SOCIAL BUTTONS (footer) ===== */
     .footer-social{display:flex;gap:.8rem;margin-top:.8rem}
     .footer-social a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;
-                     background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
-                     color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
+                      background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
+                      color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
     .footer-social a:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
     .footer-social svg{width:22px;height:22px}
 
     /* ===== FLOATING BTNS ===== */
     .floating-btn{position:fixed;border:none;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25);
-                      cursor:pointer;z-index:80; display:flex; align-items:center; justify-content:center;}
+                   cursor:pointer;z-index:1200; display:flex; align-items:center; justify-content:center; transition: transform 0.2s;}
+    .floating-btn:hover{transform: scale(1.1);}
     .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
     .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
     #radioBtnIcon {
@@ -145,7 +147,7 @@
         width: 60px;
         height: 60px;
         cursor: pointer;
-        z-index: 80;
+        z-index: 1200;
         border-radius: 0;
         animation: blue-glow 2s infinite alternate;
         transition: transform 0.2s ease;
@@ -154,10 +156,10 @@
         transform: scale(1.1);
     }
     .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
-             display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none;}
+             display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none; z-index: 1200;}
 
     /* ===== MODAL COTIZADOR & LEGAL ===== */
-    .modal-cotizador, .legal-modal { position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-cotizador, .legal-modal { position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
     .modal-cotizador.active, .legal-modal.active { display: flex; }
     .cotizador-content, .legal-content { background: white; max-width: 800px; width: 100%; border-radius: 1rem; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
     .cotizador-header-footer, .legal-header, .legal-footer { padding: 1rem 1.5rem; flex-shrink: 0; }
@@ -173,7 +175,7 @@
 
 
     /* ===== RADIO PLAYER ===== */
-    .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
+    .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1200; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
     .radio-modal.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto;}
     .radio-header { background: var(--primary); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
     .radio-header .title { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; margin-right: 10px;}
@@ -203,7 +205,7 @@
 </head>
 <body>
 <!-- ========== NAV ========= -->
-<header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur shadow">
+<header class="fixed top-0 inset-x-0 z-50">
   <nav class="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 py-3 font-[Montserrat]">
     <!-- Brand -->
     <a href="#home" class="font-bold text-lg whitespace-nowrap" data-i18n="brand">
@@ -247,7 +249,7 @@
 <section class="hero" id="home" role="banner">
   <div class="hero-video-container">
     <iframe 
-      src="https://www.youtube.com/embed/pZPI3jQ_8-U?autoplay=1&loop=1&mute=1&controls=0&playlist=pZPI3jQ_8-U&vq=hd1080" 
+      src="https://www.youtube.com/embed/dypSooVjt4I?autoplay=1&loop=1&mute=1&controls=0&playlist=dypSooVjt4I&vq=hd1080" 
       title="YouTube video player" 
       frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -255,47 +257,51 @@
     </iframe>
   </div>
   <div class="hero-content">
-    <img src="images/logo-transparent.png" class="w-48 sm:w-80 mb-4 drop-shadow-lg" alt="Oceanside Stucco logo">
-    <h1 class="text-3xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.5rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
-    <p class="mb-6 text-lg sm:text-xl" data-i18n="heroP" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"></p>
-
-    <div class="flex flex-col gap-2 font-medium my-4 text-lg">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/logo-transparent.png" class="w-60 sm:w-[25rem] mb-4 drop-shadow-lg" alt="Oceanside Stucco logo" onerror="this.onerror=null;this.src='https://placehold.co/320x150/FFFFFF/000000?text=Logo+Not+Found';">
+    <h1 class="text-3xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2.5rem, 6vw, 4.2rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
+    
+    <div class="flex flex-col gap-3 my-4 text-lg">
       <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="23"></i> <strong>929-504-0773</strong></span>
-      <span class="flex items-center justify-center gap-2"><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
+      <span class="flex items-center justify-center gap-2 text-xl"><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
     </div>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 flex-wrap">
-      <a href="#contact" class="btn" data-i18n="ctaHero"></a>
-      <a href="https://wa.me/19295040773" target="_blank" class="btn" style="background-color: #25D366;" data-i18n="ctaWa"></a>
-      <a href="#video" class="btn-primary" data-i18n="ctaVideo"></a>
+       <a href="https://wa.me/19295040773" target="_blank" class="btn text-[1.2rem]" style="background-color: #25D366;" data-i18n="ctaWa"></a>
+      <a href="#contact" class="btn-primary text-[1.2rem]" data-i18n="ctaHero"></a>
+      <a href="#video" class="btn-primary text-[1.2rem]" data-i18n="ctaVideo"></a>
     </div>
   </div>
 </section>
+
+<!-- ========== HERO DESCRIPTION (MOVED) ========== -->
+<section class="py-12 text-center" style="padding-bottom: 2rem;">
+  <p class="max-w-3xl mx-auto text-lg text-slate-800" data-i18n="heroP"></p>
+</section>
   
 <!-- ========== PRODUCTS ========== -->
-<section id="products">
+<section id="products" style="padding-top: 2rem;">
   <h2 class="sec-title" data-i18n="productsTitle"></h2>
   <p class="sec-desc" data-i18n="productsDesc"></p>
 
   <div class="cards">
     <div class="card">
-      <img src="images/Sistema de Estuco y EIFS.png" alt="Stucco & EIFS Systems" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Sistema%20de%20Estuco%20y%20EIFS.png" alt="Stucco & EIFS Systems" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod1"></h3>
     </div>
     <div class="card">
-      <img src="images/Rodillo de pintura sobre fondo azul.png" alt="Base & Finish Coats" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Rodillo%20de%20pintura%20sobre%20fondo%20azul.png" alt="Base & Finish Coats" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod2"></h3>
     </div>
     <div class="card">
-      <img src="images/Icono de adhesivo.png" alt="Mesh & Adhesives" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Icono%20de%20adhesivo.png" alt="Mesh & Adhesives" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod3"></h3>
     </div>
     <div class="card">
-      <img src="images/Pila de aislamiento en gradiente azul.png" alt="Insulation Boards" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Pila%20de%20aislamiento%20en%20gradiente%20azul.png" alt="Insulation Boards" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod4"></h3>
     </div>
     <div class="card">
-      <img src="images/Iconos de Herramientas.png" alt="Tools & Accessories" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Iconos%20de%20Herramientas.png" alt="Tools & Accessories" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="prod5"></h3>
     </div>
   </div>
@@ -316,22 +322,22 @@
 
   <div class="cards">
     <div class="card bg-white">
-      <img src="images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv1"></h3>
       <p class="text-sm mt-2" data-i18n="srv1d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv2"></h3>
       <p class="text-sm mt-2" data-i18n="srv2d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv3"></h3>
       <p class="text-sm mt-2" data-i18n="srv3d"></p>
     </div>
     <div class="card bg-white">
-      <img src="images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
       <h3 class="font-semibold" data-i18n="srv4"></h3>
       <p class="text-sm mt-2" data-i18n="srv4d"></p>
     </div>
@@ -341,12 +347,12 @@
 <!-- ========== ABOUT 2 (detallado) ========== -->
 <section class="section" id="about-extra">
   <div class="about">
-    <img src="images/warehouse.png" alt="Warehouse" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/warehouse.png" alt="Warehouse" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
     <div class="text">
       <h2 data-i18n="about2Subtitle"></h2>
       <p data-i18n="about2P1"></p>
       <p data-i18n="about2P2"></p>
-      <a href="#contact" class="btn-primary" data-i18n="about2Btn" style="display: inline-block; margin-top: 1rem;"></a>
+      <a href="#contact" class="btn-primary" data-i18n="about2Btn" style="margin-top: 1rem;"></a>
     </div>
   </div>
 </section>
@@ -371,12 +377,12 @@
   <h2 class="sec-title" data-i18n="galleryTitle"></h2>
   <p class="sec-desc" data-i18n="galleryDesc"></p>
   <div class="gallery">
-    <img src="images/project-1.jpg" alt="" data-i18n-alt="alt1" loading="lazy">
-    <img src="images/project-2.jpg" alt="" data-i18n-alt="alt2" loading="lazy">
-    <img src="images/project-3.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
-    <img src="images/project-7.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
-    <img src="images/project-5.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
-    <img src="images/project-6.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-1.jpg" alt="" data-i18n-alt="alt1" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-2.jpg" alt="" data-i18n-alt="alt2" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-3.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-7.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-5.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-6.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
   </div>
 </section>
 
@@ -453,7 +459,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.595 0 0 .593 0 1.326v21.348C0 23.407.595 24 1.325 24h11.49v-9.294H9.692V11.08h3.123V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.762v2.31h3.59l-.467 3.626h-3.123V24h6.116C23.405 24 24 23.407 24 22.674V1.326C24 .593 23.405 0 22.675 0z"/></svg>
         </a>
         <a href="https://www.instagram.com/oceansidestuccosupply/" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9zm0 2h9A3.5 3.5 0 0 1 20 7.5v9A3.5 3.5 0 0 1 16.5 20h-9A3.5 3.5 0 0 1 4 16.5v-9A3.5 3.5 0 0 1 7.5 4zm9.8 1.7a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9zm0 2h9A3.5 3.5 0 0 1 20 7.5v9A3.5 3.5 0 0 1 16.5 20h--9A3.5 3.5 0 0 1 4 16.5v-9A3.5 3.5 0 0 1 7.5 4zm9.8 1.7a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
         </a>
         <a href="https://www.tiktok.com/@oceansidestuccosupply" target="_blank" aria-label="TikTok">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.305a6.153 6.153 0 0 1-4.286-1.734V14.4a6.665 6.665 0 1 1-7.014-6.638v3.35a3.322 3.322 0 1 0 3.335 3.288V0h3.332a2.88 2.88 0 0 0 2.863 2.537h1.77v3.35z"/></svg>
@@ -517,10 +523,10 @@
         <span class="text-xl font-bold text-[var(--primary)]">USD <span id="total-usd">0.00</span></span>
       </div>
       <div class="flex flex-col sm:flex-row gap-3">
-        <button id="sendQuoteWhatsApp" class="btn w-full flex items-center justify-center gap-2" style="background: var(--primary); color: white;">
+        <button id="sendQuoteWhatsApp" class="btn w-full" style="background: var(--primary); color: white;">
           <i data-lucide="send" width="18"></i> <span class="es">Pedir por WhatsApp</span><span class="en">Order via WhatsApp</span>
         </button>
-        <button onclick="window.print()" class="btn w-full flex items-center justify-center gap-2" style="background: white; color: var(--primary); border: 1px solid var(--primary)">
+        <button onclick="window.print()" class="btn-primary w-full">
            <i data-lucide="printer" width="18"></i> <span class="es">Imprimir</span><span class="en">Print</span>
         </button>
       </div>
@@ -531,9 +537,9 @@
 <!-- ========== FLOATING BTNS & RADIO PLAYER ========== -->
 <button class="top-btn floating-btn" id="topBtn" title="Go to top"><i data-lucide="arrow-up" color="#fff" width="24"></i></button>
 <a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp">
-    <img src="images/whatsapp.png" alt="WhatsApp" width="28" height="28">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/whatsapp.png" alt="WhatsApp" width="28" height="28">
 </a>
-<img src="images/radio.png" id="radioBtnIcon" alt="Abrir Radio" title="Abrir Radio">
+<img src="https://nucleocolectivo.github.io/Oceanside/images/radio.png" id="radioBtnIcon" alt="Abrir Radio" title="Abrir Radio">
 <button class="lang-btn floating-btn" id="langBtn" title="Change language">EN</button>
 
 <div id="radioModal" class="radio-modal">
@@ -566,13 +572,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let lang = 'es';
     const dict = {
         es: {
-            docTitle: 'Oceanside Stucco Supply | Materiales de Estuco & EIFS – Entrega el Mismo Día',
+            docTitle: 'Oceanside Stucco Supply | Materiales de Estuco & EIFS',
             metaDesc: 'Materiales de estuco y sistemas EIFS certificados. Entrega el mismo día en el área Tri-State. Cotiza gratis ahora.',
             brand: 'Oceanside Stucco',
             brandFull: 'Oceanside Stucco Supply',
             navProducts: 'Productos', navServices: 'Servicios', navGallery: 'Galería', navAbout: 'Sobre Nosotros',
             navFAQ: 'FAQ', navContact: 'Contacto', ctaQuote: 'Cotiza Ya',
-            heroH1: 'Materiales de Calidad. Atención Rápida. Entregas en el Mismo Día.',
+            heroH1: 'Materiales de Calidad. Atención Rápida.',
             heroBullet: 'Entrega el mismo día disponible',
             heroP: 'En Oceanside Stucco Supply ofrecemos suministros de estuco y sistemas EIFS confiables para contratistas, remodeladores y propietarios en el área Tri-State.',
             ctaHero: 'Solicita tu Cotización', ctaWa: 'WhatsApp', ctaVideo: 'Ver Video',
@@ -615,12 +621,12 @@ document.addEventListener('DOMContentLoaded', () => {
             copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. Todos los derechos reservados.`
         },
         en: {
-            docTitle: 'Oceanside Stucco Supply | Quality Stucco & EIFS – Same-Day Delivery',
+            docTitle: 'Oceanside Stucco Supply | Quality Stucco & EIFS Materials',
             metaDesc: 'Certified stucco materials & EIFS systems. Same-day delivery in the Tri-State area. Get a free quote now.',
             brand: 'Oceanside Stucco', brandFull: 'Oceanside Stucco Supply',
             navProducts: 'Products', navServices: 'Services', navGallery: 'Gallery', navAbout: 'About Us',
             navFAQ: 'FAQ', navContact: 'Contact', ctaQuote: 'Get a Quote',
-            heroH1: 'Quality Materials. Fast Service. Same-Day Delivery.',
+            heroH1: 'Quality Materials. Fast Service.',
             heroBullet: 'Same-day delivery available',
             heroP: 'At Oceanside Stucco Supply, we provide trusted stucco and EIFS systems for contractors, remodelers and property owners in the Tri-State area.',
             ctaHero: 'Request Your Quote', ctaWa: 'WhatsApp', ctaVideo: 'Watch Video',
