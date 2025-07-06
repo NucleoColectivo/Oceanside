@@ -85,11 +85,20 @@
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
     .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center; justify-content: center;}
     
+    .hero-description {
+        max-width: 750px;
+        margin: auto;
+        font-size: clamp(1.375rem, 3.75vw, 1.875rem); /* Increased by 25% */
+        line-height: 1.6;
+        color: #475569;
+        text-align: center;
+    }
+
     /* ===== GRID CARDS (NEW DESIGN) ===== */
     .cards {
         display: grid;
         gap: 1.6rem;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(224px, 1fr)); /* Card size reduced by 20% */
     }
     .card {
         padding: 0;
@@ -97,7 +106,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: flex-end; /* Aligns content to the bottom */
         aspect-ratio: 1 / 1;
         border-radius: var(--radius);
         box-shadow: 0 8px 28px rgba(0,0,0,.08);
@@ -116,7 +125,7 @@
     @media (min-width: 768px) {
         #services .cards {
             grid-template-columns: repeat(2, 1fr);
-            max-width: 800px;
+            max-width: 640px; /* Adjusted max-width */
             margin: auto;
         }
     }
@@ -137,17 +146,26 @@
     .card:hover .card-bg-image {
         transform: scale(1.15);
     }
-    .card-overlay {
-        position: relative;
+    .card::after { /* Gradient overlay for text legibility */
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
         z-index: 2;
-        background: white;
-        margin: 1rem;
-        border-radius: 0.75rem;
-        padding: 0.75rem 1rem;
+        border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .card-content { /* Changed from card-overlay */
+        position: relative;
+        z-index: 3;
+        padding: 1.25rem;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        gap: 1rem;
+        color: white;
+        margin-top: auto; /* Pushes content to the bottom */
     }
     .card-icon {
         flex-shrink: 0;
@@ -158,23 +176,23 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        border-radius: 0.5rem;
+        /* Removed background and border-radius from icon itself */
     }
     .card-text {
       text-align: left;
     }
     .card-text h3 {
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: #151924;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #fff;
         margin: 0;
-        line-height: 1.25;
+        line-height: 1.3;
     }
     .card-text p {
-        font-size: 0.75rem;
-        color: #475569;
-        margin-top: 0.1rem;
-        line-height: 1.3;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.85);
+        margin-top: 0.25rem;
+        line-height: 1.4;
     }
 
 
@@ -190,12 +208,12 @@
     .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s; width: 100%; border-radius: var(--radius);}
     .gallery img:hover{transform:scale(1.05)}
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
-             transition:.3s;z-index:1100}
+        transition:.3s;z-index:1100}
     .lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:90%; border-radius: 1rem;}
 
     /* ===== BANNER CTA ===== */
     .banner{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);color:#fff;padding:4rem 1rem;
-            text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem; border-radius: var(--radius);}
+        text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem; border-radius: var(--radius);}
     .banner h2{font-size:1.8rem;font-weight:700;margin-bottom:1.3rem}
 
     /* ===== CONTACT ===== */
@@ -204,7 +222,7 @@
     .contact-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.05);}
     .contact-grid input,.contact-grid textarea{width:100%;padding:.8rem 1rem;border:2px solid #E2E8F0;border-radius:.75rem; box-sizing: border-box;}
     .contact-grid input:focus,.contact-grid textarea:focus{border-color:var(--primary);outline:none;
-                                                            box-shadow:0 0 0 2px rgba(30,136,229,.25)}
+        box-shadow:0 0 0 2px rgba(30,136,229,.25)}
 
     /* ===== FOOTER ===== */
     footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
@@ -216,14 +234,14 @@
     /* ===== SOCIAL BUTTONS (footer) ===== */
     .footer-social{display:flex;gap:.8rem;margin-top:.8rem}
     .footer-social a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;
-                      background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
-                      color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
+        background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
+        color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
     .footer-social a:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
     .footer-social svg{width:22px;height:22px}
 
     /* ===== FLOATING BTNS ===== */
     .floating-btn{position:fixed;border:none;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25);
-                   cursor:pointer;z-index:1200; display:flex; align-items:center; justify-content:center; transition: transform 0.2s;}
+        cursor:pointer;z-index:1200; display:flex; align-items:center; justify-content:center; transition: transform 0.2s;}
     .floating-btn:hover{transform: scale(1.1);}
     .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
     .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
@@ -243,7 +261,7 @@
         transform: scale(1.1);
     }
     .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
-             display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none; z-index: 1200;}
+        display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none; z-index: 1200;}
 
     /* ===== MODAL COTIZADOR & LEGAL ===== */
     .modal-cotizador, .legal-modal { position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
@@ -345,7 +363,7 @@
   </div>
   <div class="hero-content">
     <img src="https://nucleocolectivo.github.io/Oceanside/images/logo-transparent.png" class="w-48 sm:w-[20rem] mb-2 drop-shadow-lg" alt="Oceanside Stucco logo" onerror="this.onerror=null;this.src='https://placehold.co/320x150/FFFFFF/000000?text=Logo+Not+Found';">
-    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.4rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
+    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.4rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7); line-height: 1.2;"></h1>
     
     <div class="flex flex-col gap-2 my-2 text-sm">
       <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="16"></i> <strong>929-504-0773</strong></span>
@@ -362,7 +380,7 @@
 
 <!-- ========== HERO DESCRIPTION (MOVED) ========== -->
 <section class="py-12 text-center" style="padding-bottom: 2rem;">
-  <p class="max-w-3xl mx-auto text-lg text-slate-800" data-i18n="heroP"></p>
+  <div class="hero-description" data-i18n="heroP"></div>
 </section>
   
 <!-- ========== PRODUCTS ========== -->
@@ -374,7 +392,7 @@
     <!-- Card 1 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/01_Stucco%20y%20Sistemas%20EIFS.jpg" class="card-bg-image" alt="Stucco & EIFS Systems" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Sistema%20de%20Estuco%20y%20EIFS.png" alt="">
         </div>
@@ -386,7 +404,7 @@
     <!-- Card 2 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/02_revestimientos%20Base%20y%20Acabados.jpg" class="card-bg-image" alt="Base & Finish Coats" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Rodillo%20de%20pintura%20sobre%20fondo%20azul.png" alt="">
         </div>
@@ -398,7 +416,7 @@
     <!-- Card 3 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/03_Mallas%20y%20Adhesivos.jpg" class="card-bg-image" alt="Mesh & Adhesives" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Icono%20de%20adhesivo.png" alt="">
         </div>
@@ -410,7 +428,7 @@
     <!-- Card 4 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/04_Tableros%20de%20Aislamiento.jpg" class="card-bg-image" alt="Insulation Boards" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Pila%20de%20aislamiento%20en%20gradiente%20azul.png" alt="">
         </div>
@@ -422,7 +440,7 @@
     <!-- Card 5 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/05_Herramientas%20y%20Accesorios.jpg" class="card-bg-image" alt="Tools & Accessories" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Iconos%20de%20Herramientas.png" alt="">
         </div>
@@ -431,10 +449,10 @@
         </div>
       </div>
     </div>
-     <!-- Card 6 -->
+    <!-- Card 6 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/10_more.jpg" class="card-bg-image" alt="Discover Our Latest" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/mas%20productos.png" alt="">
         </div>
@@ -463,7 +481,7 @@
     <!-- Service Card 1 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/06_Entregas%20Rapidas.jpg" class="card-bg-image" alt="Fast Deliveries" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Camion.png" alt="">
         </div>
@@ -476,7 +494,7 @@
     <!-- Service Card 2 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/07_Soporte%20Tecnico.jpg" class="card-bg-image" alt="Technical Support" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Soporte.png" alt="">
         </div>
@@ -489,7 +507,7 @@
     <!-- Service Card 3 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/08_Abierto%20a%20Todos.jpg" class="card-bg-image" alt="Open to Everyone" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/Abierto.png" alt="">
         </div>
@@ -502,7 +520,7 @@
     <!-- Service Card 4 -->
     <div class="card">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/09_Mayorista%20y%20Retail.jpg" class="card-bg-image" alt="Wholesale & Retail" loading="lazy">
-      <div class="card-overlay">
+      <div class="card-content">
         <div class="card-icon">
           <img src="https://nucleocolectivo.github.io/Oceanside/images/montacargas.png" alt="">
         </div>
@@ -749,9 +767,9 @@ document.addEventListener('DOMContentLoaded', () => {
             brandFull: 'Oceanside Stucco Supply',
             navProducts: 'Productos', navServices: 'Servicios', navGallery: 'Galería', navAbout: 'Sobre Nosotros',
             navFAQ: 'FAQ', navContact: 'Contacto', ctaQuote: 'Cotiza Ya',
-            heroH1: 'Materiales de Calidad. Atención Rápida.',
+            heroH1: 'Materiales de Calidad.<br>Atención Rápida.',
             heroBullet: 'Entrega el mismo día disponible',
-            heroP: 'En Oceanside Stucco Supply ofrecemos suministros de estuco y sistemas EIFS confiables para contratistas, remodeladores y propietarios en el área Tri-State.',
+            heroP: 'En <strong style="color: #151924; font-weight: 600;">Oceanside Stucco Supply</strong> ofrecemos suministros de <span style="color: var(--primary); font-weight: 600;">estuco y sistemas EIFS</span> confiables para <strong style="color: #151924; font-weight: 600;">contratistas, remodeladores y propietarios</strong> en el área Tri-State.',
             ctaHero: 'Solicita tu Cotización', ctaWa: 'WhatsApp', ctaVideo: 'Ver Video',
             productsTitle: 'Productos Especializados',
             productsDesc: 'Ofrecemos productos duraderos y certificados para proyectos de construcción, remodelación y diseño exterior.',
@@ -798,9 +816,9 @@ document.addEventListener('DOMContentLoaded', () => {
             brand: 'Oceanside Stucco', brandFull: 'Oceanside Stucco Supply',
             navProducts: 'Products', navServices: 'Services', navGallery: 'Gallery', navAbout: 'About Us',
             navFAQ: 'FAQ', navContact: 'Contact', ctaQuote: 'Get a Quote',
-            heroH1: 'Quality Materials. Fast Service.',
+            heroH1: 'Quality Materials.<br>Fast Service.',
             heroBullet: 'Same-day delivery available',
-            heroP: 'At Oceanside Stucco Supply, we provide trusted stucco and EIFS systems for contractors, remodelers and property owners in the Tri-State area.',
+            heroP: 'At <strong style="color: #151924; font-weight: 600;">Oceanside Stucco Supply</strong>, we provide trusted <span style="color: var(--primary); font-weight: 600;">stucco and EIFS systems</span> for <strong style="color: #151924; font-weight: 600;">contractors, remodelers and property owners</strong> in the Tri-State area.',
             ctaHero: 'Request Your Quote', ctaWa: 'WhatsApp', ctaVideo: 'Watch Video',
             productsTitle: 'Specialized Products',
             productsDesc: 'Durable and certified materials for construction, remodeling and exterior finishing projects.',
@@ -839,7 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
             termsTitle: 'Terms and Conditions',
             privacyContent: `<span class="es"><h3>Recopilación de Información</h3><p>Recopilamos información personal como nombre, correo electrónico y número de teléfono cuando la proporciona voluntariamente a través de nuestros formularios de contacto o cotización. También podemos recopilar datos no personales como el tipo de navegador y el sistema operativo para mejorar nuestro sitio web.</p><h3>Uso de la Información</h3><p>La información que recopilamos se utiliza para responder a sus consultas, procesar sus pedidos y mejorar nuestros servicios. No compartiremos su información personal con terceros, excepto cuando sea necesario para cumplir con la ley.</p><h3>Seguridad</h3><p>Tomamos medidas razonables para proteger su información personal contra pérdida, robo y uso no autorizado.</p></span><span class="en"><h3>Information Collection</h3><p>We collect personal information such as name, email, and phone number when you voluntarily provide it through our contact or quote forms. We may also collect non-personal data like browser type and operating system to improve our website.</p><h3>Use of Information</h3><p>The information we collect is used to respond to your inquiries, process your orders, and improve our services. We will not share your personal information with third parties except as necessary to comply with the law.</p><h3>Security</h3><p>We take reasonable measures to protect your personal information from loss, theft, and unauthorized use.</p></span>`,
             termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><span class="en"><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
-            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. Todos los derechos reservados.`
+            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. All rights reserved.`
         }
     };
 
