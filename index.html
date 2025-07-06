@@ -89,7 +89,7 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .card {
         padding: 0;
@@ -151,14 +151,14 @@
     }
     .card-icon {
         flex-shrink: 0;
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
     }
     .card-icon img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        border-radius: 0;
+        border-radius: 0.5rem;
     }
     .card-text {
       text-align: left;
@@ -181,13 +181,13 @@
     /* ===== ABOUT ===== */
     .about{display:grid;gap:2.5rem;grid-template-columns:minmax(300px, 450px) 1fr;align-items:center}
     @media(max-width:900px){.about{grid-template-columns:1fr}.about img{order:-1}}
-    .about img{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .about img{box-shadow:0 6px 20px rgba(0,0,0,.08); border-radius: var(--radius);}
     .about .text h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}
     .about .text p{margin-bottom:1rem;color:#475569}
 
     /* ===== GALLERY ===== */
     .gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s; width: 100%;}
+    .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s; width: 100%; border-radius: var(--radius);}
     .gallery img:hover{transform:scale(1.05)}
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
              transition:.3s;z-index:1100}
@@ -764,10 +764,10 @@ document.addEventListener('DOMContentLoaded', () => {
             srv2: 'Soporte Técnico', srv2d: 'Asesoría personalizada.',
             srv3: 'Abierto a Todos', srv3d: 'Público y contratistas.',
             srv4: 'Mayorista y Retail', srv4d: 'Ventas por volumen o unidad.',
-            about2Title: 'Sobre nosotros',
-            about2Subtitle: '15 años inspirados en el acabado perfecto',
-            about2P1: 'En <strong>Stucco Supply</strong> hemos acompañado a constructores, arquitectos y diseñadores en más de <em>2,000</em> proyectos residenciales y comerciales. Somos especialistas en recubrimientos y sistemas EIFS: entendemos cada fase del proceso y garantizamos inventario Just-in-Time.',
-            about2P2: 'Trabajamos para que tu obra avance sin contratiempos: mezclas personalizadas, matching de color, soporte técnico y logística de entrega <abbr title="Delivery Just-in-Time">JIT</abbr> a pie de obra.',
+            about2Title: 'Inspirados en el acabado perfecto',
+            about2Subtitle: 'Inspirados en el acabado perfecto',
+            about2P1: 'En Stucco Supply hemos acompañado a constructores, arquitectos y diseñadores en más de 2 000 proyectos residenciales y comerciales. Somos especialistas en recubrimientos y sistemas EIFS: comprendemos cada fase del proceso y garantizamos inventario Just-in-Time.',
+            about2P2: 'Trabajamos para que tu obra avance sin contratiempos: mezclas personalizadas, matching de color, soporte técnico y logística de entrega JIT a pie de obra.',
             about2Btn: 'Hablemos',
             ctaBannerH: '¿Listo para elevar la calidad de tu proyecto?',
             ctaBannerBtn: 'Solicitar cotización',
@@ -813,10 +813,10 @@ document.addEventListener('DOMContentLoaded', () => {
             srv2: 'Technical Support', srv2d: 'Personalized assistance.',
             srv3: 'Open to Everyone', srv3d: 'Public and contractors.',
             srv4: 'Wholesale & Retail', srv4d: 'Volume or unit sales.',
-            about2Title: 'About Us',
-            about2Subtitle: '15 years inspired by the perfect finish',
-            about2P1: 'At <strong>Stucco Supply</strong> we have supported builders, architects and designers in more than <em>2,000</em> residential and commercial projects. We specialize in coatings and EIFS systems and guarantee just-in-time inventory.',
-            about2P2: 'We keep your project moving smoothly: custom mixes, color matching, on-site technical support and just-in-time delivery logistics right to the job site.',
+            about2Title: 'Inspired by the perfect finish',
+            about2Subtitle: 'Inspired by the perfect finish',
+            about2P1: 'At Stucco Supply we’ve supported builders, architects and designers in over 2,000 residential and commercial projects. We specialize in coatings and EIFS systems—understanding every step of the process and ensuring Just-in-Time inventory.',
+            about2P2: 'We keep your job on track with customized blends, color matching, technical support and on-site JIT delivery logistics',
             about2Btn: 'Let’s talk',
             ctaBannerH: 'Ready to raise the quality of your project?',
             ctaBannerBtn: 'Request a quote',
