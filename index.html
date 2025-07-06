@@ -29,7 +29,7 @@
     /* ===== BASE ===== */
     html{scroll-behavior:smooth}
     body{font-family:'Montserrat',sans-serif;color:#151924;background:#fff; margin: 0;}
-    img{display:block;max-width:100%;border-radius:var(--radius)}
+    img{display:block;max-width:100%;}
     a{text-decoration:none;color:inherit}
 
     /* ===== LAYOUT ===== */
@@ -59,7 +59,7 @@
         text-align: center;
         position: relative;
         overflow: hidden;
-        padding: 8rem 0;
+        padding: 8rem 1rem;
         width: 100%;
         max-width: 100vw;
     }
@@ -85,11 +85,98 @@
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
     .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center; justify-content: center;}
     
-    /* ===== GRID CARDS ===== */
-    .cards{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-    .card{background:#fff;padding:2.2rem 1.6rem;border-radius:var(--radius);box-shadow:0 8px 28px rgba(0,0,0,.06);
-          text-align:center;transition:transform .25s}
-    .card:hover{transform:translateY(-6px)}
+    /* ===== GRID CARDS (NEW DESIGN) ===== */
+    .cards {
+        display: grid;
+        gap: 1.6rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        aspect-ratio: 1 / 1;
+        border-radius: var(--radius);
+        box-shadow: 0 8px 28px rgba(0,0,0,.08);
+        transition: transform .3s ease;
+    }
+    @media (min-width: 1024px) {
+      #products .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+     @media (min-width: 640px) and (max-width: 1023px) {
+      #products .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 768px) {
+        #services .cards {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin: auto;
+        }
+    }
+    .card:hover {
+        transform: translateY(-8px);
+    }
+    .card-bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        border-radius: var(--radius);
+        transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card:hover .card-bg-image {
+        transform: scale(1.15);
+    }
+    .card-overlay {
+        position: relative;
+        z-index: 2;
+        background: white;
+        margin: 1rem;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .card-icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+    }
+    .card-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 0;
+    }
+    .card-text {
+      text-align: left;
+    }
+    .card-text h3 {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #151924;
+        margin: 0;
+        line-height: 1.25;
+    }
+    .card-text p {
+        font-size: 0.75rem;
+        color: #475569;
+        margin-top: 0.1rem;
+        line-height: 1.3;
+    }
+
 
     /* ===== ABOUT ===== */
     .about{display:grid;gap:2.5rem;grid-template-columns:minmax(300px, 450px) 1fr;align-items:center}
@@ -257,18 +344,18 @@
     </iframe>
   </div>
   <div class="hero-content">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/logo-transparent.png" class="w-60 sm:w-[25rem] mb-4 drop-shadow-lg" alt="Oceanside Stucco logo" onerror="this.onerror=null;this.src='https://placehold.co/320x150/FFFFFF/000000?text=Logo+Not+Found';">
-    <h1 class="text-3xl sm:text-5xl font-extrabold mb-4" data-i18n="heroH1" style="font-size: clamp(2.5rem, 6vw, 4.2rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/logo-transparent.png" class="w-48 sm:w-[20rem] mb-2 drop-shadow-lg" alt="Oceanside Stucco logo" onerror="this.onerror=null;this.src='https://placehold.co/320x150/FFFFFF/000000?text=Logo+Not+Found';">
+    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.4rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"></h1>
     
-    <div class="flex flex-col gap-3 my-4 text-lg">
-      <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="23"></i> <strong>929-504-0773</strong></span>
-      <span class="flex items-center justify-center gap-2 text-xl"><i data-lucide="check-circle" class="inline" width="32"></i> <span data-i18n="heroBullet"></span></span>
+    <div class="flex flex-col gap-2 my-2 text-sm">
+      <span class="flex items-center justify-center gap-2"><i data-lucide="phone" class="inline" width="16"></i> <strong>929-504-0773</strong></span>
+      <span class="flex items-center justify-center gap-2 text-base"><i data-lucide="check-circle" class="inline" width="22"></i> <span data-i18n="heroBullet"></span></span>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 flex-wrap">
-       <a href="https://wa.me/19295040773" target="_blank" class="btn text-[1.2rem]" style="background-color: #25D366;" data-i18n="ctaWa"></a>
-      <a href="#contact" class="btn-primary text-[1.2rem]" data-i18n="ctaHero"></a>
-      <a href="#video" class="btn-primary text-[1.2rem]" data-i18n="ctaVideo"></a>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2 flex-wrap">
+       <a href="https://wa.me/19295040773" target="_blank" class="btn text-sm" style="background-color: #25D366;" data-i18n="ctaWa"></a>
+      <a href="#contact" class="btn-primary text-sm" data-i18n="ctaHero"></a>
+      <a href="#video" class="btn-primary text-sm" data-i18n="ctaVideo"></a>
     </div>
   </div>
 </section>
@@ -284,25 +371,77 @@
   <p class="sec-desc" data-i18n="productsDesc"></p>
 
   <div class="cards">
+    <!-- Card 1 -->
     <div class="card">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Sistema%20de%20Estuco%20y%20EIFS.png" alt="Stucco & EIFS Systems" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="prod1"></h3>
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/01_Stucco%20y%20Sistemas%20EIFS.jpg" class="card-bg-image" alt="Stucco & EIFS Systems" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Sistema%20de%20Estuco%20y%20EIFS.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="prod1"></h3>
+        </div>
+      </div>
     </div>
+    <!-- Card 2 -->
     <div class="card">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Rodillo%20de%20pintura%20sobre%20fondo%20azul.png" alt="Base & Finish Coats" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="prod2"></h3>
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/02_revestimientos%20Base%20y%20Acabados.jpg" class="card-bg-image" alt="Base & Finish Coats" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Rodillo%20de%20pintura%20sobre%20fondo%20azul.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="prod2"></h3>
+        </div>
+      </div>
     </div>
+    <!-- Card 3 -->
     <div class="card">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Icono%20de%20adhesivo.png" alt="Mesh & Adhesives" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="prod3"></h3>
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/03_Mallas%20y%20Adhesivos.jpg" class="card-bg-image" alt="Mesh & Adhesives" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Icono%20de%20adhesivo.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="prod3"></h3>
+        </div>
+      </div>
     </div>
+    <!-- Card 4 -->
     <div class="card">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Pila%20de%20aislamiento%20en%20gradiente%20azul.png" alt="Insulation Boards" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="prod4"></h3>
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/04_Tableros%20de%20Aislamiento.jpg" class="card-bg-image" alt="Insulation Boards" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Pila%20de%20aislamiento%20en%20gradiente%20azul.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="prod4"></h3>
+        </div>
+      </div>
     </div>
+    <!-- Card 5 -->
     <div class="card">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Iconos%20de%20Herramientas.png" alt="Tools & Accessories" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="prod5"></h3>
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/05_Herramientas%20y%20Accesorios.jpg" class="card-bg-image" alt="Tools & Accessories" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Iconos%20de%20Herramientas.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="prod5"></h3>
+        </div>
+      </div>
+    </div>
+     <!-- Card 6 -->
+    <div class="card">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/10_more.jpg" class="card-bg-image" alt="Discover Our Latest" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/mas%20productos.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="prod6"></h3>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -321,25 +460,57 @@
   <p class="sec-desc" data-i18n="servicesDesc"></p>
 
   <div class="cards">
-    <div class="card bg-white">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Camion.png" alt="Fast Deliveries" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="srv1"></h3>
-      <p class="text-sm mt-2" data-i18n="srv1d"></p>
+    <!-- Service Card 1 -->
+    <div class="card">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/06_Entregas%20Rapidas.jpg" class="card-bg-image" alt="Fast Deliveries" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Camion.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="srv1"></h3>
+          <p data-i18n="srv1d"></p>
+        </div>
+      </div>
     </div>
-    <div class="card bg-white">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Soporte.png" alt="Technical Support" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="srv2"></h3>
-      <p class="text-sm mt-2" data-i18n="srv2d"></p>
+    <!-- Service Card 2 -->
+    <div class="card">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/07_Soporte%20Tecnico.jpg" class="card-bg-image" alt="Technical Support" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Soporte.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="srv2"></h3>
+          <p data-i18n="srv2d"></p>
+        </div>
+      </div>
     </div>
-    <div class="card bg-white">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/Abierto.png" alt="Open to Everyone" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="srv3"></h3>
-      <p class="text-sm mt-2" data-i18n="srv3d"></p>
+    <!-- Service Card 3 -->
+    <div class="card">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/08_Abierto%20a%20Todos.jpg" class="card-bg-image" alt="Open to Everyone" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/Abierto.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="srv3"></h3>
+          <p data-i18n="srv3d"></p>
+        </div>
+      </div>
     </div>
-    <div class="card bg-white">
-      <img src="https://nucleocolectivo.github.io/Oceanside/images/montacargas.png" alt="Wholesale & Retail" class="mx-auto w-24 h-24 mb-4" loading="lazy">
-      <h3 class="font-semibold" data-i18n="srv4"></h3>
-      <p class="text-sm mt-2" data-i18n="srv4d"></p>
+    <!-- Service Card 4 -->
+    <div class="card">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/09_Mayorista%20y%20Retail.jpg" class="card-bg-image" alt="Wholesale & Retail" loading="lazy">
+      <div class="card-overlay">
+        <div class="card-icon">
+          <img src="https://nucleocolectivo.github.io/Oceanside/images/montacargas.png" alt="">
+        </div>
+        <div class="card-text">
+          <h3 data-i18n="srv4"></h3>
+          <p data-i18n="srv4d"></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -586,6 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productsDesc: 'Ofrecemos productos duraderos y certificados para proyectos de construcción, remodelación y diseño exterior.',
             prod1: 'Stucco y Sistemas EIFS', prod2: 'Revestimientos Base y Acabados', prod3: 'Mallas y Adhesivos',
             prod4: 'Tableros de Aislamiento', prod5: 'Herramientas y Accesorios',
+            prod6: 'Descubre Nuestras Novedades, ¡pregúntanos!',
             servicesTitle: 'Servicios Profesionales',
             servicesDesc: 'Entregas rápidas, soporte técnico personalizado y ventas al por mayor o unidad.',
             srv1: 'Entregas Rápidas', srv1d: 'Cobertura White Plains y alrededores.',
@@ -634,6 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productsDesc: 'Durable and certified materials for construction, remodeling and exterior finishing projects.',
             prod1: 'Stucco & EIFS Systems', prod2: 'Base & Finish Coats', prod3: 'Mesh & Adhesives',
             prod4: 'Insulation Boards', prod5: 'Tools & Accessories',
+            prod6: 'Discover Our Latest, ask us!',
             servicesTitle: 'Professional Services',
             servicesDesc: 'Fast deliveries, personalized technical support and wholesale or unit sales.',
             srv1: 'Fast Deliveries', srv1d: 'Coverage across White Plains.',
@@ -666,7 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
             termsTitle: 'Terms and Conditions',
             privacyContent: `<span class="es"><h3>Recopilación de Información</h3><p>Recopilamos información personal como nombre, correo electrónico y número de teléfono cuando la proporciona voluntariamente a través de nuestros formularios de contacto o cotización. También podemos recopilar datos no personales como el tipo de navegador y el sistema operativo para mejorar nuestro sitio web.</p><h3>Uso de la Información</h3><p>La información que recopilamos se utiliza para responder a sus consultas, procesar sus pedidos y mejorar nuestros servicios. No compartiremos su información personal con terceros, excepto cuando sea necesario para cumplir con la ley.</p><h3>Seguridad</h3><p>Tomamos medidas razonables para proteger su información personal contra pérdida, robo y uso no autorizado.</p></span><span class="en"><h3>Information Collection</h3><p>We collect personal information such as name, email, and phone number when you voluntarily provide it through our contact or quote forms. We may also collect non-personal data like browser type and operating system to improve our website.</p><h3>Use of Information</h3><p>The information we collect is used to respond to your inquiries, process your orders, and improve our services. We will not share your personal information with third parties except as necessary to comply with the law.</p><h3>Security</h3><p>We take reasonable measures to protect your personal information from loss, theft, and unauthorized use.</p></span>`,
             termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><span class="en"><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
-            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. All rights reserved.`
+            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. Todos los derechos reservados.`
         }
     };
 
