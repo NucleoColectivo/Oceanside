@@ -192,8 +192,8 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        /* Base para móvil: se ajusta automáticamente, mostrando 1 o 2 columnas */
-        grid-template-columns: repeat(auto-fit, minmax(267px, 1fr));
+        /* CORRECCIÓN: Se reduce el tamaño mínimo de la tarjeta en un 15% (de 267px a 227px) */
+        grid-template-columns: repeat(auto-fit, minmax(227px, 1fr));
         justify-content: center;
     }
 
@@ -206,7 +206,8 @@
         }
         #services .cards {
             grid-template-columns: repeat(2, 1fr);
-            max-width: 700px;
+            /* CORRECCIÓN: Se reduce el ancho máximo para ajustar al nuevo tamaño de las tarjetas */
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1347,4 +1348,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</html>
+</ht
