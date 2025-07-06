@@ -192,31 +192,24 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        /* CORRECCIÓN: Se reduce el tamaño mínimo de la tarjeta en un 15% (de 267px a 227px) */
-        grid-template-columns: repeat(auto-fit, minmax(227px, 1fr));
+        /* Un tamaño base unificado para todas las tarjetas en vista móvil */
+        grid-template-columns: repeat(auto-fit, minmax(242px, 1fr));
         justify-content: center;
     }
 
-    /* CORRECCIÓN: Layout específico para las tarjetas de productos y servicios en pantallas más grandes */
-    
-    /* En tablets (y por defecto en desktop si no se sobreescribe) */
-    @media (min-width: 768px) {
-        #products .cards {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        #services .cards {
-            grid-template-columns: repeat(2, 1fr);
-            /* CORRECCIÓN: Se reduce el ancho máximo para ajustar al nuevo tamaño de las tarjetas */
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-
-    /* En desktop, se sobreescribe la regla de productos para mostrar 3 columnas */
+    /* CORRECCIÓN: Layout específico para unificar el tamaño de las tarjetas en desktop */
     @media (min-width: 1024px) {
         #products .cards {
             grid-template-columns: repeat(3, 1fr);
+            max-width: 778px; /* Ancho para 3 columnas de ~242px */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #services .cards {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 510px; /* Ancho para 2 columnas de ~242px (tamaño de referencia) */
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
@@ -1348,4 +1341,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</ht
+</html>
