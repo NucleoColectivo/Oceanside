@@ -22,6 +22,78 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- SEO: Marcado JSON-LD para Empresa Local -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Oceanside Stucco Supply",
+    "image": "https://nucleocolectivo.github.io/Oceanside/images/logo-main.png",
+    "@id": "",
+    "url": "https://www.oceansidestucco.com",
+    "telephone": "+1-929-504-0773",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "White Plains",
+      "addressLocality": "White Plains",
+      "addressRegion": "NY",
+      "addressCountry": "US"
+    },
+    "description": "Ofrecemos suministros de estuco y sistemas EIFS confiables para contratistas, remodeladores y propietarios en el área Tri-State.",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "06:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "07:00",
+        "closes": "14:00"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Analytics: Reemplaza con tus IDs -->
+  <!-- Google Analytics 4 -->
+  <!-- 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- Meta Pixel -->
+  <!-- 
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_PIXEL_ID');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+  /></noscript>
+  -->
+
   <style>
     /* ===== VARIABLES ===== */
     :root{--primary:#1E88E5;--primary-light:#90CAF9;--dark:#0F1116;--gray:#F3F5F7;--radius:1rem}
@@ -40,7 +112,7 @@
     /* ===== HEADER / NAV ===== */
     header{position:fixed;top:0;inset-inline:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 2px 6px rgba(0,0,0,.05)}
     nav ul{ list-style: none; padding: 0; margin: 0;}
-    nav a:hover{color:var(--primary)}
+    nav a:hover, nav a[aria-current="page"] {color:var(--primary)}
     .btn,.btn-primary{background:var(--primary);color:#fff;padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.15);transition:transform .25s, box-shadow .25s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;}
     .btn:hover,.btn-primary:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(0,0,0,.2)}
     .btn-primary{background:#fff;color:var(--primary); border: 1px solid var(--primary);}
@@ -354,7 +426,7 @@
 
     <!-- Desktop Menu -->
     <div class="hidden lg:flex items-center gap-6">
-      <ul class="flex gap-6 font-medium">
+      <ul id="desktop-menu-list" class="flex gap-6 font-medium">
         <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)]"></a></li>
         <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)]"></a></li>
@@ -654,6 +726,7 @@
           <input type="email" placeholder="Correo electrónico" data-i18n-placeholder="phEmail" required>
           <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto" data-i18n-placeholder="phMsg"></textarea>
           <button class="btn w-full" type="submit" data-i18n="contactBtn"></button>
+           <p id="form-message" class="text-center font-semibold"></p>
         </form>
       </div>
        <div class="mt-16 rounded-2xl overflow-hidden shadow-xl">
@@ -705,7 +778,7 @@
 <div class="lightbox" id="lightbox"><img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Project image"></div>
 
 <!-- ========== LEGAL MODALS ========== -->
-<div id="privacyModal" class="legal-modal">
+<div id="privacyModal" class="legal-modal" role="dialog" aria-modal="true">
   <div class="legal-content">
     <div class="legal-header flex justify-between items-center border-b">
       <h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="privacyTitle"></h2>
@@ -715,7 +788,7 @@
   </div>
 </div>
 
-<div id="termsModal" class="legal-modal">
+<div id="termsModal" class="legal-modal" role="dialog" aria-modal="true">
   <div class="legal-content">
     <div class="legal-header flex justify-between items-center border-b">
       <h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="termsTitle"></h2>
@@ -727,7 +800,7 @@
 
 
 <!-- ========== MODAL COTIZADOR ========== -->
-<div id="cotizadorModal" class="modal-cotizador">
+<div id="cotizadorModal" class="modal-cotizador" role="dialog" aria-modal="true">
   <div id="cotizadorContent" class="cotizador-content">
     <div class="cotizador-header-footer">
         <button id="closeCotizadorBtn" class="absolute top-4 right-4 text-gray-500 hover:text-red-500" aria-label="Cerrar">
@@ -941,11 +1014,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ===== CONTACT FORM ===== */
     const formContact = document.getElementById('formContact');
     if(formContact) {
+        const formMessage = document.getElementById('form-message');
         formContact.onsubmit = e => {
             e.preventDefault();
-            // A custom modal would be better than alert() for production
-            alert(lang === 'es' ? '¡Gracias! Te contactaremos pronto.' : 'Thank you! We will get back to you shortly.');
+            formMessage.textContent = lang === 'es' ? '¡Gracias! Te contactaremos pronto.' : 'Thank you! We will get back to you shortly.';
+            formMessage.style.color = 'green';
             e.target.reset();
+            setTimeout(() => { formMessage.textContent = ''; }, 5000);
         };
     }
 
@@ -1033,25 +1108,79 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(`https://wa.me/19295040773?text=${encodeURIComponent(mensaje)}`, '_blank');
         };
     }
-    if (openCotizadorBtn) openCotizadorBtn.onclick = () => cotizadorModal.classList.add('active');
-    if (closeCotizadorBtn) closeCotizadorBtn.onclick = () => cotizadorModal.classList.remove('active');
+    
+    /* ===== MODAL ACCESSIBILITY & FOCUS TRAP ===== */
+    const modals = document.querySelectorAll('.modal-cotizador, .legal-modal');
+    
+    function openModal(modal) {
+        if (modal == null) return;
+        modal.classList.add('active');
+        trapFocus(modal);
+    }
+
+    function closeModal(modal) {
+        if (modal == null) return;
+        modal.classList.remove('active');
+    }
+
+    function trapFocus(element) {
+        const focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+        const firstFocusableEl = focusableEls[0];
+        const lastFocusableEl = focusableEls[focusableEls.length - 1];
+        const KEYCODE_TAB = 9;
+
+        element.addEventListener('keydown', function(e) {
+            const isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+            if (!isTabPressed) { return; }
+
+            if (e.shiftKey) { /* shift + tab */
+                if (document.activeElement === firstFocusableEl) {
+                    lastFocusableEl.focus();
+                    e.preventDefault();
+                }
+            } else { /* tab */
+                if (document.activeElement === lastFocusableEl) {
+                    firstFocusableEl.focus();
+                    e.preventDefault();
+                }
+            }
+        });
+        firstFocusableEl.focus();
+    }
+    
+    if (openCotizadorBtn) openCotizadorBtn.onclick = () => openModal(cotizadorModal);
+    if (closeCotizadorBtn) closeCotizadorBtn.onclick = () => closeModal(cotizadorModal);
     if (toggleQuoteLangBtn) {
         toggleQuoteLangBtn.onclick = () => {
              cotizadorContent.classList.toggle('es');
              cotizadorContent.classList.toggle('en');
         }
     }
+    
+    const privacyModal = document.getElementById('privacyModal');
+    const termsModal = document.getElementById('termsModal');
+    const openPrivacyBtn = document.getElementById('openPrivacy');
+    const openTermsBtn = document.getElementById('openTerms');
+    const closeLegalModals = document.querySelectorAll('.close-legal-modal');
+
+    if(openPrivacyBtn) openPrivacyBtn.onclick = () => openModal(privacyModal);
+    if(openTermsBtn) openTermsBtn.onclick = () => openModal(termsModal);
+
+    closeLegalModals.forEach(btn => {
+        btn.onclick = () => {
+            closeModal(privacyModal);
+            closeModal(termsModal);
+        }
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modals.forEach(closeModal);
+        }
+    });
+
 
     /* ===== RADIO PLAYER ===== */
-    const stations = [
-        { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
-        { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
-        { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' },
-        { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
-        { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
-        { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
-    ];
-    let currentStation = 0;
     const radioBtnIcon = document.getElementById('radioBtnIcon');
     const radioModal = document.getElementById('radioModal');
     const stationNameEl = document.getElementById('stationName');
@@ -1063,6 +1192,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNext = document.getElementById('radioNext');
     const btnMute = document.getElementById('radioMute');
     const volSlider = document.getElementById('radioVolume');
+    const stations = [
+        { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
+        { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
+        { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' },
+        { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
+        { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
+        { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
+    ];
+    let currentStation = 0;
 
     function loadStation(idx) {
         currentStation = idx;
@@ -1112,31 +1250,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     if (radioAudio) radioAudio.onvolumechange = updateMuteBtn;
     
-    /* ===== LEGAL MODALS ===== */
-    const privacyModal = document.getElementById('privacyModal');
-    const termsModal = document.getElementById('termsModal');
-    const openPrivacyBtn = document.getElementById('openPrivacy');
-    const openTermsBtn = document.getElementById('openTerms');
-    const closeLegalModals = document.querySelectorAll('.close-legal-modal');
+    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
+    const sections = document.querySelectorAll('section[id]');
+    const navLi = document.querySelectorAll('#desktop-menu-list li a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 60) {
+                current = section.getAttribute('id');
+            }
+        });
 
-    if(openPrivacyBtn) openPrivacyBtn.onclick = () => privacyModal.classList.add('active');
-    if(openTermsBtn) openTermsBtn.onclick = () => termsModal.classList.add('active');
-
-    closeLegalModals.forEach(btn => {
-        btn.onclick = () => {
-            privacyModal.classList.remove('active');
-            termsModal.classList.remove('active');
-        }
+        navLi.forEach(a => {
+            a.removeAttribute('aria-current');
+            if (a.getAttribute('href') === `#${current}`) {
+                a.setAttribute('aria-current', 'page');
+            }
+        });
     });
-
-    window.onclick = function(event) {
-        if (event.target == privacyModal) {
-            privacyModal.classList.remove('active');
-        }
-        if (event.target == termsModal) {
-            termsModal.classList.remove('active');
-        }
-    }
 
 
     /* ===== INITIALIZE ===== */
