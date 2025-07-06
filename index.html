@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <!-- Oceanside Stucco Supply · Landing ES/EN -->
-  <meta charset="utf-t">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title data-i18n="docTitle">Oceanside Stucco Supply | Quality Stucco & EIFS – Same-Day Delivery</title>
   <meta name="description" data-i18n="metaDesc" content="Materiales de estuco y sistemas EIFS certificados. Entrega el mismo día en el área Tri‑State. Cotiza gratis ahora.">
@@ -192,15 +192,33 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        /* * CORRECCIÓN:
-         * 1. Se aumenta el tamaño mínimo de la tarjeta en un 15% (de 232px a 267px).
-         * 2. Se unifica el comportamiento para todas las secciones de tarjetas eliminando las reglas específicas.
-         * Ahora `auto-fit` y `minmax` controlan la grilla de forma fluida y consistente.
-         */
+        /* Base para móvil: se ajusta automáticamente, mostrando 1 o 2 columnas */
         grid-template-columns: repeat(auto-fit, minmax(267px, 1fr));
-        /* Centra las tarjetas en el contenedor por si la última fila no está completa */
         justify-content: center;
     }
+
+    /* CORRECCIÓN: Layout específico para las tarjetas de productos y servicios en pantallas más grandes */
+    
+    /* En tablets (y por defecto en desktop si no se sobreescribe) */
+    @media (min-width: 768px) {
+        #products .cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        #services .cards {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    /* En desktop, se sobreescribe la regla de productos para mostrar 3 columnas */
+    @media (min-width: 1024px) {
+        #products .cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
     .card {
         padding: 0;
         position: relative;
