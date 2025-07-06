@@ -37,10 +37,6 @@
     .sec-title,.section-title{text-align:center;font-size:clamp(1.8rem, 5vw, 2.5rem);font-weight:700;margin-bottom:1.8rem}
     .sec-desc{text-align:center;max-width:700px;margin:0 auto 3rem;color:#475569}
 
-    /* ===== VIDEO RESPONSIVE (fallback) ===== */
-    .aspect-video{position:relative;width:100%;padding-top:56.25%}
-    .aspect-video iframe{position:absolute;inset:0;width:100%;height:100%}
-
     /* ===== HEADER / NAV ===== */
     header{position:fixed;top:0;inset-inline:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 2px 6px rgba(0,0,0,.05)}
     nav ul{ list-style: none; padding: 0; margin: 0;}
@@ -88,8 +84,8 @@
     .hero-description {
         max-width: 750px;
         margin: auto;
-        font-size: clamp(1.375rem, 3.75vw, 1.875rem); /* Increased by 25% */
-        line-height: 1.6;
+        font-size: clamp(1.375rem, 3.75vw, 1.875rem);
+        line-height: 1.4; /* Reduced line-height */
         color: #475569;
         text-align: center;
     }
@@ -98,7 +94,7 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        grid-template-columns: repeat(auto-fit, minmax(224px, 1fr)); /* Card size reduced by 20% */
+        grid-template-columns: repeat(auto-fit, minmax(202px, 1fr)); /* Reduced by 10% */
     }
     .card {
         padding: 0;
@@ -115,6 +111,9 @@
     @media (min-width: 1024px) {
       #products .cards {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 922px; /* Reduced by 10% */
+        margin-left: auto;
+        margin-right: auto;
       }
     }
      @media (min-width: 640px) and (max-width: 1023px) {
@@ -125,7 +124,7 @@
     @media (min-width: 768px) {
         #services .cards {
             grid-template-columns: repeat(2, 1fr);
-            max-width: 640px; /* Adjusted max-width */
+            max-width: 607px; /* Reduced by 10% */
             margin: auto;
         }
     }
@@ -176,7 +175,6 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        /* Removed background and border-radius from icon itself */
     }
     .card-text {
       text-align: left;
@@ -204,16 +202,36 @@
     .about .text p{margin-bottom:1rem;color:#475569}
 
     /* ===== GALLERY ===== */
-    .gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .gallery img{height:200px;object-fit:cover;cursor:pointer;transition:.3s; width: 100%; border-radius: var(--radius);}
+    .gallery {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    @media (min-width: 768px) {
+        .gallery {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 868px; /* Reduced by 30% from original */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .gallery img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        cursor: pointer;
+        transition: .3s;
+        width: 100%;
+        border-radius: var(--radius);
+    }
     .gallery img:hover{transform:scale(1.05)}
+    
     .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
         transition:.3s;z-index:1100}
     .lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:90%; border-radius: 1rem;}
 
     /* ===== BANNER CTA ===== */
     .banner{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);color:#fff;padding:4rem 1rem;
-        text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15);margin-top:4rem; border-radius: var(--radius);}
+        text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15); border-radius: var(--radius);}
     .banner h2{font-size:1.8rem;font-weight:700;margin-bottom:1.3rem}
 
     /* ===== CONTACT ===== */
@@ -228,9 +246,7 @@
     footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
     .footer-grid{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));max-width:1280px;margin:auto}
     .footer-grid a:hover{color:#fff}
-    .footer-map{grid-column: 1 / -1; overflow:hidden; border-radius: var(--radius);}
-    @media (min-width: 1024px) { .footer-map {grid-column: span 2 / span 2;}}
-
+    
     /* ===== SOCIAL BUTTONS (footer) ===== */
     .footer-social{display:flex;gap:.8rem;margin-top:.8rem}
     .footer-social a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;
@@ -371,7 +387,7 @@
     </div>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2 flex-wrap">
-       <a href="https://wa.me/19295040773" target="_blank" class="btn text-sm" style="background-color: #25D366;" data-i18n="ctaWa"></a>
+       <a href="https://wa.me/19295040773" target="_blank" class="btn text-sm" data-i18n="ctaWa"></a>
       <a href="#contact" class="btn-primary text-sm" data-i18n="ctaHero"></a>
       <a href="#video" class="btn-primary text-sm" data-i18n="ctaVideo"></a>
     </div>
@@ -463,12 +479,29 @@
     </div>
   </div>
 </section>
-  
+
+<!-- ========== CTA BANNER (MOVED) ========== -->
+<section class="banner" style="padding-top: 4rem; padding-bottom: 4rem; margin-top: 0;">
+  <div class="banner-content">
+      <h2 data-i18n="ctaBannerH"></h2>
+      <a href="#contact" class="btn-primary" data-i18n="ctaBannerBtn"></a>
+  </div>
+</section>
+
+<!-- ========== COTIZADOR BUTTON (MOVED) ========== -->
+<section class="text-center" style="padding: 3rem 1rem;">
+    <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
+        <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
+    </button>
+</section>
+
 <!-- ========== VIDEO INTRO ========== -->
-<section id="video" class="py-20 bg-neutral-50">
-  <div class="mx-auto max-w-5xl rounded-2xl overflow-hidden shadow-xl aspect-video">
-    <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-    </iframe>
+<section id="video" class="py-20 bg-neutral-50" style="padding-top: 5rem;">
+  <div class="mx-auto max-w-2xl rounded-2xl overflow-hidden shadow-xl">
+    <div class="aspect-video">
+      <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full">
+      </iframe>
+    </div>
   </div>
 </section>
   
@@ -546,21 +579,6 @@
   </div>
 </section>
 
-<!-- ========== CTA BANNER ========== -->
-<section class="banner">
-  <div class="banner-content">
-      <h2 data-i18n="ctaBannerH"></h2>
-      <a href="#contact" class="btn-primary" data-i18n="ctaBannerBtn"></a>
-  </div>
-</section>
-
-<!-- ========== COTIZADOR BUTTON ========== -->
-<section class="text-center" style="padding: 3rem 1rem;">
-    <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
-        <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
-    </button>
-</section>
-
 <!-- ========== GALLERY ========== -->
 <section id="gallery">
   <h2 class="sec-title" data-i18n="galleryTitle"></h2>
@@ -600,39 +618,39 @@
 
 <!-- ========== CONTACT ========== -->
 <section id="contact" class="py-14">
-    <div class="max-w-7xl mx-auto grid gap-12 md:grid-cols-2 items-start">
-      <div>
-        <h2 class="sec-title text-left mb-6 md:mb-10" data-i18n="contactTitle"></h2>
-        <div class="contact-card">
-          <h3 class="font-semibold text-xl mb-4" data-i18n="brandFull"></h3>
-          <ul class="space-y-3 text-slate-700">
-            <li class="flex items-center gap-2"><i data-lucide="phone" width="18" class="text-primary"></i> 929-504-0773</li>
-            <li class="flex items-center gap-2"><i data-lucide="mail"  width="18" class="text-primary"></i> info@oceansidestucco.com</li>
-            <li class="flex items-center gap-2"><i data-lucide="map-pin" width="18" class="text-primary"></i> White Plains, NY</li>
-            <li class="flex items-center gap-2"><i data-lucide="clock" width="18" class="text-primary"></i> <span data-i18n="hours"></span></li>
-          </ul>
+    <div class="max-w-7xl mx-auto">
+      <div class="grid gap-12 md:grid-cols-2 items-start">
+        <div>
+          <h2 class="sec-title text-left mb-6 md:mb-10" data-i18n="contactTitle"></h2>
+          <div class="contact-card">
+            <h3 class="font-semibold text-xl mb-4" data-i18n="brandFull"></h3>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-center gap-2"><i data-lucide="phone" width="18" class="text-primary"></i> 929-504-0773</li>
+              <li class="flex items-center gap-2"><i data-lucide="mail"  width="18" class="text-primary"></i> info@oceansidestucco.com</li>
+              <li class="flex items-center gap-2"><i data-lucide="map-pin" width="18" class="text-primary"></i> White Plains, NY</li>
+              <li class="flex items-center gap-2"><i data-lucide="clock" width="18" class="text-primary"></i> <span data-i18n="hours"></span></li>
+            </ul>
+          </div>
         </div>
+        <form id="formContact" class="contact-card grid gap-4 mt-0 md:mt-24">
+          <input type="text" placeholder="Nombre completo" data-i18n-placeholder="phName" required>
+          <input type="email" placeholder="Correo electrónico" data-i18n-placeholder="phEmail" required>
+          <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto" data-i18n-placeholder="phMsg"></textarea>
+          <button class="btn w-full" type="submit" data-i18n="contactBtn"></button>
+        </form>
       </div>
-      <form id="formContact" class="contact-card grid gap-4 mt-0 md:mt-24">
-        <input type="text" placeholder="Nombre completo" data-i18n-placeholder="phName" required>
-        <input type="email" placeholder="Correo electrónico" data-i18n-placeholder="phEmail" required>
-        <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto" data-i18n-placeholder="phMsg"></textarea>
-        <button class="btn w-full" type="submit" data-i18n="contactBtn"></button>
-      </form>
+       <div class="mt-16 rounded-2xl overflow-hidden shadow-xl">
+           <iframe
+            class="w-full h-[250px]" loading="lazy" allowfullscreen title="Mapa Oceanside Stucco Supply" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999.508819890195!2d-73.7748096245355!3d41.06278959135095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c29580e42d7dd3%3A0x65c845ad898aefe1!2sOCEANSIDE%20STUCCO%20SUPPLY!5e0!3m2!1sen!2sco!4v1720245203513!5m2!1sen!2sco">
+          </iframe>
+      </div>
     </div>
   </section>
 
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-map">
-        <div class="aspect-video">
-          <iframe
-            class="w-full h-full" loading="lazy" allowfullscreen title="Mapa Oceanside Stucco Supply" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19120.301374523317!2d-73.78465905060447!3d41.0028214736531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c293cfd943486b%3A0xc47e30d1e57c63b4!2sWhite%20Plains%2C%20NY%2C%20USA!5e0!3m2!1sen!2sco!4v1719277087640!5m2!1sen!2sco">
-          </iframe>
-        </div>
-      </div>
     <div>
       <h4 class="text-lg font-semibold text-white mb-2" data-i18n="brandFull"></h4>
       <p class="text-slate-400 max-w-xs" data-i18n="footerTag"></p>
