@@ -22,14 +22,24 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- SEO: Marcado JSON-LD para Empresa Local -->
+  <!-- 
+    SEO: robots.txt y sitemap.xml
+    Crea un archivo 'robots.txt' en la raíz de tu sitio con el siguiente contenido:
+    User-agent: *
+    Allow: /
+    Sitemap: https://www.oceansidestucco.com/sitemap.xml
+
+    Genera y sube un 'sitemap.xml' a la raíz de tu sitio.
+  -->
+
+  <!-- SEO: Marcado JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Oceanside Stucco Supply",
     "image": "https://nucleocolectivo.github.io/Oceanside/images/logo-main.png",
-    "@id": "",
+    "@id": "https://www.oceansidestucco.com",
     "url": "https://www.oceansidestucco.com",
     "telephone": "+1-929-504-0773",
     "address": {
@@ -43,13 +53,7 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
         "opens": "06:00",
         "closes": "17:00"
       },
@@ -60,6 +64,28 @@
         "closes": "14:00"
       }
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://www.oceansidestucco.com/#home"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Productos",
+      "item": "https://www.oceansidestucco.com/#products"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Contacto",
+      "item": "https://www.oceansidestucco.com/#contact"
+    }]
   }
   </script>
 
@@ -154,16 +180,35 @@
     .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center; justify-content: center;}
     
     .hero-description {
+        max-width: 750px;
+        margin: auto;
         font-size: clamp(1.1rem, 3vw, 1.25rem);
         line-height: 1.5;
         color: #475569;
+        text-align: center;
     }
 
     /* ===== GRID CARDS (NEW DESIGN) ===== */
     .cards {
         display: grid;
         gap: 1.6rem;
-        grid-template-columns: repeat(auto-fit, minmax(202px, 1fr)); /* Reduced by 10% */
+    }
+    #products .cards {
+        grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+    }
+    #services .cards {
+        grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+    }
+    @media (min-width: 768px) {
+        #products .cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        #services .cards {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 730px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     .card {
         padding: 0;
@@ -176,26 +221,7 @@
         border-radius: var(--radius);
         box-shadow: 0 8px 28px rgba(0,0,0,.08);
         transition: transform .3s ease;
-    }
-    @media (min-width: 1024px) {
-      #products .cards {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 922px; /* Reduced by 10% */
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-     @media (min-width: 640px) and (max-width: 1023px) {
-      #products .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (min-width: 768px) {
-        #services .cards {
-            grid-template-columns: repeat(2, 1fr);
-            max-width: 607px; /* Reduced by 10% */
-            margin: auto;
-        }
+        cursor: pointer;
     }
     .card:hover {
         transform: translateY(-8px);
@@ -272,14 +298,27 @@
         max-width: 1024px;
         margin: 0 auto;
     }
-    @media(max-width:900px){.about{grid-template-columns:1fr}.about img{order:-1}}
-    .about img{
-        box-shadow:0 6px 20px rgba(0,0,0,.08); 
-        border-radius: var(--radius);
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-        width: 100%;
+    @media(max-width:900px){.about{grid-template-columns:1fr}.about .about-image-container{order:-1}}
+    
+    .about .about-image-container {
+      box-shadow:0 6px 20px rgba(0,0,0,.08); 
+      border-radius: var(--radius);
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      overflow: hidden;
     }
+
+    .about .about-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .about .about-image-container:hover img {
+      transform: scale(1.1);
+    }
+
     .about .text h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}
     .about .text p{
         margin-bottom:1rem;
@@ -465,7 +504,7 @@
       title="YouTube video player" 
       frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
+      allowfullscreen loading="lazy">
     </iframe>
   </div>
   <div class="hero-content">
@@ -494,8 +533,7 @@
   </div>
 
   <div class="cards">
-    <!-- Card 1 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="prod1" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/01_Stucco%20y%20Sistemas%20EIFS.jpg" class="card-bg-image" alt="Stucco & EIFS Systems" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -506,8 +544,7 @@
         </div>
       </div>
     </div>
-    <!-- Card 2 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="prod2" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/02_revestimientos%20Base%20y%20Acabados.jpg" class="card-bg-image" alt="Base & Finish Coats" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -518,8 +555,7 @@
         </div>
       </div>
     </div>
-    <!-- Card 3 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="prod3" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/03_Mallas%20y%20Adhesivos.jpg" class="card-bg-image" alt="Mesh & Adhesives" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -530,8 +566,7 @@
         </div>
       </div>
     </div>
-    <!-- Card 4 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="prod4" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/04_Tableros%20de%20Aislamiento.jpg" class="card-bg-image" alt="Insulation Boards" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -542,8 +577,7 @@
         </div>
       </div>
     </div>
-    <!-- Card 5 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="prod5" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/05_Herramientas%20y%20Accesorios.jpg" class="card-bg-image" alt="Tools & Accessories" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -554,8 +588,7 @@
         </div>
       </div>
     </div>
-    <!-- Card 6 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="prod6" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/10_more.jpg" class="card-bg-image" alt="Discover Our Latest" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -569,7 +602,6 @@
   </div>
 </section>
 
-<!-- ========== CTA BANNER (MOVED) ========== -->
 <section class="banner" style="padding-top: 4rem; padding-bottom: 4rem; margin-top: 0;">
   <div class="banner-content">
       <h2 data-i18n="ctaBannerH"></h2>
@@ -577,31 +609,27 @@
   </div>
 </section>
 
-<!-- ========== COTIZADOR BUTTON (MOVED) ========== -->
 <section class="text-center" style="padding: 3rem 1rem;">
     <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
         <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
     </button>
 </section>
 
-<!-- ========== VIDEO INTRO ========== -->
 <section id="video" class="py-20 bg-neutral-50" style="padding-top: 5rem;">
   <div class="mx-auto max-w-2xl rounded-2xl overflow-hidden shadow-xl">
     <div class="aspect-video">
-      <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full">
+      <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full" loading="lazy">
       </iframe>
     </div>
   </div>
 </section>
   
-<!-- ========== SERVICES (original) ========== -->
 <section id="services" class="bg-[var(--gray)]">
   <h2 class="sec-title" data-i18n="servicesTitle"></h2>
   <p class="sec-desc" data-i18n="servicesDesc"></p>
 
   <div class="cards">
-    <!-- Service Card 1 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="srv1" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/06_Entregas%20Rapidas.jpg" class="card-bg-image" alt="Fast Deliveries" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -613,8 +641,7 @@
         </div>
       </div>
     </div>
-    <!-- Service Card 2 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="srv2" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/07_Soporte%20Tecnico.jpg" class="card-bg-image" alt="Technical Support" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -626,8 +653,7 @@
         </div>
       </div>
     </div>
-    <!-- Service Card 3 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="srv3" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/08_Abierto%20a%20Todos.jpg" class="card-bg-image" alt="Open to Everyone" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -639,8 +665,7 @@
         </div>
       </div>
     </div>
-    <!-- Service Card 4 -->
-    <div class="card">
+    <div class="card product-card" data-i18n-key="srv4" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/09_Mayorista%20y%20Retail.jpg" class="card-bg-image" alt="Wholesale & Retail" loading="lazy">
       <div class="card-content">
         <div class="card-icon">
@@ -655,10 +680,11 @@
   </div>
 </section>
 
-<!-- ========== ABOUT 2 (detallado) ========== -->
 <section class="section" id="about-extra">
   <div class="about">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/Inspirados.png" alt="Bodega con materiales de estuco" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+    <div class="about-image-container">
+      <img src="https://nucleocolectivo.github.io/Oceanside/images/Inspirados.png" alt="Bodega con materiales de estuco" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+    </div>
     <div class="text">
       <h2 data-i18n="about2Subtitle"></h2>
       <p data-i18n="about2P1"></p>
@@ -668,7 +694,6 @@
   </div>
 </section>
 
-<!-- ========== GALLERY ========== -->
 <section id="gallery">
   <h2 class="sec-title" data-i18n="galleryTitle"></h2>
   <p class="sec-desc" data-i18n="galleryDesc"></p>
@@ -682,7 +707,6 @@
   </div>
 </section>
 
-<!-- ========== FAQ ========== -->
 <section id="faq" class="bg-[var(--gray)]">
   <h2 class="sec-title" data-i18n="faqTitle"></h2>
   <div class="max-w-3xl mx-auto">
@@ -705,7 +729,6 @@
   </div>
 </section>
 
-<!-- ========== CONTACT ========== -->
 <section id="contact" class="py-14">
     <div class="max-w-7xl mx-auto">
       <div class="grid gap-12 md:grid-cols-2 items-start">
@@ -738,7 +761,6 @@
     </div>
   </section>
 
-<!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -750,7 +772,6 @@
       <h5 class="font-semibold text-white mb-2" data-i18n="footerContact"></h5>
       <p class="flex items-center gap-1 text-slate-400"><i data-lucide="phone" width="16"></i> 929-504-0773</p>
       <p class="flex items-center gap-1 text-slate-400"><i data-lucide="mail" width="16"></i> info@oceansidestucco.com</p>
-      <!-- Social -->
       <div class="footer-social">
         <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0UX2wJq1cRBxDccZTD1VdUWT6Hb2j6wyC9cLqgTRoeoZELzK8dA7YoFz7aCFCJAabl&id=61573814677661" target="_blank" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.595 0 0 .593 0 1.326v21.348C0 23.407.595 24 1.325 24h11.49v-9.294H9.692V11.08h3.123V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.762v2.31h3.59l-.467 3.626h-3.123V24h6.116C23.405 24 24 23.407 24 22.674V1.326C24 .593 23.405 0 22.675 0z"/></svg>
@@ -774,10 +795,8 @@
   <p class="text-center text-slate-500 text-sm" data-i18n="copyright"></p>
 </footer>
 
-<!-- ========== LIGHTBOX ========== -->
 <div class="lightbox" id="lightbox"><img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Project image"></div>
 
-<!-- ========== LEGAL MODALS ========== -->
 <div id="privacyModal" class="legal-modal" role="dialog" aria-modal="true">
   <div class="legal-content">
     <div class="legal-header flex justify-between items-center border-b">
@@ -799,7 +818,6 @@
 </div>
 
 
-<!-- ========== MODAL COTIZADOR ========== -->
 <div id="cotizadorModal" class="modal-cotizador" role="dialog" aria-modal="true">
   <div id="cotizadorContent" class="cotizador-content">
     <div class="cotizador-header-footer">
@@ -831,7 +849,6 @@
   </div>
 </div>
 
-<!-- ========== FLOATING BTNS & RADIO PLAYER ========== -->
 <button class="top-btn floating-btn" id="topBtn" title="Go to top"><i data-lucide="arrow-up" color="#fff" width="24"></i></button>
 <a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp">
     <img src="https://nucleocolectivo.github.io/Oceanside/images/whatsapp.png" alt="WhatsApp" width="28" height="28">
@@ -893,7 +910,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about2Title: 'Inspirados en el acabado perfecto',
             about2Subtitle: 'Inspirados en el acabado perfecto',
             about2P1: 'En Stucco Supply hemos acompañado a constructores, arquitectos y diseñadores en más de 2 000 proyectos residenciales y comerciales. Somos especialistas en recubrimientos y sistemas EIFS: comprendemos cada fase del proceso y garantizamos inventario Just-in-Time.',
-            about2P2: 'Trabajamos para que tu obra avance sin contratiempos: mezclas personalizadas, matching de color, soporte técnico y logística de entrega JIT a pie de obra.',
+            about2P2: 'Somos una empresa local comprometida con la calidad, la atención personalizada y la eficiencia. Nuestra meta es ayudarte a construir con confianza.',
             about2Btn: 'Hablemos',
             ctaBannerH: '¿Listo para elevar la calidad de tu proyecto?',
             ctaBannerBtn: 'Solicitar cotización',
@@ -942,7 +959,7 @@ document.addEventListener('DOMContentLoaded', () => {
             about2Title: 'Inspired by the perfect finish',
             about2Subtitle: 'Inspired by the perfect finish',
             about2P1: 'At Stucco Supply we’ve supported builders, architects and designers in over 2,000 residential and commercial projects. We specialize in coatings and EIFS systems—understanding every step of the process and ensuring Just-in-Time inventory.',
-            about2P2: 'We keep your job on track with customized blends, color matching, technical support and on-site JIT delivery logistics',
+            about2P2: 'We are a local company committed to quality, personal service, and efficiency. Our goal is to help you build with confidence.',
             about2Btn: 'Let’s talk',
             ctaBannerH: 'Ready to raise the quality of your project?',
             ctaBannerBtn: 'Request a quote',
@@ -965,7 +982,7 @@ document.addEventListener('DOMContentLoaded', () => {
             termsTitle: 'Terms and Conditions',
             privacyContent: `<span class="es"><h3>Recopilación de Información</h3><p>Recopilamos información personal como nombre, correo electrónico y número de teléfono cuando la proporciona voluntariamente a través de nuestros formularios de contacto o cotización. También podemos recopilar datos no personales como el tipo de navegador y el sistema operativo para mejorar nuestro sitio web.</p><h3>Uso de la Información</h3><p>La información que recopilamos se utiliza para responder a sus consultas, procesar sus pedidos y mejorar nuestros servicios. No compartiremos su información personal con terceros, excepto cuando sea necesario para cumplir con la ley.</p><h3>Seguridad</h3><p>Tomamos medidas razonables para proteger su información personal contra pérdida, robo y uso no autorizado.</p></span><span class="en"><h3>Information Collection</h3><p>We collect personal information such as name, email, and phone number when you voluntarily provide it through our contact or quote forms. We may also collect non-personal data like browser type and operating system to improve our website.</p><h3>Use of Information</h3><p>The information we collect is used to respond to your inquiries, process your orders, and improve our services. We will not share your personal information with third parties except as necessary to comply with the law.</p><h3>Security</h3><p>We take reasonable measures to protect your personal information from loss, theft, and unauthorized use.</p></span>`,
             termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><span class="en"><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
-            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. All rights reserved.`
+            copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. Todos los derechos reservados.`
         }
     };
 
@@ -1252,7 +1269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     /* ===== ACTIVE NAV LINK ON SCROLL ===== */
     const sections = document.querySelectorAll('section[id]');
-    const navLi = document.querySelectorAll('#desktop-menu-list li a');
+    const navLi = document.querySelectorAll('#desktop-menu-list a');
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -1287,6 +1304,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    
+    /* ===== WHATSAPP CARD LINKS ===== */
+    document.querySelectorAll('.product-card').forEach(card => {
+        const i18nKey = card.dataset.i18nKey;
+        if (i18nKey) {
+            card.addEventListener('click', () => {
+                const productName = dict[lang][i18nKey];
+                const message = lang === 'es' ? 
+                    `Hola, quisiera información sobre: ${productName}` : 
+                    `Hello, I would like information about: ${productName}`;
+                
+                // Track event for analytics
+                if(typeof gtag === 'function') {
+                    gtag('event', 'select_content', { content_type: 'product_interest', item_id: productName });
+                }
+                if(typeof fbq === 'function') {
+                    fbq('track', 'ViewContent', { content_name: productName });
+                }
+
+                const whatsappUrl = `https://wa.me/19295040773?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+    });
+
 
     translate();
     cargarTablaCotizador();
