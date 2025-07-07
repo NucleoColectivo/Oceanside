@@ -226,20 +226,21 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+        /* CORRECCIÓN: Se aumenta el tamaño de las tarjetas a un valor intermedio. */
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         justify-content: center;
     }
 
     @media (min-width: 1024px) {
         #products .cards {
             grid-template-columns: repeat(3, 1fr);
-            max-width: 690px;
+            max-width: 772px; /* Ancho para 3 columnas de ~240px */
             margin-left: auto;
             margin-right: auto;
         }
         #services .cards {
             grid-template-columns: repeat(2, 1fr);
-            max-width: 450px;
+            max-width: 506px; /* Ancho para 2 columnas de ~240px */
             margin-left: auto;
             margin-right: auto;
         }
@@ -1391,4 +1392,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</ht
+</html>
