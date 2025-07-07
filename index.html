@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <!-- Oceanside Stucco Supply · Landing ES/EN -->
   <meta charset="utf-8">
@@ -937,7 +937,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ===== i18n DICTIONARY ===== */
-    let lang = 'es';
+    let lang = 'en';
     const dict = {
         es: {
             docTitle: 'Oceanside Stucco Supply | Materiales de Estuco & EIFS',
@@ -1050,7 +1050,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.title = dict[lang].docTitle;
         document.querySelector('meta[name="description"]').setAttribute('content', dict[lang].metaDesc);
-        langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+        langBtn.textContent = lang === 'en' ? 'ES' : 'EN';
         document.documentElement.lang = lang;
         
         const cotizadorContent = document.getElementById('cotizadorContent');
@@ -1063,7 +1063,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lucide.createIcons();
     }
-    langBtn.onclick = () => { lang = lang === 'es' ? 'en' : 'es'; translate(); };
+    langBtn.onclick = () => { lang = lang === 'en' ? 'es' : 'en'; translate(); };
 
     /* ===== LIGHTBOX ===== */
     const lb = document.getElementById('lightbox');
