@@ -130,6 +130,39 @@
     img{display:block;max-width:100%;}
     a{text-decoration:none;color:inherit}
 
+    /* ===== PRELOADER ===== */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.75s ease, visibility 0.75s ease;
+        visibility: visible;
+        opacity: 1;
+    }
+    #preloader.fade-out {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .spinner {
+        border: 8px solid #f3f3f3; /* Light grey */
+        border-top: 8px solid var(--primary); /* Blue */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1.5s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
     /* ===== LAYOUT ===== */
     section{padding:5rem 1.25rem;margin:auto;max-width:1280px}
     .sec-title,.section-title{text-align:center;font-size:clamp(1.8rem, 5vw, 2.5rem);font-weight:700;margin-bottom:1.8rem}
@@ -457,6 +490,11 @@
   </style>
 </head>
 <body>
+<!-- ===== PRELOADER ===== -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+
 <!-- ========== NAV ========= -->
 <header class="fixed top-0 inset-x-0 z-50">
   <nav class="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 py-3 font-[Montserrat]">
@@ -620,7 +658,6 @@
 <section id="video" class="py-20 bg-neutral-50" style="padding-top: 5rem;">
   <div class="mx-auto max-w-2xl rounded-2xl overflow-hidden shadow-xl">
     <div class="aspect-video">
-      <!-- CORRECCIÓN: Se reemplaza el enlace del video -->
       <iframe src="https://www.youtube.com/embed/dypSooVjt4I?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full" loading="lazy">
       </iframe>
     </div>
@@ -884,6 +921,19 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* ===== PRELOADER LOGIC ===== */
+    const preloader = document.getElementById('preloader');
+    window.addEventListener('load', () => {
+        if (preloader) {
+            preloader.classList.add('fade-out');
+            setTimeout(() => {
+                if (preloader.parentNode) {
+                    preloader.parentNode.removeChild(preloader);
+                }
+            }, 750);
+        }
+    });
 
     /* ===== i18n DICTIONARY ===== */
     let lang = 'es';
