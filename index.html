@@ -175,6 +175,7 @@
         min-height: 100%;
         min-width: 177.77vh; /* 16:9 Aspect Ratio */
         transform: translate(-50%, -50%);
+        pointer-events: auto; /* Permite la interacción con el video */
     }
     .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
     .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center; justify-content: center;}
@@ -192,22 +193,20 @@
     .cards {
         display: grid;
         gap: 1.6rem;
-        /* Un tamaño base unificado para todas las tarjetas en vista móvil */
-        grid-template-columns: repeat(auto-fit, minmax(242px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
         justify-content: center;
     }
 
-    /* CORRECCIÓN: Layout específico para unificar el tamaño de las tarjetas en desktop */
     @media (min-width: 1024px) {
         #products .cards {
             grid-template-columns: repeat(3, 1fr);
-            max-width: 778px; /* Ancho para 3 columnas de ~242px */
+            max-width: 690px;
             margin-left: auto;
             margin-right: auto;
         }
         #services .cards {
             grid-template-columns: repeat(2, 1fr);
-            max-width: 510px; /* Ancho para 2 columnas de ~242px (tamaño de referencia) */
+            max-width: 450px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -219,7 +218,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end; /* Aligns content to the bottom */
+        justify-content: flex-end;
         aspect-ratio: 1 / 1;
         border-radius: var(--radius);
         box-shadow: 0 8px 28px rgba(0,0,0,.08);
@@ -243,7 +242,7 @@
     .card:hover .card-bg-image {
         transform: scale(1.15);
     }
-    .card::after { /* Gradient overlay for text legibility */
+    .card::after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -254,7 +253,7 @@
         z-index: 2;
         border-radius: 0 0 var(--radius) var(--radius);
     }
-    .card-content { /* Changed from card-overlay */
+    .card-content {
         position: relative;
         z-index: 3;
         padding: 1.25rem;
@@ -262,7 +261,7 @@
         align-items: center;
         gap: 1rem;
         color: white;
-        margin-top: auto; /* Pushes content to the bottom */
+        margin-top: auto;
     }
     .card-icon {
         flex-shrink: 0;
@@ -338,7 +337,7 @@
     @media (min-width: 768px) {
         .gallery {
             grid-template-columns: repeat(3, 1fr);
-            max-width: 868px; /* Reduced by 30% from original */
+            max-width: 868px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -502,8 +501,9 @@
 <!-- ========== HERO ========== -->
 <section class="hero" id="home" role="banner">
   <div class="hero-video-container">
+    <!-- CORRECCIÓN: Se habilitan los controles del video para permitir activar el sonido -->
     <iframe 
-      src="https://www.youtube.com/embed/dypSooVjt4I?autoplay=1&loop=1&mute=1&controls=0&playlist=dypSooVjt4I&vq=hd1080" 
+      src="https://www.youtube.com/embed/dypSooVjt4I?autoplay=1&loop=1&mute=1&controls=1&playlist=dypSooVjt4I&vq=hd1080" 
       title="YouTube video player" 
       frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -621,7 +621,7 @@
 <section id="video" class="py-20 bg-neutral-50" style="padding-top: 5rem;">
   <div class="mx-auto max-w-2xl rounded-2xl overflow-hidden shadow-xl">
     <div class="aspect-video">
-      <iframe src="https://youtu.be/dypSooVjt4I" title="Oceanside Stucco Supply – Presentación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full" loading="lazy">
+      <iframe src="https://www.youtube.com/embed/pZPI3jQ_8-U?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full" loading="lazy">
       </iframe>
     </div>
   </div>
