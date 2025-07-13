@@ -22,430 +22,324 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- 
-    SEO: robots.txt y sitemap.xml
-    Crea un archivo 'robots.txt' en la raíz de tu sitio con el siguiente contenido:
-    User-agent: *
-    Allow: /
-    Sitemap: https://www.oceansidestucco.com/sitemap.xml
-
-    Genera y sube un 'sitemap.xml' a la raíz de tu sitio.
-  -->
-
-  <!-- SEO: Marcado JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Oceanside Stucco Supply",
-    "image": "https://nucleocolectivo.github.io/Oceanside/images/logo-main.png",
-    "@id": "https://www.oceansidestucco.com",
-    "url": "https://www.oceansidestucco.com",
-    "telephone": "+1-929-504-0773",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "White Plains",
-      "addressLocality": "White Plains",
-      "addressRegion": "NY",
-      "addressCountry": "US"
-    },
-    "description": "Ofrecemos suministros de estuco y sistemas EIFS confiables para contratistas, remodeladores y propietarios en el área Tri-State.",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "06:00",
-        "closes": "17:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "07:00",
-        "closes": "14:00"
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Inicio",
-      "item": "https://www.oceansidestucco.com/#home"
-    },{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Productos",
-      "item": "https://www.oceansidestucco.com/#products"
-    },{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Contacto",
-      "item": "https://www.oceansidestucco.com/#contact"
-    }]
-  }
-  </script>
-
-  <!-- Analytics: Reemplaza con tus IDs -->
-  <!-- Google Analytics 4 -->
-  <!-- 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  -->
-
-  <!-- Meta Pixel -->
-  <!-- 
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'YOUR_PIXEL_ID');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
-  /></noscript>
-  -->
-
   <style>
-    /* ===== VARIABLES ===== */
-    :root{--primary:#1E88E5;--primary-light:#90CAF9;--dark:#0F1116;--gray:#F3F5F7;--radius:1rem}
+    /* ===== VARIABLES & THEME ===== */
+    :root {
+        --primary: #4B5563; /* Darker Grey for primary actions */
+        --primary-light: #9CA3AF; /* Lighter Grey for accents */
+        --dark: #111827; /* Near-black for footer and text */
+        --gray: #F9FAFB; /* Very light grey for section backgrounds */
+        --radius: 0.5rem; /* Slightly reduced border-radius for a sharper look */
+        --font-sans: 'Montserrat', sans-serif;
+        --transition-speed: 500ms;
+        --transition-easing: cubic-bezier(0.165, 0.84, 0.44, 1); /* A professional ease-out quint */
+    }
 
-    /* ===== BASE ===== */
-    html{scroll-behavior:smooth}
-    body{font-family:'Montserrat',sans-serif;color:#151924;background:#fff; margin: 0;}
-    img{display:block;max-width:100%;}
-    a{text-decoration:none;color:inherit}
+    /* ===== BASE & TYPOGRAPHY ===== */
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font-sans);
+        color: #374151; /* Dark grey for body text */
+        background: #fff;
+        margin: 0;
+        font-size: 16px; /* Base font size */
+        line-height: 1.65;
+        overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; transition: color 0.2s; }
+    h1, h2, h3 { font-weight: 700; color: var(--dark); line-height: 1.2; }
+    .sec-title, .section-title {
+        font-size: clamp(2rem, 5vw, 3rem); /* Larger titles */
+        margin-bottom: 1.5rem;
+    }
+    .sec-desc {
+        max-width: 750px;
+        margin: 0 auto 4rem;
+        font-size: 1.125rem; /* Larger description text */
+        color: #4B5563;
+    }
 
     /* ===== PRELOADER ===== */
-    #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.75s ease, visibility 0.75s ease;
-        visibility: visible;
-        opacity: 1;
-    }
-    #preloader.fade-out {
-        opacity: 0;
-        visibility: hidden;
-    }
-    .spinner {
-        border: 8px solid #f3f3f3; /* Light grey */
-        border-top: 8px solid var(--primary); /* Blue */
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 1.5s linear infinite;
-    }
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+    #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.75s ease, visibility 0.75s ease; visibility: visible; opacity: 1; }
+    #preloader.fade-out { opacity: 0; visibility: hidden; }
+    .spinner { border: 8px solid #e5e7eb; border-top: 8px solid var(--primary); border-radius: 50%; width: 60px; height: 60px; animation: spin 1.5s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     /* ===== LAYOUT ===== */
-    section{padding:5rem 1.25rem;margin:auto;max-width:1280px}
-    .sec-title,.section-title{text-align:center;font-size:clamp(1.8rem, 5vw, 2.5rem);font-weight:700;margin-bottom:1.8rem}
-    .sec-desc{text-align:center;max-width:700px;margin:0 auto 3rem;color:#475569}
+    section {
+        padding: 6rem 1.5rem; /* Increased padding */
+        margin: auto;
+        max-width: 1280px;
+    }
 
     /* ===== HEADER / NAV ===== */
-    header{position:fixed;top:0;inset-inline:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 2px 6px rgba(0,0,0,.05)}
-    nav ul{ list-style: none; padding: 0; margin: 0;}
-    nav a:hover, nav a[aria-current="page"] {color:var(--primary)}
-    .btn,.btn-primary{background:var(--primary);color:#fff;padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.15);transition:transform .25s, box-shadow .25s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;}
-    .btn:hover,.btn-primary:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(0,0,0,.2)}
-    .btn-primary{background:#fff;color:var(--primary); border: 1px solid var(--primary);}
-    
+    header {
+        position: fixed; top: 0; inset-inline: 0; z-index: 50;
+        background: transparent;
+        transition: background-color .3s ease-in-out, backdrop-filter .3s ease-in-out, box-shadow .3s ease-in-out;
+        padding: 0.5rem 0;
+    }
+    header .font-bold, header nav a, header #mobile-menu-button {
+        color: #fff;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+    header.scrolled {
+        background: rgba(17, 24, 39, 0.85);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+    header.scrolled .font-bold, header.scrolled nav a, header.scrolled #mobile-menu-button { text-shadow: none; }
+    nav ul { list-style: none; padding: 0; margin: 0; }
+    nav a:hover, nav a[aria-current="page"] { color: var(--primary-light); }
+
+    /* ===== BUTTONS ===== */
+    .btn, .btn-primary {
+        background: var(--primary); color: #fff; padding: 0.75rem 1.75rem; border-radius: var(--radius);
+        font-weight: 600; box-shadow: 0 4px 14px rgba(0,0,0,.1);
+        transition: transform .25s, box-shadow .25s, background-color .25s;
+        display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid transparent;
+    }
+    .btn:hover, .btn-primary:hover {
+        transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    }
+    .btn-primary {
+        background: transparent; color: #fff; border: 2px solid #fff;
+    }
+    .btn-primary:hover {
+        background: #fff; color: var(--dark);
+    }
+    header .btn {
+        background-color: #fff; color: var(--dark);
+    }
+    header .btn:hover {
+        background-color: #e5e7eb;
+    }
+    header.scrolled .btn {
+        background-color: var(--primary); color: #fff;
+    }
+    header.scrolled .btn:hover {
+        background-color: var(--primary-light);
+    }
+
     /* ===== HERO ===== */
     .hero {
-        min-height: auto;
-        height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        padding: 8rem 1rem 6rem;
-        width: 100%;
-        max-width: 100vw;
+        min-height: 100vh;
+        display: flex; align-items: center; justify-content: center; text-align: center;
+        position: relative; overflow: hidden; padding: 8rem 1.5rem 6rem;
+        width: 100%; max-width: 100vw;
     }
-    .hero-video-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%; 
-        height: 100%;
-        z-index: -2;
-        pointer-events: none;
-    }
-    .hero-video-container iframe {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100vw;
-        height: 56.25vw; /* 16:9 Aspect Ratio */
-        min-height: 100%;
-        min-width: 177.77vh; /* 16:9 Aspect Ratio */
-        transform: translate(-50%, -50%);
-        pointer-events: auto; /* Permite la interacción con el video */
-    }
-    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6); z-index: -1;}
-    .hero-content{position:relative;z-index:1;max-width:900px;padding:0 1rem;color:#fff;display:flex;flex-direction:column;align-items:center; justify-content: center;}
-    
-    .hero-description {
-        max-width: 750px;
-        margin: auto;
-        font-size: clamp(1.1rem, 3vw, 1.25rem);
-        line-height: 1.5;
-        color: #475569;
-        text-align: center;
-    }
-
-    /* ===== GRID CARDS (NEW DESIGN) ===== */
-    .cards {
-        display: grid;
-        gap: 1.6rem;
-        /* CORRECCIÓN: Se aumenta el tamaño de las tarjetas a un valor intermedio. */
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        justify-content: center;
-    }
-
-    @media (min-width: 1024px) {
-        #products .cards {
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 772px; /* Ancho para 3 columnas de ~240px */
-            margin-left: auto;
-            margin-right: auto;
-        }
-        #services .cards {
-            grid-template-columns: repeat(2, 1fr);
-            max-width: 506px; /* Ancho para 2 columnas de ~240px */
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-
-    .card {
-        padding: 0;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        aspect-ratio: 1 / 1;
-        border-radius: var(--radius);
-        box-shadow: 0 8px 28px rgba(0,0,0,.08);
-        transition: transform .3s ease;
-        cursor: pointer;
-    }
-    .card:hover {
-        transform: translateY(-8px);
-    }
-    .card-bg-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
-        border-radius: var(--radius);
-        transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .card:hover .card-bg-image {
-        transform: scale(1.15);
-    }
-    .card::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 60%;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        z-index: 2;
-        border-radius: 0 0 var(--radius) var(--radius);
-    }
-    .card-content {
-        position: relative;
-        z-index: 3;
-        padding: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        color: white;
-        margin-top: auto;
-    }
-    .card-icon {
-        flex-shrink: 0;
-        width: 48px;
-        height: 48px;
-    }
-    .card-icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    .card-text {
-      text-align: left;
-    }
-    .card-text h3 {
-        font-weight: 700;
-        font-size: 1.1rem;
+    .hero-video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
+    .hero-video-container iframe { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100%; min-width: 177.77vh; transform: translate(-50%, -50%); pointer-events: auto; }
+    .hero::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,.5); z-index: -1; }
+    .hero-content { position:relative; z-index:1; max-width:900px; padding:0 1rem; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content: center; }
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         color: #fff;
-        margin: 0;
-        line-height: 1.3;
+        opacity: 0; /* Start hidden for animation */
     }
-    .card-text p {
-        font-size: 0.85rem;
-        color: rgba(255,255,255,0.85);
-        margin-top: 0.25rem;
-        line-height: 1.4;
+    .hero-content h1.is-visible {
+        animation: hero-title-animation 2.5s var(--transition-easing) forwards;
     }
-
-
-    /* ===== ABOUT ===== */
-    .about{
-        display:grid;
-        gap:3.5rem;
-        grid-template-columns:minmax(250px, 350px) 1fr;
-        align-items:center;
-        max-width: 1024px;
-        margin: 0 auto;
-    }
-    @media(max-width:900px){.about{grid-template-columns:1fr}.about .about-image-container{order:-1}}
-    
-    .about .about-image-container {
-      box-shadow:0 6px 20px rgba(0,0,0,.08); 
-      border-radius: var(--radius);
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      overflow: hidden;
+    @keyframes hero-title-animation {
+        from {
+            opacity: 0.7;
+            transform: translateX(-100px) scale(1.2);
+        }
+        to {
+            opacity: 0.9;
+            transform: translateX(0) scale(1);
+        }
     }
 
-    .about .about-image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+    .hero-description { max-width: 750px; margin: auto; font-size: clamp(1.1rem, 3vw, 1.25rem); line-height: 1.5; color: #4B5563; text-align: center; }
 
-    .about .about-image-container:hover img {
-      transform: scale(1.1);
+    /* ===== CARDS ===== */
+    .cards { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); justify-content: center; }
+    @media (min-width: 1024px) {
+        #products .cards { grid-template-columns: repeat(3, 1fr); max-width: 1024px; margin-left: auto; margin-right: auto; }
+        #services .cards { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
     }
+    .card {
+        padding: 0; position: relative; overflow: hidden; display: flex; flex-direction: column;
+        justify-content: flex-end; aspect-ratio: 1 / 1; border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(0,0,0,.08); transition: transform var(--transition-speed) var(--transition-easing), box-shadow var(--transition-speed) var(--transition-easing); cursor: pointer;
+    }
+    .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgba(0,0,0,.25); }
+    .card-bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: var(--radius); transition: transform var(--transition-speed) var(--transition-easing); }
+    .card:hover .card-bg-image { transform: scale(1.15); }
+    .card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 70%; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); z-index: 2; border-radius: 0 0 var(--radius) var(--radius); }
+    .card-content { position: relative; z-index: 3; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; color: white; margin-top: auto; }
+    .card-icon { flex-shrink: 0; width: 48px; height: 48px; }
+    .card-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .card-text h3 { font-weight: 700; font-size: 1.25rem; color: #fff; margin: 0; line-height: 1.3; }
+    .card-text p { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-top: 0.25rem; line-height: 1.4; }
 
-    .about .text h2{font-size:1.5rem;font-weight:600;margin-bottom:1rem}
-    .about .text p{
-        margin-bottom:1rem;
-        color:#475569;
-        text-align: justify;
-    }
+    /* ===== ABOUT SECTION ===== */
+    .about { display:grid; gap:4rem; grid-template-columns: 1fr 1fr; align-items:center; max-width: 1100px; margin: 0 auto; }
+    @media(max-width:900px){ .about{grid-template-columns:1fr}.about .about-image-container{order:-1} }
+    .about .about-image-container { box-shadow:0 10px 30px rgba(0,0,0,.1); border-radius: var(--radius); aspect-ratio: 4 / 3; width: 100%; overflow: hidden; }
+    .about .about-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-speed) var(--transition-easing); }
+    .about .about-image-container:hover img { transform: scale(1.05); }
+    .about .text h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .about .text p { margin-bottom: 1.5rem; color: #4B5563; text-align: left; }
 
     /* ===== GALLERY ===== */
-    .gallery {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    @media (min-width: 768px) {
-        .gallery {
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 868px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-    .gallery img {
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-        cursor: pointer;
-        transition: .3s;
-        width: 100%;
-        border-radius: var(--radius);
-    }
-    .gallery img:hover{transform:scale(1.05)}
-    
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:grid;place-items:center;opacity:0;pointer-events:none;
-        transition:.3s;z-index:1100}
-    .lightbox.active{opacity:1;pointer-events:all}.lightbox img{max-width:90%;max-height:90%; border-radius: 1rem;}
+    .gallery { display: grid; gap: 1.5rem; grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 768px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .gallery { grid-template-columns: 1fr; } }
+    .gallery-item { position: relative; overflow: hidden; border-radius: var(--radius); cursor: pointer; }
+    .gallery-item img { aspect-ratio: 1 / 1; object-fit: cover; width: 100%; transition: transform var(--transition-speed) var(--transition-easing); }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); opacity: 0; transition: opacity var(--transition-speed) var(--transition-easing); }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-item .zoom-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); color: white; opacity: 0; transition: transform var(--transition-speed) var(--transition-easing), opacity var(--transition-speed) var(--transition-easing); z-index: 1; }
+    .gallery-item:hover .zoom-icon { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    .lightbox { position:fixed; inset:0; background:rgba(0,0,0,.85); backdrop-filter: blur(5px); display:grid; place-items:center; opacity:0; pointer-events:none; transition:.3s; z-index:1100; }
+    .lightbox.active { opacity:1; pointer-events:all; }
+    .lightbox img { max-width:90%; max-height:90%; border-radius: var(--radius); }
+
+    /* ===== WHY CHOOSE US SECTION ===== */
+    .feature-card { background: #fff; padding: 2rem; border-radius: var(--radius); text-align: center; border: 1px solid #e5e7eb; transition: transform .3s ease, box-shadow .3s ease; }
+    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+    .feature-card .icon-wrapper { width: 64px; height: 64px; margin: 0 auto 1.5rem; background: color-mix(in srgb, var(--primary) 10%, transparent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+
+    /* ===== TESTIMONIALS SECTION ===== */
+    .testimonial-card { background: #fff; padding: 2rem; border-radius: var(--radius); border: 1px solid #e5e7eb; }
+    .testimonial-card .stars { color: #FBBF24; display: flex; gap: 0.25rem; margin-bottom: 1rem; }
+    .testimonial-card .author { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+    .testimonial-card .author-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .testimonial-card .author-name { font-weight: 600; }
 
     /* ===== BANNER CTA ===== */
-    .banner{background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);color:#fff;padding:4rem 1rem;
-        text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.15); border-radius: var(--radius);}
-    .banner h2{font-size:1.8rem;font-weight:700;margin-bottom:1.3rem}
+    .banner {
+        background: #374151; /* Medium Grey */
+        color:#fff;
+        padding:6rem 1.5rem;
+        text-align:center;
+        border-radius: var(--radius);
+    }
+    .banner h2 {
+        font-size:2.25rem;
+        font-weight:700;
+        margin-bottom:2rem;
+        color: #fff;
+    }
+    .banner .btn-primary {
+        border-color: #fff;
+        color: #fff;
+    }
+    .banner .btn-primary:hover {
+        background: #fff;
+        color: #374151;
+    }
 
     /* ===== CONTACT ===== */
-    .contact-grid{display:grid;gap:2rem; grid-template-columns:1fr 1fr;}
+    .contact-grid { display:grid; gap:3rem; grid-template-columns:1fr 1fr; align-items: stretch; }
     @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
-    .contact-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.05);}
-    .contact-grid input,.contact-grid textarea{width:100%;padding:.8rem 1rem;border:2px solid #E2E8F0;border-radius:.75rem; box-sizing: border-box;}
-    .contact-grid input:focus,.contact-grid textarea:focus{border-color:var(--primary);outline:none;
-        box-shadow:0 0 0 2px rgba(30,136,229,.25)}
+    .contact-card { background:var(--gray); padding:2.5rem; border-radius:var(--radius); display: flex; flex-direction: column; }
+    .contact-card.info-card ul { margin-top: auto; }
+    .contact-grid input, .contact-grid textarea { width:100%; padding:1rem; border:1px solid #D1D5DB; border-radius:.5rem; box-sizing: border-box; background: #fff; }
+    .contact-grid input:focus, .contact-grid textarea:focus { border-color:var(--primary); outline:none; box-shadow:0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent); }
 
     /* ===== FOOTER ===== */
-    footer{background:var(--dark);color:#c2c8d0;padding:3rem 1rem}
-    @media (min-width: 1024px) {
-        footer {
-            padding-left: 8rem;
-        }
+    footer { background:var(--dark); color:#9CA3AF; padding: 5rem 1.5rem 2rem; }
+    .footer-grid { display: grid; gap: 2.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 1280px; margin: auto; padding-bottom: 3rem; }
+    .footer-grid h5 { font-weight: 600; color: #fff; margin-bottom: 1rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-grid a:hover { color: #fff; }
+    .footer-social { display:flex; gap:.8rem; margin-top:1.5rem; }
+    .footer-social a { width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background: #374151; color:#fff; transition:.2s; }
+    .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+    .footer-social svg { width:20px; height:20px; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 2rem; margin-top: 3rem; text-align: center; font-size: 0.875rem; color: #6B7280; }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+    .animate-on-scroll { opacity: 0; }
+    .animate-on-scroll.is-visible {
+        animation-duration: 1s;
+        animation-timing-function: var(--transition-easing);
+        animation-fill-mode: forwards;
     }
-    .footer-grid{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));max-width:1024px;margin:auto}
-    .footer-grid a:hover{color:#fff}
-    
-    /* ===== SOCIAL BUTTONS (footer) ===== */
-    .footer-social{display:flex;gap:.8rem;margin-top:.8rem}
-    .footer-social a{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:9999px;
-        background:linear-gradient(135deg,var(--primary-light) 0%,var(--primary) 100%);
-        color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
-    .footer-social a:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
-    .footer-social svg{width:22px;height:22px}
+    .animate-on-scroll.is-visible.animate-fade-in-up { animation-name: fadeInUp; }
+    .animate-on-scroll.is-visible.animate-fade-in-left { animation-name: fadeInLeft; }
+    .animate-on-scroll.is-visible.animate-fade-in-right { animation-name: fadeInRight; }
+
 
     /* ===== FLOATING BTNS ===== */
-    .floating-btn{position:fixed;border:none;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25);
-        cursor:pointer;z-index:1200; display:flex; align-items:center; justify-content:center; transition: transform 0.2s;}
+    .floating-btn{position:fixed;border:none;border-radius:9999px;font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,.25); cursor:pointer;z-index:1200; display:flex; align-items:center; justify-content:center; transition: transform 0.2s;}
     .floating-btn:hover{transform: scale(1.1);}
     .lang-btn{bottom:22px;right:22px;background:var(--primary);color:#fff;padding:.7rem 1.1rem}
     .wa-btn{bottom:90px;right:22px;background:#25D366;width:52px; height: 52px; padding: 0;}
-    #radioBtnIcon {
+    #radioBtnIcon { position: fixed; bottom: 22px; left: 22px; width: 60px; height: 60px; cursor: pointer; z-index: 1200; border-radius: 0; animation: grey-glow 2s infinite alternate; transition: transform 0.2s ease; }
+    #radioBtnIcon:hover { transform: scale(1.1); }
+    .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px; display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none; z-index: 1200;}
+    
+    /* ===== RADIO PLAYER WIDGET ===== */
+    #radioWidget {
         position: fixed;
-        bottom: 22px;
-        left: 22px;
-        width: 60px;
-        height: 60px;
+        bottom: -100%; /* Start hidden */
+        left: 20px;
+        width: 320px;
+        background: rgba(33, 33, 33, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 -5px 30px rgba(0,0,0,0.4);
+        z-index: 1250;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: bottom 0.5s var(--transition-easing);
+        color: #fff;
+    }
+    #radioWidget.visible {
+        bottom: 0;
+    }
+    #widgetHeader {
+        padding: 8px 12px;
+        background: rgba(28, 28, 28, 0.7);
         cursor: pointer;
-        z-index: 1200;
-        border-radius: 0;
-        animation: blue-glow 2s infinite alternate;
-        transition: transform 0.2s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 15px 15px 0 0;
     }
-    #radioBtnIcon:hover {
+    .widget-content {
+        padding: 15px;
+    }
+    .radio-control-btn {
+        background: none; border: 2px solid #fff; border-radius: 50%; width: 48px; height: 48px; color: #fff; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;
+    }
+    .radio-control-btn:hover {
         transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
-    .top-btn{position:fixed;bottom:158px;right:22px;background:var(--primary);width:52px; height: 52px;
-        display:none; align-items:center; justify-content:center; border-radius: 9999px; cursor: pointer; border: none; z-index: 1200;}
+    .play-btn {
+        width: 65px; height: 65px; font-size: 1.8rem; background: linear-gradient(45deg, var(--primary), var(--primary-light)); border: none;
+    }
+    .play-btn:hover {
+        box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 50%, transparent);
+    }
+    .volume-slider { width: 100%; height: 5px; background: rgba(255,255,255,0.2); border-radius: 3px; outline: none; cursor: pointer; -webkit-appearance: none; }
+    .volume-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; background: #fff; border-radius: 50%; cursor: pointer; margin-top: -5px; }
+    .dj-panel { background: rgba(44, 44, 44, 0.7); border-radius: 10px; padding: 12px; margin-top: 15px; }
+    .dj-panel-header { display: flex; justify-content: space-between; align-items: center; }
+    .dj-panel-header .mic-icon { color: var(--primary-light); }
+    .dj-panel .info-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
+    #djStatus { font-weight: bold; }
+    #djStatus.playing { color: #4CAF50; }
+    #djStatus.paused { color: #FFC107; }
+    #djStatus.waiting { color: #1E88E5; }
 
-    /* ===== MODAL COTIZADOR & LEGAL ===== */
+    /* ===== MODALS (unchanged) ===== */
     .modal-cotizador, .legal-modal { position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
     .modal-cotizador.active, .legal-modal.active { display: flex; }
     .cotizador-content, .legal-content { background: white; max-width: 800px; width: 100%; border-radius: 1rem; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
@@ -459,34 +353,6 @@
     .legal-body h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
     .legal-body p { margin-bottom: 1rem; color: #475569; line-height: 1.6; }
     .legal-body ul { list-style-position: inside; list-style-type: disc; margin-bottom: 1rem; color: #475569; }
-
-
-    /* ===== RADIO PLAYER ===== */
-    .radio-modal { position: fixed; bottom: 85px; left: 22px; width: 300px; display: flex; flex-direction: column; background: #333; color: #fff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1200; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; overflow: hidden; }
-    .radio-modal.visible { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto;}
-    .radio-header { background: var(--primary); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
-    .radio-header .title { font-weight: bold; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; margin-right: 10px;}
-    .radio-header-buttons { display: flex; gap: 5px; }
-    .radio-header-buttons button { background: none; border: none; color: #fff; opacity: 0.8; cursor: pointer; transition: opacity 0.2s; padding: 5px;}
-    .radio-header-buttons button:hover { opacity: 1; }
-    .radio-body { transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; max-height: 200px; }
-    .radio-controls { background: #222; padding: 15px; display: flex; justify-content: space-around; align-items: center; }
-    .radio-controls button { background: none; border: 2px solid #fff; border-radius: 50%; width: 44px; height: 44px; color: #fff; display: flex; align-items:center; justify-content:center; cursor: pointer; transition: all .2s; }
-    .radio-controls button:hover { border-color: var(--primary-light); color: var(--primary-light); transform: scale(1.1); }
-    .radio-controls button.active { border-color: #D81B60; color: #D81B60; }
-    .radio-volume { background: #222; padding: 0 15px 15px; }
-    .radio-volume input[type=range] { width: 100%; height: 5px; background: #555; border-radius: 5px; outline: none; cursor: pointer; -webkit-appearance: none; }
-    .radio-volume input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: #D81B60; border-radius: 50%; cursor: pointer; border: 2px solid #222; }
-    .radio-modal.minimized .radio-body { max-height: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
-
-    @keyframes blue-glow {
-      from {
-        filter: drop-shadow(0 0 5px rgba(30, 136, 229, 0.6)) drop-shadow(0 0 10px rgba(30, 136, 229, 0.4));
-      }
-      to {
-        filter: drop-shadow(0 0 10px rgba(30, 136, 229, 1)) drop-shadow(0 0 20px rgba(30, 136, 229, 0.8));
-      }
-    }
 
   </style>
 </head>
@@ -506,32 +372,32 @@
 
     <!-- Desktop Menu -->
     <div class="hidden lg:flex items-center gap-6">
-      <ul id="desktop-menu-list" class="flex gap-6 font-medium">
-        <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)]"></a></li>
-        <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)]"></a></li>
-        <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)]"></a></li>
-        <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary)]"></a></li>
-        <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)]"></a></li>
-        <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)]"></a></li>
+      <ul id="desktop-menu-list" class="flex gap-6 font-medium text-sm">
+        <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary-light)]"></a></li>
+        <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary-light)]"></a></li>
+        <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary-light)]"></a></li>
+        <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary-light)]"></a></li>
+        <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary-light)]"></a></li>
+        <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary-light)]"></a></li>
       </ul>
-      <a href="#contact" class="btn" data-i18n="ctaQuote"></a>
+      <a href="#contact" class="btn text-sm" data-i18n="ctaQuote"></a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button" class="lg:hidden text-gray-700">
+    <button id="mobile-menu-button" class="lg:hidden">
       <i data-lucide="menu" class="h-6 w-6"></i>
     </button>
   </nav>
 
   <!-- Mobile Menu Panel -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-sm">
+  <div id="mobile-menu" class="hidden lg:hidden bg-gray-900/95 backdrop-blur-sm text-white">
     <ul class="flex flex-col items-center gap-6 py-8">
-      <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary)] mobile-link"></a></li>
-      <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary)] mobile-link"></a></li>
-      <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary)] mobile-link"></a></li>
-      <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary)] mobile-link"></a></li>
-      <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary)] mobile-link"></a></li>
-      <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary)] mobile-link"></a></li>
+      <li><a href="#products" data-i18n="navProducts" class="hover:text-[var(--primary-light)] mobile-link"></a></li>
+      <li><a href="#services" data-i18n="navServices" class="hover:text-[var(--primary-light)] mobile-link"></a></li>
+      <li><a href="#gallery" data-i18n="navGallery" class="hover:text-[var(--primary-light)] mobile-link"></a></li>
+      <li><a href="#about-extra" data-i18n="navAbout" class="hover:text-[var(--primary-light)] mobile-link"></a></li>
+      <li><a href="#faq" data-i18n="navFAQ" class="hover:text-[var(--primary-light)] mobile-link"></a></li>
+      <li><a href="#contact" data-i18n="navContact" class="hover:text-[var(--primary-light)] mobile-link"></a></li>
       <li><a href="#contact" class="btn mt-4 mobile-link" data-i18n="ctaQuote"></a></li>
     </ul>
   </div>
@@ -541,7 +407,7 @@
 <section class="hero" id="home" role="banner">
   <div class="hero-video-container">
     <iframe 
-      src="https://www.youtube.com/embed/dypSooVjt4I?autoplay=1&loop=1&mute=1&controls=1&playlist=dypSooVjt4I&vq=hd1080" 
+      src="https://www.youtube.com/embed/dypSooVjt4I?autoplay=1&loop=1&mute=1&controls=0&playlist=dypSooVjt4I&vq=hd1080" 
       title="YouTube video player" 
       frameborder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -549,196 +415,105 @@
     </iframe>
   </div>
   <div class="hero-content">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/logo-transparent.png" class="w-48 sm:w-[20rem] mb-2 drop-shadow-lg" alt="Oceanside Stucco logo" onerror="this.onerror=null;this.src='https://placehold.co/320x150/FFFFFF/000000?text=Logo+Not+Found';">
-    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2" data-i18n="heroH1" style="font-size: clamp(2rem, 5vw, 3.4rem); text-shadow: 2px 2px 4px rgba(0,0,0,0.7); line-height: 1.2;"></h1>
-    
-    <div class="flex flex-col gap-3 my-4 text-lg">
-      <span class="flex items-center justify-center gap-2 text-2xl"><i data-lucide="phone" class="inline" width="28"></i> <strong>929-504-0773</strong></span>
-      <span class="flex items-center justify-center gap-2 text-xl"><i data-lucide="check-circle" class="inline" width="24"></i> <span data-i18n="heroBullet"></span></span>
+    <div class="animate-on-scroll animate-fade-in-up">
+        <img src="https://nucleocolectivo.github.io/Oceanside/images/logo-transparent.png" class="w-48 sm:w-[20rem] mb-4 drop-shadow-lg mx-auto" alt="Oceanside Stucco logo" onerror="this.onerror=null;this.src='https://placehold.co/320x150/FFFFFF/000000?text=Logo+Not+Found';">
     </div>
-
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2 flex-wrap">
-       <a href="https://wa.me/19295040773" target="_blank" class="btn text-sm" data-i18n="ctaWa"></a>
+    <h1 data-i18n="heroH1" class="hero-title-animated"></h1>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 flex-wrap animate-on-scroll animate-fade-in-up" style="animation-delay: 0.4s;">
+        <a href="https://wa.me/19295040773" target="_blank" class="btn text-sm" data-i18n="ctaWa"></a>
       <a href="#contact" class="btn-primary text-sm" data-i18n="ctaHero"></a>
-      <a href="#video" class="btn-primary text-sm" data-i18n="ctaVideo"></a>
     </div>
   </div>
 </section>
 
 <!-- ========== INTRO & PRODUCTS SECTION ========== -->
-<section id="products" style="padding-top: 4rem; padding-bottom: 5rem;">
-  <div class="max-w-3xl mx-auto px-4 text-center">
+<section id="products">
+  <div class="max-w-3xl mx-auto px-4 text-center animate-on-scroll animate-fade-in-up">
     <p class="hero-description mb-16" data-i18n="heroP"></p>
     <h2 class="sec-title" data-i18n="productsTitle"></h2>
     <p class="sec-desc" data-i18n="productsDesc"></p>
   </div>
 
-  <div class="cards">
+  <div class="cards" data-stagger-children="fade-in-up">
     <div class="card product-card" data-i18n-key="prod1" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/01_Stucco%20y%20Sistemas%20EIFS.jpg" class="card-bg-image" alt="Stucco & EIFS Systems" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Sistema%20de%20Estuco%20y%20EIFS.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="prod1"></h3>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Sistema%20de%20Estuco%20y%20EIFS.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="prod1"></h3></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="prod2" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/02_revestimientos%20Base%20y%20Acabados.jpg" class="card-bg-image" alt="Base & Finish Coats" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Rodillo%20de%20pintura%20sobre%20fondo%20azul.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="prod2"></h3>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Rodillo%20de%20pintura%20sobre%20fondo%20azul.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="prod2"></h3></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="prod3" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/03_Mallas%20y%20Adhesivos.jpg" class="card-bg-image" alt="Mesh & Adhesives" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Icono%20de%20adhesivo.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="prod3"></h3>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Icono%20de%20adhesivo.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="prod3"></h3></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="prod4" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/04_Tableros%20de%20Aislamiento.jpg" class="card-bg-image" alt="Insulation Boards" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Pila%20de%20aislamiento%20en%20gradiente%20azul.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="prod4"></h3>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Pila%20de%20aislamiento%20en%20gradiente%20azul.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="prod4"></h3></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="prod5" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/05_Herramientas%20y%20Accesorios.jpg" class="card-bg-image" alt="Tools & Accessories" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Iconos%20de%20Herramientas.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="prod5"></h3>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Iconos%20de%20Herramientas.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="prod5"></h3></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="prod6" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/10_more.jpg" class="card-bg-image" alt="Discover Our Latest" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/mas%20productos.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="prod6"></h3>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/mas%20productos.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="prod6"></h3></div>
       </div>
     </div>
   </div>
 </section>
     
-    
-<!-- ========== NEW PRODUCT GALLERY SECTION ========== -->
-<section id="product-gallery" class="bg-[var(--gray)]">
-  <h2 class="sec-title" data-i18n="productGalleryTitle"></h2>
-  <p class="sec-desc" data-i18n="productGalleryDesc"></p>
-  <div class="gallery">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/01pine.png" alt="" data-i18n-alt="prodGalleryAlt1" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/04%20mold.png" alt="" data-i18n-alt="prodGalleryAlt4" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/06%20mold.png" alt="" data-i18n-alt="prodGalleryAlt6" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/07%20mold.png" alt="" data-i18n-alt="prodGalleryAlt7" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/08%20mold.png" alt="" data-i18n-alt="prodGalleryAlt8" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/11%20mold.png" alt="" data-i18n-alt="prodGalleryAlt11" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/12%20mold.png" alt="" data-i18n-alt="prodGalleryAlt12" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/02%20mold.png" alt="" data-i18n-alt="prodGalleryAlt2" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/16%20mold.png" alt="" data-i18n-alt="prodGalleryAlt16" loading="lazy">
-  </div>
-</section> 
-    
-    
-    
-    
-    
-
-<section class="banner" style="padding-top: 4rem; padding-bottom: 4rem; margin-top: 0;">
-  <div class="banner-content">
-      <h2 data-i18n="ctaBannerH"></h2>
-      <a href="#contact" class="btn-primary" data-i18n="ctaBannerBtn"></a>
-  </div>
-</section>
-
-<section class="text-center" style="padding: 3rem 1rem;">
-    <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
-        <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
-    </button>
-</section>
-
-<section id="video" class="py-20 bg-neutral-50" style="padding-top: 5rem;">
-  <div class="mx-auto max-w-2xl rounded-2xl overflow-hidden shadow-xl">
-    <div class="aspect-video">
-      <iframe src="https://www.youtube.com/embed/dypSooVjt4I?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full" loading="lazy">
-      </iframe>
-    </div>
-  </div>
-</section>
- 
 <section id="services" class="bg-[var(--gray)]">
-  <h2 class="sec-title" data-i18n="servicesTitle"></h2>
-  <p class="sec-desc" data-i18n="servicesDesc"></p>
+  <div class="animate-on-scroll animate-fade-in-up">
+    <h2 class="sec-title" data-i18n="servicesTitle"></h2>
+    <p class="sec-desc" data-i18n="servicesDesc"></p>
+  </div>
 
-  <div class="cards">
+  <div class="cards" data-stagger-children="fade-in-up">
     <div class="card product-card" data-i18n-key="srv1" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/06_Entregas%20Rapidas.jpg" class="card-bg-image" alt="Fast Deliveries" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Camion.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="srv1"></h3>
-          <p data-i18n="srv1d"></p>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Camion.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="srv1"></h3><p data-i18n="srv1d"></p></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="srv2" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/07_Soporte%20Tecnico.jpg" class="card-bg-image" alt="Technical Support" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Soporte.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="srv2"></h3>
-          <p data-i18n="srv2d"></p>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Soporte.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="srv2"></h3><p data-i18n="srv2d"></p></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="srv3" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/08_Abierto%20a%20Todos.jpg" class="card-bg-image" alt="Open to Everyone" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/Abierto.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="srv3"></h3>
-          <p data-i18n="srv3d"></p>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/Abierto.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="srv3"></h3><p data-i18n="srv3d"></p></div>
       </div>
     </div>
     <div class="card product-card" data-i18n-key="srv4" role="button" tabindex="0">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/09_Mayorista%20y%20Retail.jpg" class="card-bg-image" alt="Wholesale & Retail" loading="lazy">
       <div class="card-content">
-        <div class="card-icon">
-          <img src="https://nucleocolectivo.github.io/Oceanside/images/montacargas.png" alt="">
-        </div>
-        <div class="card-text">
-          <h3 data-i18n="srv4"></h3>
-          <p data-i18n="srv4d"></p>
-        </div>
+        <div class="card-icon"><img src="https://nucleocolectivo.github.io/Oceanside/images/montacargas.png" alt=""></div>
+        <div class="card-text"><h3 data-i18n="srv4"></h3><p data-i18n="srv4d"></p></div>
       </div>
     </div>
   </div>
@@ -746,69 +521,166 @@
 
 <section class="section" id="about-extra">
   <div class="about">
-    <div class="about-image-container">
+    <div class="about-image-container animate-on-scroll animate-fade-in-left">
       <img src="https://nucleocolectivo.github.io/Oceanside/images/Inspirados.png" alt="Bodega con materiales de estuco" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
     </div>
-    <div class="text">
+    <div class="text animate-on-scroll animate-fade-in-right">
       <h2 data-i18n="about2Subtitle"></h2>
       <p data-i18n="about2P1"></p>
       <p data-i18n="about2P2"></p>
-      <a href="#contact" class="btn-primary" data-i18n="about2Btn" style="margin-top: 1rem;"></a>
+      <a href="#contact" class="btn" data-i18n="about2Btn" style="margin-top: 1rem; background: var(--dark); color: #fff;"></a>
     </div>
   </div>
 </section>
 
+<!-- ========== WHY CHOOSE US? ========== -->
+<section id="why-choose-us" class="bg-white">
+    <div class="text-center animate-on-scroll animate-fade-in-up">
+        <h2 class="sec-title" data-i18n="whyChooseUsTitle"></h2>
+        <p class="sec-desc" data-i18n="whyChooseUsDesc"></p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8" data-stagger-children="fade-in-up">
+        <div class="feature-card">
+            <div class="icon-wrapper"><i data-lucide="shield-check"></i></div>
+            <h3 data-i18n="feature1Title"></h3>
+            <p class="text-gray-600" data-i18n="feature1Desc"></p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-wrapper"><i data-lucide="users"></i></div>
+            <h3 data-i18n="feature2Title"></h3>
+            <p class="text-gray-600" data-i18n="feature2Desc"></p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-wrapper"><i data-lucide="truck"></i></div>
+            <h3 data-i18n="feature3Title"></h3>
+            <p class="text-gray-600" data-i18n="feature3Desc"></p>
+        </div>
+    </div>
+</section>
+
 <section id="gallery">
-  <h2 class="sec-title" data-i18n="galleryTitle"></h2>
-  <p class="sec-desc" data-i18n="galleryDesc"></p>
-  <div class="gallery">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-1.jpg" alt="" data-i18n-alt="alt1" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-2.jpg" alt="" data-i18n-alt="alt2" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-3.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-7.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-5.jpg" alt="" data-i18n-alt="alt3" loading="lazy">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/project-6.jpg" alt="" data-i18n-alt="alt4" loading="lazy">
+    <div class="animate-on-scroll animate-fade-in-up">
+        <h2 class="sec-title" data-i18n="galleryTitle"></h2>
+        <p class="sec-desc" data-i18n="galleryDesc"></p>
+    </div>
+  <div class="gallery" data-stagger-children="fade-in-up">
+    <div class="gallery-item"><img src="https://nucleocolectivo.github.io/Oceanside/images/project-1.jpg" alt="" data-i18n-alt="alt1" loading="lazy"><div class="zoom-icon"><i data-lucide="zoom-in" width="48" height="48"></i></div></div>
+    <div class="gallery-item"><img src="https://nucleocolectivo.github.io/Oceanside/images/project-2.jpg" alt="" data-i18n-alt="alt2" loading="lazy"><div class="zoom-icon"><i data-lucide="zoom-in" width="48" height="48"></i></div></div>
+    <div class="gallery-item"><img src="https://nucleocolectivo.github.io/Oceanside/images/project-3.jpg" alt="" data-i18n-alt="alt3" loading="lazy"><div class="zoom-icon"><i data-lucide="zoom-in" width="48" height="48"></i></div></div>
+    <div class="gallery-item"><img src="https://nucleocolectivo.github.io/Oceanside/images/project-7.jpg" alt="" data-i18n-alt="alt4" loading="lazy"><div class="zoom-icon"><i data-lucide="zoom-in" width="48" height="48"></i></div></div>
+    <div class="gallery-item"><img src="https://nucleocolectivo.github.io/Oceanside/images/project-5.jpg" alt="" data-i18n-alt="alt3" loading="lazy"><div class="zoom-icon"><i data-lucide="zoom-in" width="48" height="48"></i></div></div>
+    <div class="gallery-item"><img src="https://nucleocolectivo.github.io/Oceanside/images/project-6.jpg" alt="" data-i18n-alt="alt4" loading="lazy"><div class="zoom-icon"><i data-lucide="zoom-in" width="48" height="48"></i></div></div>
   </div>
 </section>
 
-<section id="faq" class="bg-[var(--gray)]">
+<!-- ========== NEW PRODUCT GALLERY SECTION ========== -->
+<section id="product-gallery" class="bg-[var(--gray)]">
+  <div class="animate-on-scroll animate-fade-in-up">
+    <h2 class="sec-title" data-i18n="productGalleryTitle"></h2>
+    <p class="sec-desc" data-i18n="productGalleryDesc"></p>
+  </div>
+  <div class="gallery" data-stagger-children="fade-in-up">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/01pine.png" alt="" data-i18n-alt="prodGalleryAlt1" loading="lazy" class="gallery-item">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/04%20mold.png" alt="" data-i18n-alt="prodGalleryAlt4" loading="lazy" class="gallery-item">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/06%20mold.png" alt="" data-i18n-alt="prodGalleryAlt6" loading="lazy" class="gallery-item">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/07%20mold.png" alt="" data-i18n-alt="prodGalleryAlt7" loading="lazy" class="gallery-item">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/08%20mold.png" alt="" data-i18n-alt="prodGalleryAlt8" loading="lazy" class="gallery-item">
+    <img src="https://nucleocolectivo.github.io/Oceanside/images/11%20mold.png" alt="" data-i18n-alt="prodGalleryAlt11" loading="lazy" class="gallery-item">
+  </div>
+</section> 
+
+<!-- ========== TESTIMONIALS ========== -->
+<section id="testimonials">
+    <div class="text-center animate-on-scroll animate-fade-in-up">
+        <h2 class="sec-title" data-i18n="testimonialsTitle"></h2>
+        <p class="sec-desc" data-i18n="testimonialsDesc"></p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto" data-stagger-children="fade-in-up">
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="text-gray-600" data-i18n="testimonial1Text"></p>
+            <div class="author">
+                <img src="https://placehold.co/100x100/4B5563/FFFFFF?text=J.D." alt="John Doe" class="author-img">
+                <div>
+                    <div class="author-name" data-i18n="testimonial1Author"></div>
+                    <div class="text-sm text-gray-500" data-i18n="testimonial1Company"></div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="text-gray-600" data-i18n="testimonial2Text"></p>
+            <div class="author">
+                <img src="https://placehold.co/100x100/4B5563/FFFFFF?text=M.S." alt="Maria Smith" class="author-img">
+                <div>
+                    <div class="author-name" data-i18n="testimonial2Author"></div>
+                    <div class="text-sm text-gray-500" data-i18n="testimonial2Company"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="banner animate-on-scroll animate-fade-in-up">
+  <div class="banner-content">
+      <h2 data-i18n="ctaBannerH"></h2>
+      <a href="#contact" class="btn-primary" data-i18n="ctaBannerBtn"></a>
+  </div>
+</section>
+
+<section class="text-center animate-on-scroll animate-fade-in-up" style="padding: 3rem 1rem;">
+    <button id="openCotizadorBtn" class="btn" style="padding: 1rem 2rem; font-size: 1.2rem;">
+        <i data-lucide="calculator" class="inline"></i> <span data-i18n="openQuoteTool"></span>
+    </button>
+</section>
+
+<section id="video" class="py-20 bg-neutral-50 animate-on-scroll animate-fade-in-up">
+  <div class="mx-auto max-w-2xl rounded-2xl overflow-hidden shadow-xl">
+    <div class="aspect-video">
+      <iframe src="https://www.youtube.com/embed/dypSooVjt4I?rel=0&modestbranding=1" title="Oceanside Stucco Supply – Presentación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="animate-on-scroll animate-fade-in-up">
   <h2 class="sec-title" data-i18n="faqTitle"></h2>
   <div class="max-w-3xl mx-auto">
-    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm cursor-pointer">
-      <summary class="font-semibold" data-i18n="faqQ1"></summary>
-      <p class="mt-2 text-slate-600" data-i18n="faqA1"></p>
+    <details class="bg-white p-5 rounded-lg mb-4 shadow-sm cursor-pointer border">
+      <summary class="font-semibold text-lg" data-i18n="faqQ1"></summary>
+      <p class="mt-3 text-slate-600" data-i18n="faqA1"></p>
     </details>
-    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm cursor-pointer">
-      <summary class="font-semibold" data-i18n="faqQ2"></summary>
-      <p class="mt-2 text-slate-600" data-i18n="faqA2"></p>
+    <details class="bg-white p-5 rounded-lg mb-4 shadow-sm cursor-pointer border">
+      <summary class="font-semibold text-lg" data-i18n="faqQ2"></summary>
+      <p class="mt-3 text-slate-600" data-i18n="faqA2"></p>
     </details>
-    <details class="bg-white p-5 rounded-xl mb-4 shadow-sm cursor-pointer">
-      <summary class="font-semibold" data-i18n="faqQ3"></summary>
-      <p class="mt-2 text-slate-600" data-i18n="faqA3"></p>
+    <details class="bg-white p-5 rounded-lg mb-4 shadow-sm cursor-pointer border">
+      <summary class="font-semibold text-lg" data-i18n="faqQ3"></summary>
+      <p class="mt-3 text-slate-600" data-i18n="faqA3"></p>
     </details>
-    <details class="bg-white p-5 rounded-xl shadow-sm cursor-pointer">
-      <summary class="font-semibold" data-i18n="faqQ4"></summary>
-      <p class="mt-2 text-slate-600" data-i18n="faqA4"></p>
+    <details class="bg-white p-5 rounded-lg shadow-sm cursor-pointer border">
+      <summary class="font-semibold text-lg" data-i18n="faqQ4"></summary>
+      <p class="mt-3 text-slate-600" data-i18n="faqA4"></p>
     </details>
   </div>
 </section>
 
-<section id="contact" class="py-14">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid gap-12 md:grid-cols-2 items-start">
-        <div>
-          <h2 class="sec-title text-left mb-6 md:mb-10" data-i18n="contactTitle"></h2>
-          <div class="contact-card">
-            <h3 class="font-semibold text-xl mb-4" data-i18n="brandFull"></h3>
-            <ul class="space-y-3 text-slate-700">
-              <li class="flex items-center gap-2"><i data-lucide="phone" width="18" class="text-primary"></i> 929-504-0773</li>
-              <li class="flex items-center gap-2"><i data-lucide="mail"  width="18" class="text-primary"></i> info@oceansidestucco.com</li>
-              <li class="flex items-center gap-2"><i data-lucide="map-pin" width="18" class="text-primary"></i> White Plains, NY</li>
-              <li class="flex items-center gap-2"><i data-lucide="clock" width="18" class="text-primary"></i> <span data-i18n="hours"></span></li>
-            </ul>
-          </div>
+<section id="contact" class="bg-[var(--gray)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 animate-on-scroll animate-fade-in-up">
+        <h2 class="sec-title" data-i18n="contactTitle"></h2>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2 items-start">
+        <div class="contact-card bg-white animate-on-scroll animate-fade-in-left">
+          <h3 class="font-semibold text-xl mb-4" data-i18n="brandFull"></h3>
+          <ul class="space-y-4 text-slate-700">
+            <li class="flex items-center gap-3"><i data-lucide="phone" width="24" class="text-primary"></i> 929-504-0773</li>
+            <li class="flex items-center gap-3"><i data-lucide="mail"  width="24" class="text-primary"></i> info@oceansidestucco.com</li>
+            <li class="flex items-center gap-3"><i data-lucide="map-pin" width="24" class="text-primary"></i> White Plains, NY</li>
+            <li class="flex items-center gap-3"><i data-lucide="clock" width="24" class="text-primary"></i> <span data-i18n="hours"></span></li>
+          </ul>
         </div>
-        <form id="formContact" class="contact-card grid gap-4 mt-0 md:mt-24">
+        <form id="formContact" class="contact-card grid gap-4 bg-white animate-on-scroll animate-fade-in-right">
           <input type="text" placeholder="Nombre completo" data-i18n-placeholder="phName" required>
           <input type="email" placeholder="Correo electrónico" data-i18n-placeholder="phEmail" required>
           <textarea rows="4" placeholder="Cuéntanos sobre tu proyecto" data-i18n-placeholder="phMsg"></textarea>
@@ -816,9 +688,9 @@
            <p id="form-message" class="text-center font-semibold"></p>
         </form>
       </div>
-       <div class="mt-16 rounded-2xl overflow-hidden shadow-xl">
+       <div class="mt-12 rounded-lg overflow-hidden shadow-lg animate-on-scroll animate-fade-in-up">
            <iframe
-             class="w-full h-[250px]" loading="lazy" allowfullscreen title="Mapa Oceanside Stucco Supply" referrerpolicy="no-referrer-when-downgrade"
+             class="w-full h-[350px]" loading="lazy" allowfullscreen title="Mapa Oceanside Stucco Supply" referrerpolicy="no-referrer-when-downgrade"
              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999.508819890195!2d-73.7748096245355!3d41.06278959135095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c29580e42d7dd3%3A0x65c845ad898aefe1!2sOCEANSIDE%20STUCCO%20SUPPLY!5e0!3m2!1sen!2sco!4v1720245203513!5m2!1sen!2sco">
            </iframe>
        </div>
@@ -828,119 +700,101 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <h4 class="text-lg font-semibold text-white mb-2" data-i18n="brandFull"></h4>
-      <p class="text-slate-400 max-w-xs" data-i18n="footerTag"></p>
-      <p class="mt-3 text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" width="16"></i> White Plains, NY</p>
+      <h5 data-i18n="brandFull"></h5>
+      <p class="text-slate-400 max-w-xs mt-2" data-i18n="footerTag"></p>
     </div>
     <div>
-      <h5 class="font-semibold text-white mb-2" data-i18n="footerContact"></h5>
-      <p class="flex items-center gap-1 text-slate-400"><i data-lucide="phone" width="16"></i> 929-504-0773</p>
-      <p class="flex items-center gap-1 text-slate-400"><i data-lucide="mail" width="16"></i> info@oceansidestucco.com</p>
+      <h5 data-i18n="navProducts"></h5>
+      <ul>
+        <li><a href="#products">Stucco & EIFS</a></li>
+        <li><a href="#products">Base & Finish Coats</a></li>
+        <li><a href="#products">Tools & Accessories</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-i18n="footerContact"></h5>
+      <ul>
+        <li><a href="tel:+19295040773">929-504-0773</a></li>
+        <li><a href="mailto:info@oceansidestucco.com">info@oceansidestucco.com</a></li>
+        <li>White Plains, NY</li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-i18n="footerLegal"></h5>
+      <ul>
+        <li><a href="javascript:void(0)" id="openPrivacy" data-i18n="privacy"></a></li>
+        <li><a href="javascript:void(0)" id="openTerms" data-i18n="terms"></a></li>
+      </ul>
       <div class="footer-social">
-        <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0UX2wJq1cRBxDccZTD1VdUWT6Hb2j6wyC9cLqgTRoeoZELzK8dA7YoFz7aCFCJAabl&id=61573814677661" target="_blank" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0H1.325C.595 0 0 .593 0 1.326v21.348C0 23.407.595 24 1.325 24h11.49v-9.294H9.692V11.08h3.123V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.762v2.31h3.59l-.467 3.626h-3.123V24h6.116C23.405 24 24 23.407 24 22.674V1.326C24 .593 23.405 0 22.675 0z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/oceansidestuccosupply/" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 2A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2h-9zm0 2h9A3.5 3.5 0 0 1 20 7.5v9A3.5 3.5 0 0 1 16.5 20h--9A3.5 3.5 0 0 1 4 16.5v-9A3.5 3.5 0 0 1 7.5 4zm9.8 1.7a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@oceansidestuccosupply" target="_blank" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.305a6.153 6.153 0 0 1-4.286-1.734V14.4a6.665 6.665 0 1 1-7.014-6.638v3.35a3.322 3.322 0 1 0 3.335 3.288V0h3.332a2.88 2.88 0 0 0 2.863 2.537h1.77v3.35z"/></svg>
-        </a>
+        <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid0UX2wJq1cRBxDccZTD1VdUWT6Hb2j6wyC9cLqgTRoeoZELzK8dA7YoFz7aCFCJAabl&id=61573814677661" target="_blank" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="https://www.instagram.com/oceansidestuccosupply/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="https://www.tiktok.com/@oceansidestuccosupply" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M21 8.305a6.153 6.153 0 0 1-4.286-1.734V14.4a6.665 6.665 0 1 1-7.014-6.638v3.35a3.322 3.322 0 1 0 3.335 3.288V0h3.332a2.88 2.88 0 0 0 2.863 2.537h1.77v3.35z"/></svg></a>
       </div>
     </div>
-    
-    <div>
-      <h5 class="font-semibold text-white mb-2" data-i18n="footerLegal"></h5>
-      <a href="javascript:void(0)" id="openPrivacy" class="block text-slate-400 mb-1 hover:text-white" data-i18n="privacy"></a>
-      <a href="javascript:void(0)" id="openTerms" class="block text-slate-400 hover:text-white" data-i18n="terms"></a>
-    </div>
   </div>
-  <hr class="border-slate-700 my-6">
-  <p class="text-center text-slate-500 text-sm" data-i18n="copyright"></p>
+  <div class="footer-bottom">
+    <p data-i18n="copyright"></p>
+  </div>
 </footer>
 
+<!-- Modals -->
 <div class="lightbox" id="lightbox"><img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Project image"></div>
+<div id="privacyModal" class="legal-modal" role="dialog" aria-modal="true"><div class="legal-content"><div class="legal-header flex justify-between items-center border-b"><h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="privacyTitle"></h2><button class="close-legal-modal text-gray-500 hover:text-red-500"><i data-lucide="x"></i></button></div><div class="legal-body py-4" data-i18n-content="privacyContent"></div></div></div>
+<div id="termsModal" class="legal-modal" role="dialog" aria-modal="true"><div class="legal-content"><div class="legal-header flex justify-between items-center border-b"><h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="termsTitle"></h2><button class="close-legal-modal text-gray-500 hover:text-red-500"><i data-lucide="x"></i></button></div><div class="legal-body py-4" data-i18n-content="termsContent"></div></div></div>
+<div id="cotizadorModal" class="modal-cotizador" role="dialog" aria-modal="true"><div id="cotizadorContent" class="cotizador-content"><div class="cotizador-header-footer"><button id="closeCotizadorBtn" class="absolute top-4 right-4 text-gray-500 hover:text-red-500" aria-label="Cerrar"><i data-lucide="x"></i></button><div class="text-center"><h2 class="text-xl sm:text-2xl font-bold text-[var(--primary)]"><span class="es">Cotizador Interactivo</span><span class="en">Quote Tool</span></h2><button id="toggleQuoteLang" class="mt-2 text-sm font-semibold text-[var(--primary)] underline">ES / EN</button></div></div><div id="stucco-items" class="cotizador-body space-y-4"></div><div class="cotizador-header-footer mt-auto border-t pt-4"><div class="flex justify-between items-center mb-4"><span class="text-lg font-medium">Total:</span><span class="text-xl font-bold text-[var(--primary)]">USD <span id="total-usd">0.00</span></span></div><div class="flex flex-col sm:flex-row gap-3"><button id="sendQuoteWhatsApp" class="btn w-full" style="background: var(--primary); color: white;"><i data-lucide="send" width="18"></i> <span class="es">Pedir por WhatsApp</span><span class="en">Order via WhatsApp</span></button><button onclick="window.print()" class="btn-primary w-full"><i data-lucide="printer" width="18"></i> <span class="es">Imprimir</span><span class="en">Print</span></button></div></div></div></div>
 
-<div id="privacyModal" class="legal-modal" role="dialog" aria-modal="true">
-  <div class="legal-content">
-    <div class="legal-header flex justify-between items-center border-b">
-      <h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="privacyTitle"></h2>
-      <button class="close-legal-modal text-gray-500 hover:text-red-500"><i data-lucide="x"></i></button>
-    </div>
-    <div class="legal-body py-4" data-i18n-content="privacyContent"></div>
-  </div>
-</div>
-
-<div id="termsModal" class="legal-modal" role="dialog" aria-modal="true">
-  <div class="legal-content">
-    <div class="legal-header flex justify-between items-center border-b">
-      <h2 class="text-xl font-bold text-[var(--primary)]" data-i18n="termsTitle"></h2>
-      <button class="close-legal-modal text-gray-500 hover:text-red-500"><i data-lucide="x"></i></button>
-    </div>
-    <div class="legal-body py-4" data-i18n-content="termsContent"></div>
-  </div>
-</div>
-
-
-<div id="cotizadorModal" class="modal-cotizador" role="dialog" aria-modal="true">
-  <div id="cotizadorContent" class="cotizador-content">
-    <div class="cotizador-header-footer">
-        <button id="closeCotizadorBtn" class="absolute top-4 right-4 text-gray-500 hover:text-red-500" aria-label="Cerrar">
-          <i data-lucide="x"></i>
-        </button>
-        <div class="text-center">
-          <h2 class="text-xl sm:text-2xl font-bold text-[var(--primary)]"><span class="es">Cotizador Interactivo</span><span class="en">Quote Tool</span></h2>
-          <button id="toggleQuoteLang" class="mt-2 text-sm font-semibold text-[var(--primary)] underline">ES / EN</button>
-        </div>
-    </div>
-
-    <div id="stucco-items" class="cotizador-body space-y-4"></div>
-
-    <div class="cotizador-header-footer mt-auto border-t pt-4">
-      <div class="flex justify-between items-center mb-4">
-        <span class="text-lg font-medium">Total:</span>
-        <span class="text-xl font-bold text-[var(--primary)]">USD <span id="total-usd">0.00</span></span>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-3">
-        <button id="sendQuoteWhatsApp" class="btn w-full" style="background: var(--primary); color: white;">
-          <i data-lucide="send" width="18"></i> <span class="es">Pedir por WhatsApp</span><span class="en">Order via WhatsApp</span>
-        </button>
-        <button onclick="window.print()" class="btn-primary w-full">
-            <i data-lucide="printer" width="18"></i> <span class="es">Imprimir</span><span class="en">Print</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- Floating Buttons -->
 <button class="top-btn floating-btn" id="topBtn" title="Go to top"><i data-lucide="arrow-up" color="#fff" width="24"></i></button>
-<a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp">
-    <img src="https://nucleocolectivo.github.io/Oceanside/images/whatsapp.png" alt="WhatsApp" width="28" height="28">
-</a>
+<a href="https://wa.me/19295040773" class="wa-btn floating-btn" aria-label="WhatsApp" target="_blank" rel="noopener" title="Chat on WhatsApp"><img src="https://nucleocolectivo.github.io/Oceanside/images/whatsapp.png" alt="WhatsApp" width="28" height="28"></a>
 <img src="https://nucleocolectivo.github.io/Oceanside/images/radio.png" id="radioBtnIcon" alt="Abrir Radio" title="Abrir Radio">
 <button class="lang-btn floating-btn" id="langBtn" title="Change language">EN</button>
 
-<div id="radioModal" class="radio-modal">
-    <div class="radio-header">
-      <span id="stationName" class="title">Cargando…</span>
-      <div class="radio-header-buttons">
-          <button id="radioMinimize" title="Minimizar"><i data-lucide="chevrons-down-up" width="18"></i></button>
-          <button id="radioClose" title="Cerrar"><i data-lucide="x" width="18"></i></button>
-      </div>
+<!-- Radio Player Widget -->
+<div id="radioWidget">
+    <div id="widgetHeader">
+        <span>Oceanside Radio</span>
+        <button id="closeRadioBtn" class="bg-transparent border-none text-white text-xl cursor-pointer">&times;</button>
     </div>
-    <div class="radio-body">
-        <div class="radio-controls">
-          <button id="radioPrev" title="Anterior"><i data-lucide="skip-back" width="20"></i></button>
-          <button id="radioPlay" title="Play/Pause" class="active"><i data-lucide="pause" width="20"></i></button>
-          <button id="radioNext" title="Siguiente"><i data-lucide="skip-forward" width="20"></i></button>
-          <button id="radioMute" title="Silenciar"><i data-lucide="volume-2" width="20"></i></button>
+    <div class="widget-content">
+        <div class="text-center mb-4">
+            <div class="text-2xl font-bold" style="background: linear-gradient(45deg, var(--primary-light), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Oceanside Radio</div>
+            <div class="text-sm text-gray-400">Oceanside Stucco Supply</div>
         </div>
-        <div class="radio-volume">
-          <input type="range" id="radioVolume" min="0" max="1" step="0.01" value="0.6">
+
+        <select id="stationSelect" class="w-full p-2 bg-gray-700 text-white border border-gray-600 rounded-md text-sm mb-4"></select>
+        
+        <div class="dj-panel">
+            <div class="dj-panel-header">
+                <div class="font-bold flex items-center gap-2">
+                    <span class="mic-icon">🎙️</span>
+                    <span>Sistema DJ</span>
+                </div>
+                <span id="djStatus" class="text-sm">Pausado</span>
+            </div>
+            <div class="info-row">
+                <span class="text-gray-400 text-sm">Próxima locución:</span>
+                <span id="nextVoiceover" class="text-lg text-white font-bold">--:--</span>
+            </div>
+            <div class="info-row">
+                <span class="text-gray-400 text-sm">Siguiente:</span>
+                <span id="nextTrack" class="text-sm text-gray-300 text-right"></span>
+            </div>
+        </div>
+
+        <div class="controls flex justify-center items-center gap-4 my-5">
+            <button class="radio-control-btn" id="prevBtn">⏮</button>
+            <button class="radio-control-btn play-btn" id="playBtn">▶</button>
+            <button class="radio-control-btn" id="nextBtn">⏭</button>
+            <button class="radio-control-btn" id="muteBtn">🔊</button>
+        </div>
+
+        <div class="volume-control">
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
         </div>
     </div>
 </div>
-<audio id="radioAudio" preload="none"></audio>
+<audio id="backgroundMusic" preload="auto" crossorigin="anonymous"></audio>
+<audio id="djVoiceover" preload="auto" crossorigin="anonymous"></audio>
 
 
 <script>
@@ -957,7 +811,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 750);
         }
+        // Explicitly trigger hero animations after page load
+        document.querySelector('.hero-content h1').classList.add('is-visible');
+        document.querySelectorAll('.hero-content .animate-on-scroll').forEach(el => {
+            el.classList.add('is-visible');
+        });
     });
+
+    // ===== HEADER SCROLL (FIX ADDED HERE) =====
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+
+    /* ===== SCROLL ANIMATION LOGIC ===== */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: '0px',
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(target => {
+        observer.observe(target);
+    });
+    
+    document.querySelectorAll('[data-stagger-children]').forEach(container => {
+        const animationType = container.dataset.staggerChildren;
+        const children = container.children;
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+            child.classList.add('animate-on-scroll', `animate-${animationType}`);
+            child.style.animationDelay = `${i * 0.15}s`; // Stagger delay
+            observer.observe(child);
+        }
+    });
+
 
     /* ===== i18n DICTIONARY ===== */
     let lang = 'en';
@@ -1000,6 +900,23 @@ document.addEventListener('DOMContentLoaded', () => {
             about2P1: 'En Stucco Supply hemos acompañado a constructores, arquitectos y diseñadores en más de 2 000 proyectos residenciales y comerciales. Somos especialistas en recubrimientos y sistemas EIFS: comprendemos cada fase del proceso y garantizamos inventario Just-in-Time.',
             about2P2: 'Somos una empresa local comprometida con la calidad, la atención personalizada y la eficiencia. Nuestra meta es ayudarte a construir con confianza.',
             about2Btn: 'Hablemos',
+            whyChooseUsTitle: '¿Por Qué Elegirnos?',
+            whyChooseUsDesc: 'Nuestro compromiso es con la calidad, el servicio y la satisfacción de nuestros clientes.',
+            feature1Title: 'Calidad Garantizada',
+            feature1Desc: 'Solo ofrecemos productos de marcas líderes, asegurando durabilidad y acabados superiores en cada proyecto.',
+            feature2Title: 'Soporte Experto',
+            feature2Desc: 'Nuestro equipo está listo para asesorarte y asegurar que tengas los materiales correctos para tu trabajo.',
+            feature3Title: 'Entrega Confiable',
+            feature3Desc: 'Recibe tus materiales a tiempo, directamente en tu obra, con nuestro eficiente servicio de entrega.',
+            brandsTitle: 'Trabajamos con las Mejores Marcas',
+            testimonialsTitle: 'Lo Que Dicen Nuestros Clientes',
+            testimonialsDesc: 'La confianza de nuestros clientes es nuestro mayor activo.',
+            testimonial1Text: '"El mejor proveedor de estuco en el área. Siempre tienen lo que necesito y el personal es increíblemente servicial."',
+            testimonial1Author: 'John Doe',
+            testimonial1Company: 'Constructora Doe',
+            testimonial2Text: '"La entrega el mismo día salvó mi proyecto. Calidad y servicio inmejorables. ¡Totalmente recomendados!"',
+            testimonial2Author: 'Maria Smith',
+            testimonial2Company: 'Smith Remodelaciones',
             ctaBannerH: '¿Listo para elevar la calidad de tu proyecto?',
             ctaBannerBtn: 'Solicitar cotización',
             openQuoteTool: 'Abrir Cotizador Interactivo',
@@ -1060,6 +977,23 @@ document.addEventListener('DOMContentLoaded', () => {
             about2P1: 'At Stucco Supply we’ve supported builders, architects and designers in over 2,000 residential and commercial projects. We specialize in coatings and EIFS systems—understanding every step of the process and ensuring Just-in-Time inventory.',
             about2P2: 'We are a local company committed to quality, personal service, and efficiency. Our goal is to help you build with confidence.',
             about2Btn: 'Let’s talk',
+            whyChooseUsTitle: 'Why Choose Us?',
+            whyChooseUsDesc: 'Our commitment is to quality, service, and our clients\' satisfaction.',
+            feature1Title: 'Guaranteed Quality',
+            feature1Desc: 'We only offer products from leading brands, ensuring durability and superior finishes in every project.',
+            feature2Title: 'Expert Support',
+            feature2Desc: 'Our team is ready to advise you and ensure you have the right materials for your job.',
+            feature3Title: 'Reliable Delivery',
+            feature3Desc: 'Receive your materials on time, directly at your job site, with our efficient delivery service.',
+            brandsTitle: 'We Work With the Best Brands',
+            testimonialsTitle: 'What Our Clients Say',
+            testimonialsDesc: 'The trust of our clients is our greatest asset.',
+            testimonial1Text: '"The best stucco supplier in the area. They always have what I need and the staff is incredibly helpful."',
+            testimonial1Author: 'John Doe',
+            testimonial1Company: 'Doe Construction',
+            testimonial2Text: '"Same-day delivery saved my project. Unbeatable quality and service. Highly recommended!"',
+            testimonial2Author: 'Maria Smith',
+            testimonial2Company: 'Smith Remodeling',
             ctaBannerH: 'Ready to raise the quality of your project?',
             ctaBannerBtn: 'Request a quote',
             openQuoteTool: 'Open Interactive Quote Tool',
@@ -1080,7 +1014,7 @@ document.addEventListener('DOMContentLoaded', () => {
             privacyTitle: 'Privacy Policy',
             termsTitle: 'Terms and Conditions',
             privacyContent: `<span class="es"><h3>Recopilación de Información</h3><p>Recopilamos información personal como nombre, correo electrónico y número de teléfono cuando la proporciona voluntariamente a través de nuestros formularios de contacto o cotización. También podemos recopilar datos no personales como el tipo de navegador y el sistema operativo para mejorar nuestro sitio web.</p><h3>Uso de la Información</h3><p>La información que recopilamos se utiliza para responder a sus consultas, procesar sus pedidos y mejorar nuestros servicios. No compartiremos su información personal con terceros, excepto cuando sea necesario para cumplir con la ley.</p><h3>Seguridad</h3><p>Tomamos medidas razonables para proteger su información personal contra pérdida, robo y uso no autorizado.</p></span><span class="en"><h3>Information Collection</h3><p>We collect personal information such as name, email, and phone number when you voluntarily provide it through our contact or quote forms. We may also collect non-personal data like browser type and operating system to improve our website.</p><h3>Use of Information</h3><p>The information we collect is used to respond to your inquiries, process your orders, and improve our services. We will not share your personal information with third parties except as necessary to comply with the law.</p><h3>Security</h3><p>We take reasonable measures to protect your personal information from loss, theft, and unauthorized use.</p></span>`,
-            termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><span class="en"><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
+            termsContent: `<span class="es"><h3>Aceptación de los Términos</h3><p>Al acceder y utilizar nuestro sitio web, usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de los términos, no puede utilizar nuestro sitio web.</p><h3>Uso del Sitio</h3><p>Se le concede una licencia limitada para acceder y hacer uso personal de este sitio. Esta licencia no incluye ninguna reventa o uso comercial de este sitio o su contenido.</p><h3>Limitación de Responsabilidad</h3><p>Oceanside Stucco Supply no será responsable de ningún daño que surja del uso de este sitio web.</p></span><en><h3>Acceptance of Terms</h3><p>By accessing and using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of the terms, you may not use our website.</p><h3>Site Usage</h3><p>You are granted a limited license to access and make personal use of this site. This license does not include any resale or commercial use of this site or its contents.</p><h3>Limitation of Liability</h3><p>Oceanside Stucco Supply shall not be liable for any damages that arise from the use of this website.</p></span>`,
             copyright: `© ${new Date().getFullYear()} Oceanside Stucco Supply. All rights reserved.`
         }
     };
@@ -1114,8 +1048,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
     if(lb) {
-        document.querySelectorAll('.gallery img').forEach(img => {
-            img.onclick = () => { lbImg.src = img.src; lb.classList.add('active'); };
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.onclick = () => { 
+                const img = item.querySelector('img');
+                if(img) {
+                    lbImg.src = img.src; 
+                    lb.classList.add('active'); 
+                }
+            };
         });
         lb.onclick = () => lb.classList.remove('active');
     }
@@ -1220,17 +1160,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             if (!hasItems) { 
-              // Using a custom modal/alert would be better, but for simplicity, using alert.
-              // In a real app, replace this with a styled modal.
-              const alertMsg = quoteLang === 'es' ? 'Por favor, selecciona al menos un item.' : 'Please select at least one item.';
-              const p = document.createElement('p');
-              p.textContent = alertMsg;
-              p.style.color = 'red';
-              p.style.textAlign = 'center';
-              p.style.marginTop = '10px';
-              sendQuoteWhatsAppBtn.parentElement.appendChild(p);
-              setTimeout(() => p.remove(), 3000);
-              return; 
+             const alertMsg = quoteLang === 'es' ? 'Por favor, selecciona al menos un item.' : 'Please select at least one item.';
+             const p = document.createElement('p');
+             p.textContent = alertMsg;
+             p.style.color = 'red';
+             p.style.textAlign = 'center';
+             p.style.marginTop = '10px';
+             sendQuoteWhatsAppBtn.parentElement.appendChild(p);
+             setTimeout(() => p.remove(), 3000);
+             return; 
             }
             mensaje += `%0A${quoteLang === 'es' ? 'Total' : 'Total'}: $${total.toFixed(2)} USD`;
             window.open(`https://wa.me/19295040773?text=${encodeURIComponent(mensaje)}`, '_blank');
@@ -1239,213 +1177,272 @@ document.addEventListener('DOMContentLoaded', () => {
     
     /* ===== MODAL ACCESSIBILITY & FOCUS TRAP ===== */
     const modals = document.querySelectorAll('.modal-cotizador, .legal-modal');
-    
-    function openModal(modal) {
-        if (modal == null) return;
-        modal.classList.add('active');
-        trapFocus(modal);
-    }
-
-    function closeModal(modal) {
-        if (modal == null) return;
-        modal.classList.remove('active');
-    }
-
+    function openModal(modal) { if (modal == null) return; modal.classList.add('active'); trapFocus(modal); }
+    function closeModal(modal) { if (modal == null) return; modal.classList.remove('active'); }
     function trapFocus(element) {
         const focusableEls = element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
         const firstFocusableEl = focusableEls[0];
         const lastFocusableEl = focusableEls[focusableEls.length - 1];
-        const KEYCODE_TAB = 9;
-
         element.addEventListener('keydown', function(e) {
-            const isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
-            if (!isTabPressed) { return; }
-
-            if (e.shiftKey) { /* shift + tab */
-                if (document.activeElement === firstFocusableEl) {
-                    lastFocusableEl.focus();
-                    e.preventDefault();
-                }
-            } else { /* tab */
-                if (document.activeElement === lastFocusableEl) {
-                    firstFocusableEl.focus();
-                    e.preventDefault();
-                }
-            }
+            if (e.key !== 'Tab') { return; }
+            if (e.shiftKey) { if (document.activeElement === firstFocusableEl) { lastFocusableEl.focus(); e.preventDefault(); }
+            } else { if (document.activeElement === lastFocusableEl) { firstFocusableEl.focus(); e.preventDefault(); } }
         });
         if(firstFocusableEl) firstFocusableEl.focus();
     }
-    
     if (openCotizadorBtn) openCotizadorBtn.onclick = () => openModal(cotizadorModal);
     if (closeCotizadorBtn) closeCotizadorBtn.onclick = () => closeModal(cotizadorModal);
-    if (toggleQuoteLangBtn) {
-        toggleQuoteLangBtn.onclick = () => {
-             cotizadorContent.classList.toggle('es');
-             cotizadorContent.classList.toggle('en');
-        }
-    }
-    
+    if (toggleQuoteLangBtn) { toggleQuoteLangBtn.onclick = () => { cotizadorContent.classList.toggle('es'); cotizadorContent.classList.toggle('en'); } }
     const privacyModal = document.getElementById('privacyModal');
     const termsModal = document.getElementById('termsModal');
     const openPrivacyBtn = document.getElementById('openPrivacy');
     const openTermsBtn = document.getElementById('openTerms');
     const closeLegalModals = document.querySelectorAll('.close-legal-modal');
-
     if(openPrivacyBtn) openPrivacyBtn.onclick = () => openModal(privacyModal);
     if(openTermsBtn) openTermsBtn.onclick = () => openModal(termsModal);
+    closeLegalModals.forEach(btn => { btn.onclick = () => { closeModal(privacyModal); closeModal(termsModal); } });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { modals.forEach(closeModal); } });
 
-    closeLegalModals.forEach(btn => {
-        btn.onclick = () => {
-            closeModal(privacyModal);
-            closeModal(termsModal);
-        }
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            modals.forEach(closeModal);
-        }
-    });
-
-
-    /* ===== RADIO PLAYER ===== */
-    const radioBtnIcon = document.getElementById('radioBtnIcon');
-    const radioModal = document.getElementById('radioModal');
-    const stationNameEl = document.getElementById('stationName');
-    const radioAudio = document.getElementById('radioAudio');
-    const btnCloseRadio = document.getElementById('radioClose');
-    const btnMinimizeRadio = document.getElementById('radioMinimize');
-    const btnPrev = document.getElementById('radioPrev');
-    const btnPlay = document.getElementById('radioPlay');
-    const btnNext = document.getElementById('radioNext');
-    const btnMute = document.getElementById('radioMute');
-    const volSlider = document.getElementById('radioVolume');
-    const stations = [
-        { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
-        { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
-        { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' },
-        { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
-        { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
-        { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
-    ];
-    let currentStation = 0;
-
-    function loadStation(idx) {
-        currentStation = idx;
-        stationNameEl.textContent = stations[idx].name;
-        radioAudio.src = stations[idx].url;
-        radioAudio.load();
-        radioAudio.play().catch(e => console.error("Radio play failed:", e));
-    }
-
-    function updatePlayBtn() {
-        btnPlay.innerHTML = radioAudio.paused ? '<i data-lucide="play" width="20"></i>' : '<i data-lucide="pause" width="20"></i>';
-        btnPlay.classList.toggle('active', !radioAudio.paused);
-        lucide.createIcons();
-    }
-    
-    function updateMuteBtn() {
-        btnMute.innerHTML = radioAudio.muted || radioAudio.volume === 0 ? '<i data-lucide="volume-x" width="20"></i>' : '<i data-lucide="volume-2" width="20"></i>';
-        lucide.createIcons();
-    }
-    
-    if(radioBtnIcon) {
-        radioBtnIcon.onclick = () => {
-            radioModal.classList.add('visible');
-            if (!radioAudio.src) {
-                 loadStation(currentStation);
-            }
-        };
-    }
-    if(btnCloseRadio) btnCloseRadio.onclick = () => radioModal.classList.remove('visible');
-    if(btnMinimizeRadio) {
-        btnMinimizeRadio.onclick = () => {
-            radioModal.classList.toggle('minimized');
-            const icon = radioModal.classList.contains('minimized') ? 'chevrons-up-down' : 'chevrons-down-up';
-            btnMinimizeRadio.innerHTML = `<i data-lucide="${icon}" width="18"></i>`;
-            lucide.createIcons();
-        };
-    }
-    if(btnPlay) btnPlay.onclick = () => radioAudio.paused ? radioAudio.play() : radioAudio.pause();
-    if(radioAudio){ radioAudio.onplay = radioAudio.onpause = updatePlayBtn; }
-    if(btnPrev) btnPrev.onclick = () => loadStation((currentStation - 1 + stations.length) % stations.length);
-    if(btnNext) btnNext.onclick = () => loadStation((currentStation + 1) % stations.length);
-    if(btnMute) btnMute.onclick = () => { radioAudio.muted = !radioAudio.muted; updateMuteBtn(); };
-    if(volSlider) volSlider.oninput = () => {
-        radioAudio.volume = volSlider.value;
-        radioAudio.muted = volSlider.value == 0;
-        updateMuteBtn();
+    /* ===== RADIO PLAYER LOGIC ===== */
+    const radioConfig = {
+        voiceoverInterval: 4 * 60 * 1000, // 4 minutes
+        baseUrl: 'https://raw.githubusercontent.com/NucleoColectivo/Oceanside/main/ElevenLabs/',
+        musicStations: [
+            { name: 'SomaFM – Groove Salad', url: 'https://ice1.somafm.com/groovesalad-128-mp3' },
+            { name: 'SomaFM – Lush', url: 'https://ice2.somafm.com/lush-128-mp3' },
+            { name: 'SomaFM – Drone Zone', url: 'https://ice3.somafm.com/dronezone-128-mp3' },
+            { name: 'SomaFM – DEF CON Radio', url: 'https://ice1.somafm.com/defcon-128-mp3' },
+            { name: 'SomaFM – Indie Pop', url: 'https://ice2.somafm.com/indiepop-128-mp3' },
+            { name: 'SomaFM – Secret Agent', url: 'https://ice1.somafm.com/secretagent-128-mp3' },
+            { name: 'SomaFM – Beat Blender', url: 'https://ice3.somafm.com/beatblender-128-mp3' },
+            { name: 'Radio Paradise – Main Mix', url: 'https://stream.radioparadise.com/mp3-128' }
+        ],
+        djAudios: [
+            '01_Chapter 1.mp3', '02_Chapter 1.mp3', '03_Chapter 1.mp3', '04_Chapter 1.mp3',
+            '05_Chapter 1.mp3', '06_Chapter 1.mp3', '07_Chapter 1.mp3', '08_Chapter 1.mp3',
+            '09_Chapter 1.mp3', '10_Chapter 1.mp3', '11_Chapter 1.mp3', '12_Chapter 1.mp3',
+            '13_Chapter 1.mp3', '14_Chapter 1.mp3',
+            'ElevenLabs_2025-07-06T14_24_42_JOE_gen_sp100_s50_sb75_v3.mp3',
+            'ElevenLabs_2025-07-06T14_53_09_Mark - ConvoAI_pvc_sp95_s50_sb75_v3.mp3'
+        ],
+        djAudioNames: [
+            'Bienvenida General', 'Productos Especializados', 'Calidad y Confianza', 'Servicio Rápido',
+            'Para Contratistas', 'Experiencia Oceanside', 'Materiales Certificados', 'Atención Personalizada',
+            'Entregas Rápidas', 'Soporte Técnico', 'Inventario Just-in-Time', 'Proyectos Exitosos',
+            'Empresa Local', 'Construye con Confianza', 'Mensaje Especial JOE', 'Mensaje Especial Mark'
+        ]
     };
-    if (radioAudio) radioAudio.onvolumechange = updateMuteBtn;
+
+    const radioDOM = {
+        widget: document.getElementById('radioWidget'),
+        icon: document.getElementById('radioBtnIcon'),
+        closeBtn: document.getElementById('closeRadioBtn'),
+        backgroundMusic: document.getElementById('backgroundMusic'),
+        djVoiceover: document.getElementById('djVoiceover'),
+        playBtn: document.getElementById('playBtn'),
+        prevBtn: document.getElementById('prevBtn'),
+        nextBtn: document.getElementById('nextBtn'),
+        muteBtn: document.getElementById('muteBtn'),
+        volumeSlider: document.getElementById('volumeSlider'),
+        stationSelect: document.getElementById('stationSelect'),
+        djStatus: document.getElementById('djStatus'),
+        nextVoiceoverDisplay: document.getElementById('nextVoiceover'),
+        nextTrackDisplay: document.getElementById('nextTrack'),
+    };
+
+    const radioState = {
+        currentMusicIndex: 0,
+        currentDjAudioIndex: -1,
+        isPlaying: false,
+        isMuted: false,
+        isFirstPlay: true, // New flag for welcome message
+        voiceoverTimer: null,
+        countdownTimer: null,
+        nextVoiceoverTime: radioConfig.voiceoverInterval,
+    };
+
+    function initRadio() {
+        radioConfig.musicStations.forEach((station, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = station.name;
+            radioDOM.stationSelect.appendChild(option);
+        });
+
+        radioDOM.icon.addEventListener('click', () => radioDOM.widget.classList.add('visible'));
+        radioDOM.closeBtn.addEventListener('click', () => radioDOM.widget.classList.remove('visible'));
+        radioDOM.playBtn.addEventListener('click', togglePlay);
+        radioDOM.prevBtn.addEventListener('click', prevStation);
+        radioDOM.nextBtn.addEventListener('click', nextStation);
+        radioDOM.muteBtn.addEventListener('click', toggleMute);
+        radioDOM.volumeSlider.addEventListener('input', setVolume);
+        radioDOM.stationSelect.addEventListener('change', (e) => loadStation(parseInt(e.target.value), true));
+        radioDOM.djVoiceover.addEventListener('ended', onVoiceoverEnd);
+        radioDOM.djVoiceover.addEventListener('error', onVoiceoverEnd);
+        
+        loadStation(0, false);
+        updateNextTrackDisplay();
+    }
+
+    function loadStation(index, andPlay) {
+        radioState.currentMusicIndex = index;
+        radioDOM.stationSelect.value = index;
+        radioDOM.backgroundMusic.src = radioConfig.musicStations[index].url;
+        radioDOM.backgroundMusic.load();
+        if (andPlay) {
+            radioDOM.backgroundMusic.play().catch(e => console.error("Error playing station:", e));
+        }
+    }
+
+    function togglePlay() {
+        if (radioState.isPlaying) {
+            radioDOM.backgroundMusic.pause();
+            radioDOM.djVoiceover.pause();
+            radioDOM.playBtn.innerHTML = '▶';
+            radioState.isPlaying = false;
+            clearTimers();
+            updateStatus('Pausado', 'paused');
+        } else {
+            radioState.isPlaying = true;
+            radioDOM.playBtn.innerHTML = '⏸';
+            if (radioState.isFirstPlay) {
+                radioState.isFirstPlay = false;
+                playWelcomeMessage();
+            } else {
+                radioDOM.backgroundMusic.play().catch(e => console.error("Playback failed:", e));
+                scheduleNextVoiceover();
+                updateStatus('Transmitiendo', 'playing');
+            }
+        }
+    }
     
-    /* ===== ACTIVE NAV LINK ON SCROLL ===== */
-    const sections = document.querySelectorAll('section[id]');
-    const navLi = document.querySelectorAll('#desktop-menu-list a');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute('id');
-            }
-        });
+    function playWelcomeMessage() {
+        updateStatus('Bienvenida', 'waiting');
+        radioDOM.backgroundMusic.volume = (radioDOM.volumeSlider.value / 100) * 0.2;
+        radioDOM.backgroundMusic.play().catch(e => console.error("Music playback failed on welcome:", e));
 
-        navLi.forEach(a => {
-            a.removeAttribute('aria-current');
-            if (a.getAttribute('href') === `#${current}`) {
-                a.setAttribute('aria-current', 'page');
-            }
+        const welcomeAudioUrl = radioConfig.baseUrl + encodeURIComponent(radioConfig.djAudios[0]);
+        radioDOM.djVoiceover.src = welcomeAudioUrl;
+        radioDOM.djVoiceover.volume = radioDOM.volumeSlider.value / 100;
+        radioDOM.djVoiceover.load();
+        radioDOM.djVoiceover.play().catch(e => {
+            console.error("Welcome voiceover error:", e);
+            onVoiceoverEnd();
         });
-    });
+    }
 
+    function prevStation() {
+        let newIndex = (radioState.currentMusicIndex - 1 + radioConfig.musicStations.length) % radioConfig.musicStations.length;
+        loadStation(newIndex, radioState.isPlaying);
+    }
+
+    function nextStation() {
+        let newIndex = (radioState.currentMusicIndex + 1) % radioConfig.musicStations.length;
+        loadStation(newIndex, radioState.isPlaying);
+    }
+    
+    function toggleMute() {
+        radioState.isMuted = !radioState.isMuted;
+        radioDOM.backgroundMusic.muted = radioState.isMuted;
+        radioDOM.djVoiceover.muted = radioState.isMuted;
+        radioDOM.muteBtn.innerHTML = radioState.isMuted ? '🔇' : '🔊';
+    }
+
+    function setVolume() {
+        const volume = radioDOM.volumeSlider.value / 100;
+        radioDOM.backgroundMusic.volume = volume;
+        radioDOM.djVoiceover.volume = volume;
+    }
+
+    function playVoiceover() {
+        if (!radioState.isPlaying) return;
+        
+        updateStatus('Locución', 'waiting');
+        radioDOM.backgroundMusic.volume = (radioDOM.volumeSlider.value / 100) * 0.2;
+
+        radioState.currentDjAudioIndex = Math.floor(Math.random() * radioConfig.djAudios.length);
+        const audioUrl = radioConfig.baseUrl + encodeURIComponent(radioConfig.djAudios[radioState.currentDjAudioIndex]);
+        
+        radioDOM.djVoiceover.src = audioUrl;
+        radioDOM.djVoiceover.volume = radioDOM.volumeSlider.value / 100;
+        radioDOM.djVoiceover.load();
+        radioDOM.djVoiceover.play().catch(e => {
+            console.error("Voiceover error:", e);
+            onVoiceoverEnd();
+        });
+        updateNextTrackDisplay();
+    }
+    
+    function onVoiceoverEnd() {
+        radioDOM.backgroundMusic.volume = radioDOM.volumeSlider.value / 100;
+        if(radioState.isPlaying) {
+            updateStatus('Transmitiendo', 'playing');
+            scheduleNextVoiceover();
+        }
+    }
+
+    function scheduleNextVoiceover() {
+        clearTimers();
+        if (!radioState.isPlaying) return;
+        
+        radioState.nextVoiceoverTime = radioConfig.voiceoverInterval;
+        updateCountdownDisplay();
+        
+        radioState.countdownTimer = setInterval(updateCountdownDisplay, 1000);
+        radioState.voiceoverTimer = setTimeout(playVoiceover, radioConfig.voiceoverInterval);
+    }
+    
+    function updateCountdownDisplay() {
+        if (radioState.nextVoiceoverTime <= 0) {
+            clearInterval(radioState.countdownTimer);
+            return;
+        }
+        radioState.nextVoiceoverTime -= 1000;
+        const minutes = Math.floor(radioState.nextVoiceoverTime / 60000);
+        const seconds = Math.floor((radioState.nextVoiceoverTime % 60000) / 1000);
+        radioDOM.nextVoiceoverDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function updateNextTrackDisplay() {
+        const nextIndex = (radioState.currentDjAudioIndex + 1) % radioConfig.djAudioNames.length;
+        radioDOM.nextTrackDisplay.textContent = radioConfig.djAudioNames[nextIndex];
+    }
+
+    function updateStatus(text, cssClass) {
+        radioDOM.djStatus.textContent = text;
+        radioDOM.djStatus.className = `text-sm ${cssClass}`;
+    }
+
+    function clearTimers() {
+        clearTimeout(radioState.voiceoverTimer);
+        clearInterval(radioState.countdownTimer);
+    }
 
     /* ===== INITIALIZE ===== */
+    translate();
+    cargarTablaCotizador();
+    initRadio();
+    
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenuButton && mobileMenu) {
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
     }
     
-    /* ===== WHATSAPP CARD LINKS ===== */
     document.querySelectorAll('.product-card').forEach(card => {
         const i18nKey = card.dataset.i18nKey;
         if (i18nKey) {
             card.addEventListener('click', () => {
                 const productName = dict[lang][i18nKey];
-                const message = lang === 'es' ? 
-                    `Hola, quisiera información sobre: ${productName}` : 
-                    `Hello, I would like information about: ${productName}`;
-                
-                // Track event for analytics
-                if(typeof gtag === 'function') {
-                    gtag('event', 'select_content', { content_type: 'product_interest', item_id: productName });
-                }
-                if(typeof fbq === 'function') {
-                    fbq('track', 'ViewContent', { content_name: productName });
-                }
-
+                const message = lang === 'es' ? `Hola, quisiera información sobre: ${productName}` : `Hello, I would like information about: ${productName}`;
+                if(typeof gtag === 'function') { gtag('event', 'select_content', { content_type: 'product_interest', item_id: productName }); }
+                if(typeof fbq === 'function') { fbq('track', 'ViewContent', { content_name: productName }); }
                 const whatsappUrl = `https://wa.me/19295040773?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
             });
         }
     });
-
-
-    translate();
-    cargarTablaCotizador();
-    if (volSlider) radioAudio.volume = volSlider.value;
-    updateMuteBtn();
-    updatePlayBtn();
 });
 </script>
 </body>
